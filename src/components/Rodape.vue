@@ -18,7 +18,7 @@
   </footer>
 </template>
 
-<style scoped>
+<style scoped lang="scss">
 footer {
   font-family: 'Poppins', sans-serif;
   margin-top: auto;

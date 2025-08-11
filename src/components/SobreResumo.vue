@@ -17,7 +17,7 @@
   </section>
 </template>
 
-<style lang="scss">
+<style scoped lang="scss">
 .new-section {
   position: relative;
   margin-top: -10vh;

@@ -1,13 +1,13 @@
 <template>
   <div class="skills-section-wrapper">
-    <section class="skills-section">
+    <section class="skills-section" ref="skillsSection">
       <div class="content-container">
         <div class="skills-title-container">
           <h2 class="skills-title">Skills</h2>
           <div class="skills-line">
-            <img class="linha-skill" src="../assets/Linha Skills.svg" alt="linha decorativa" style="z-index: 2" />
+            <img class="linha-skill" src="../assets/Linha Skills.svg" alt="linha decorativa" ref="linhaSkill" />
             <img class="estrelas-skill" src="../assets/estrelasSkills.svg" alt="Estrelas decorativas"
-              style="z-index: 1" />
+              ref="estrelasSkill" />
           </div>
         </div>
 
@@ -16,7 +16,7 @@
           <div class="skill-card">
             <a href="#">
               <img src="../assets/HTML.svg" alt="HTML5 logo" class="skill-logo-1" />
-              <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/html5/html5-original.svg" alt="HTML5 logo"
+              <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/html5/html5-original.svg"
                 class="skill-logo" />
               <p class="skill-name">HTML</p>
             </a>
@@ -24,8 +24,8 @@
           <div class="skill-card">
             <a href="#">
               <img src="../assets/CSS.svg" alt="CSS3 logo" class="skill-logo-1" />
-              <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/css3/css3-original.svg" alt="CSS3 logo"
-                class="skill-logo" />
+              <img src="../assets/CSS_LOGO.png"
+                class="skill-logo-3" />
               <p class="skill-name">CSS</p>
             </a>
           </div>
@@ -33,22 +33,22 @@
             <a href="#">
               <img src="../assets/JavaScript.svg" alt="JavaScript logo" class="skill-logo-1" />
               <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg"
-                alt="JavaScript logo" class="skill-logo" />
+               class="skill-logo" />
               <p class="skill-name">JavaScript</p>
             </a>
           </div>
           <div class="skill-card">
             <a href="#">
               <img src="../assets/TypeScript.svg" alt="TypeScript logo" class="skill-logo-1" />
-              <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/typescript/typescript-original.svg"
-                alt="TypeScript logo" class="skill-logo" />
+              <img src="../assets/ts_logo_color.png"
+               class="skill-logo-3" />
               <p class="skill-name">TypeScript</p>
             </a>
           </div>
           <div class="skill-card">
             <a href="#">
               <img src="../assets/React.svg" alt="React logo" class="skill-logo-1" />
-              <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg" alt="React logo"
+              <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg"
                 class="skill-logo" />
               <p class="skill-name">React</p>
             </a>
@@ -56,7 +56,7 @@
           <div class="skill-card">
             <a href="#">
               <img src="../assets/VUE-logo.svg" alt="Vue.js logo" class="skill-logo-1" />
-              <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/vuejs/vuejs-original.svg" alt="Vue.js logo"
+              <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/vuejs/vuejs-original.svg"
                 class="skill-logo" />
               <p class="skill-name">Vue.js</p>
             </a>
@@ -65,7 +65,7 @@
             <a href="#">
               <img src="../assets/Bootstrap.svg" alt="Bootstrap logo" class="skill-logo-1" />
               <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/bootstrap/bootstrap-original.svg"
-                alt="Bootstrap logo" class="skill-logo" />
+               class="skill-logo-2" />
               <p class="skill-name">Bootstrap</p>
             </a>
           </div>
@@ -73,26 +73,26 @@
 
         <!-- SEGUNDA LINHA-->
         <div class="skills-grid-container">
-          <div class="skill-card">
+          <div class="skill-card python-card">
             <a href="#">
               <img src="../assets/Python.svg" alt="Python logo" class="skill-logo-1" />
-              <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original.svg" alt="Python logo"
-                class="skill-logo" />
+              <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original.svg"
+                class="skill-logo-2" />
               <p class="skill-name">Python</p>
             </a>
           </div>
           <div class="skill-card">
             <a href="#">
               <img src="../assets/CSharp.svg" alt="C# logo" class="skill-logo-1" />
-              <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/csharp/csharp-original.svg" alt="C# logo"
-                class="skill-logo" />
+              <img src="../assets/CSHARP_LOGO.png"
+                class="skill-logo-3" />
               <p class="skill-name">C#</p>
             </a>
           </div>
           <div class="skill-card">
             <a href="#">
               <img src="../assets/MySQL.svg" alt="MySQL logo" class="skill-logo-1" />
-              <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mysql/mysql-original.svg" alt="MySQL logo"
+              <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mysql/mysql-original.svg"
                 class="skill-logo" />
               <p class="skill-name">MySQL</p>
             </a>
@@ -100,7 +100,7 @@
           <div class="skill-card">
             <a href="#">
               <img src="../assets/FIGMA.svg" alt="Figma logo" class="skill-logo-1" />
-              <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/figma/figma-original.svg" alt="Figma logo"
+              <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/figma/figma-original.svg"
                 class="skill-logo" />
               <p class="skill-name">Figma</p>
             </a>
@@ -108,7 +108,7 @@
           <div class="skill-card">
             <a href="#">
               <img src="../assets/GIT.svg" alt="Git logo" class="skill-logo-1" />
-              <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/git/git-original.svg" alt="Git logo"
+              <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/git/git-original.svg"
                 class="skill-logo" />
               <p class="skill-name">Git</p>
             </a>
@@ -117,7 +117,7 @@
             <a href="#">
               <img src="../assets/Photoshop.svg" alt="Photoshop logo" class="skill-logo-1" />
               <img src="../assets/PS_LOGO.png"
-                alt="Photoshop logo" class="skill-logo-3" />
+               class="skill-logo-3" />
               <p class="skill-name">Photoshop</p>
             </a>
           </div>
@@ -125,7 +125,7 @@
             <a href="#">
               <img src="../assets/Illustrator.svg" alt="Illustrator logo" class="skill-logo-1" />
               <img src="../assets/AI_LOGO.png"
-                alt="Illustrator logo" class="skill-logo-3" />
+                  class="skill-logo-3" />
               <p class="skill-name">Illustrator</p>
             </a>
           </div>
@@ -155,6 +155,47 @@
     </section>
   </div>
 </template>
+
+<script>
+export default {
+  setup() {
+    // Retorna a referência dos elementos para uso no template
+    return {};
+  },
+  mounted() {
+    // Pega a referência do elemento `skills-section`
+    const skillsSection = this.$refs.skillsSection;
+    // Pega a referência do elemento `estrelas-skill`
+    const estrelasSkill = this.$refs.estrelasSkill;
+    // Pega a referência do elemento `linha-skill`
+    const linhaSkill = this.$refs.linhaSkill;
+
+    // Configura um novo IntersectionObserver
+    const observer = new IntersectionObserver(
+      (entries) => {
+        // Itera sobre as entradas (elementos observados)
+        entries.forEach((entry) => {
+          // Se a entrada estiver na área de visualização
+          if (entry.isIntersecting) {
+            // Adiciona a classe de animação à linha e às estrelas
+            estrelasSkill.classList.add('animate-estrelas');
+            linhaSkill.classList.add('animate-linha'); 
+            // Desconecta o observador depois de animar para evitar re-execução
+            observer.disconnect();
+          }
+        });
+      },
+      // Opções do observador (threshold 0.5 significa que 50% do elemento deve estar visível)
+      { threshold: 0.5 }
+    );
+
+    // Começa a observar o elemento `skills-section`
+    if (skillsSection) {
+      observer.observe(skillsSection);
+    }
+  },
+};
+</script>
 
 <style scoped lang="scss">
 .skills-section-wrapper {
@@ -199,19 +240,66 @@
 
 .skills-line {
   position: relative;
-  width: 180px;
-  height: 100px;
-  margin-top: -3%;
+  width: 40%;
+  max-width: 900px;
+  height: 8px;
+  margin-top: 1%;
 }
 
-.skills-line img {
+.linha-skill {
   position: absolute;
   width: 100%;
   height: 100%;
   object-fit: contain;
   top: 0;
   left: 0;
+  transform: scaleX(0); /* Começa com largura zero para a animação */
+  transform-origin: center center; /* Define o ponto de origem do centro */
+  z-index: 1;
 }
+
+.estrelas-skill {
+  position: absolute;
+  width: 250px;
+  height: auto;
+  object-fit: contain;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%); /* Posição final */
+  opacity: 0; /* Começa com a opacidade zero para a animação */
+  z-index: 2;
+}
+
+/* Animação para a linha */
+@keyframes scaleXAnimation {
+  from {
+    transform: scaleX(0);
+  }
+  to {
+    transform: scaleX(1);
+  }
+}
+
+.animate-linha {
+  animation: scaleXAnimation 1s ease-out forwards;
+}
+
+/* Animação para as estrelas */
+@keyframes fadeInUp {
+  from {
+    transform: translate(-50%, 0%); /* Começa mais abaixo */
+    opacity: 0;
+  }
+  to {
+    transform: translate(-50%, -50%); /* Vai para a posição final */
+    opacity: 1;
+  }
+}
+
+.animate-estrelas {
+  animation: fadeInUp 1.5s ease-in-out forwards;
+}
+
 
 .skills-grid-container {
   display: flex;
@@ -252,36 +340,27 @@
   border: 2px solid transparent;
 }
 
-.skill-logo-1 {
-  width: 80px;
-  height: 80px;
-  object-fit: contain;
-  transition: filter 0.3s ease, color 0.3s ease;
-  padding-top: 15px;
-}
-
-.skill-logo {
-  width: 80px;
-  height: 80px;
-  object-fit: contain;
-  transition: filter 0.3s ease, color 0.3s ease;
-  padding-top: 15px;
-}
-
-.skill-logo-3 {
-  width: 80px;
-  height: 80px;
-  object-fit: contain;
-  transition: filter 0.3s ease, color 0.3s ease;
-  padding-top: 15px;
-}
-
 .skill-card a {
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   text-decoration: none;
+  position: relative;
+}
+
+.skill-logo-1,
+.skill-logo,
+.skill-logo-2,
+.skill-logo-3 {
+  position: absolute;
+  top: 15px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 80px;
+  height: 80px;
+  object-fit: contain;
+  transition: opacity 0.3s ease, transform 0.3s ease;
 }
 
 img.skill-logo {
@@ -292,25 +371,25 @@ img.skill-logo-3 {
   opacity: 0;
 }
 
+img.skill-logo-2 {
+  opacity: 0;
+}
 
 .skill-card:hover img.skill-logo-1 {
   opacity: 0;
 }
 
-.skill-card:hover img.skill-logo {
-  opacity: 1;
-}
-
+.skill-card:hover img.skill-logo,
+.skill-card:hover img.skill-logo-2,
 .skill-card:hover img.skill-logo-3 {
   opacity: 1;
-}
-
-.skill-card:hover i.skill-logo {
-  color: var(--amarelo);
+  transform: translateX(-50%) scale(1.2);
 }
 
 .skill-name {
-  margin-top: 15px;
+  position: relative;
+  z-index: 10;
+  margin-top: 105px;
   font-weight: 900;
   font-size: 0.9em;
   color: var(--roxo-escuro);
@@ -324,7 +403,6 @@ img.skill-logo-3 {
 .skill-card:hover .skill-name {
   color: var(--cor-branca);
 }
-
 
 @media (max-width: 1024px) {
   .skills-grid-container {
@@ -341,9 +419,13 @@ img.skill-logo-3 {
     width: calc((100% - 25px) / 2);
   }
 
-  .skill-logo {
+  .skill-logo-1,
+  .skill-logo,
+  .skill-logo-2,
+  .skill-logo-3 {
     width: 65px;
     height: 65px;
+    top: 10px;
   }
 }
 
@@ -358,9 +440,13 @@ img.skill-logo-3 {
     padding: 12px;
   }
 
-  .skill-logo {
+  .skill-logo-1,
+  .skill-logo,
+  .skill-logo-2,
+  .skill-logo-3 {
     width: 55px;
     height: 55px;
+    top: 10px;
   }
 
   .skills-title {
@@ -379,9 +465,13 @@ img.skill-logo-3 {
     padding: 8px;
   }
 
-  .skill-logo {
+  .skill-logo-1,
+  .skill-logo,
+  .skill-logo-2,
+  .skill-logo-3 {
     width: 45px;
     height: 45px;
+    top: 5px;
   }
 
   .skill-name {

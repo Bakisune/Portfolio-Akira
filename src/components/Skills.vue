@@ -15,6 +15,7 @@
         <div class="skills-grid-container">
           <div class="skill-card">
             <a href="#">
+              <img src="../assets/HTML.svg" alt="HTML5 logo" class="skill-logo-1" />
               <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/html5/html5-original.svg" alt="HTML5 logo"
                 class="skill-logo" />
               <p class="skill-name">HTML</p>
@@ -22,6 +23,7 @@
           </div>
           <div class="skill-card">
             <a href="#">
+              <img src="../assets/CSS.svg" alt="CSS3 logo" class="skill-logo-1" />
               <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/css3/css3-original.svg" alt="CSS3 logo"
                 class="skill-logo" />
               <p class="skill-name">CSS</p>
@@ -29,6 +31,7 @@
           </div>
           <div class="skill-card">
             <a href="#">
+              <img src="../assets/JavaScript.svg" alt="JavaScript logo" class="skill-logo-1" />
               <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg"
                 alt="JavaScript logo" class="skill-logo" />
               <p class="skill-name">JavaScript</p>
@@ -36,6 +39,7 @@
           </div>
           <div class="skill-card">
             <a href="#">
+              <img src="../assets/TypeScript.svg" alt="TypeScript logo" class="skill-logo-1" />
               <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/typescript/typescript-original.svg"
                 alt="TypeScript logo" class="skill-logo" />
               <p class="skill-name">TypeScript</p>
@@ -43,6 +47,7 @@
           </div>
           <div class="skill-card">
             <a href="#">
+              <img src="../assets/React.svg" alt="React logo" class="skill-logo-1" />
               <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg" alt="React logo"
                 class="skill-logo" />
               <p class="skill-name">React</p>
@@ -50,6 +55,7 @@
           </div>
           <div class="skill-card">
             <a href="#">
+              <img src="../assets/VUE-logo.svg" alt="Vue.js logo" class="skill-logo-1" />
               <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/vuejs/vuejs-original.svg" alt="Vue.js logo"
                 class="skill-logo" />
               <p class="skill-name">Vue.js</p>
@@ -57,6 +63,7 @@
           </div>
           <div class="skill-card">
             <a href="#">
+              <img src="../assets/Bootstrap.svg" alt="Bootstrap logo" class="skill-logo-1" />
               <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/bootstrap/bootstrap-original.svg"
                 alt="Bootstrap logo" class="skill-logo" />
               <p class="skill-name">Bootstrap</p>
@@ -68,6 +75,7 @@
         <div class="skills-grid-container">
           <div class="skill-card">
             <a href="#">
+              <img src="../assets/Python.svg" alt="Python logo" class="skill-logo-1" />
               <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original.svg" alt="Python logo"
                 class="skill-logo" />
               <p class="skill-name">Python</p>
@@ -75,6 +83,7 @@
           </div>
           <div class="skill-card">
             <a href="#">
+              <img src="../assets/CSharp.svg" alt="C# logo" class="skill-logo-1" />
               <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/csharp/csharp-original.svg" alt="C# logo"
                 class="skill-logo" />
               <p class="skill-name">C#</p>
@@ -82,6 +91,7 @@
           </div>
           <div class="skill-card">
             <a href="#">
+              <img src="../assets/MySQL.svg" alt="MySQL logo" class="skill-logo-1" />
               <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mysql/mysql-original.svg" alt="MySQL logo"
                 class="skill-logo" />
               <p class="skill-name">MySQL</p>
@@ -89,6 +99,7 @@
           </div>
           <div class="skill-card">
             <a href="#">
+              <img src="../assets/FIGMA.svg" alt="Figma logo" class="skill-logo-1" />
               <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/figma/figma-original.svg" alt="Figma logo"
                 class="skill-logo" />
               <p class="skill-name">Figma</p>
@@ -96,6 +107,7 @@
           </div>
           <div class="skill-card">
             <a href="#">
+              <img src="../assets/GIT.svg" alt="Git logo" class="skill-logo-1" />
               <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/git/git-original.svg" alt="Git logo"
                 class="skill-logo" />
               <p class="skill-name">Git</p>
@@ -103,15 +115,17 @@
           </div>
           <div class="skill-card">
             <a href="#">
-              <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/photoshop/photoshop-plain.svg"
-                alt="Photoshop logo" class="skill-logo" />
+              <img src="../assets/Photoshop.svg" alt="Photoshop logo" class="skill-logo-1" />
+              <img src="../assets/PS_LOGO.png"
+                alt="Photoshop logo" class="skill-logo-3" />
               <p class="skill-name">Photoshop</p>
             </a>
           </div>
           <div class="skill-card">
             <a href="#">
-              <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/illustrator/illustrator-plain.svg"
-                alt="Illustrator logo" class="skill-logo" />
+              <img src="../assets/Illustrator.svg" alt="Illustrator logo" class="skill-logo-1" />
+              <img src="../assets/AI_LOGO.png"
+                alt="Illustrator logo" class="skill-logo-3" />
               <p class="skill-name">Illustrator</p>
             </a>
           </div>
@@ -121,15 +135,17 @@
         <div class="skills-last-row">
           <div class="skill-card">
             <a href="#">
-              <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/clipstudio/clipstudio-original.svg"
-                alt="Clip Studio Paint logo" class="skill-logo" />
+              <img src="../assets/ClipStudio.svg" alt="Clip Studio Paint logo" class="skill-logo-1" />
+              <img src="../assets/CSP_LOGO_WHITE.png"
+                alt="Clip Studio Paint logo" class="skill-logo-3" />
               <p class="skill-name">ClipStudio</p>
             </a>
           </div>
           <div class="skill-card">
             <a href="#">
-              <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/gamemakerstudio/gamemakerstudio-original.svg"
-                alt="GameMaker logo" class="skill-logo" />
+              <img src="../assets/GameMaker.svg" alt="GameMaker logo" class="skill-logo-1" />
+              <img src="../assets/game-maker_ICON.png"
+                alt="GameMaker logo" class="skill-logo-3" />
               <p class="skill-name">GameMaker</p>
             </a>
           </div>
@@ -236,7 +252,23 @@
   border: 2px solid transparent;
 }
 
+.skill-logo-1 {
+  width: 80px;
+  height: 80px;
+  object-fit: contain;
+  transition: filter 0.3s ease, color 0.3s ease;
+  padding-top: 15px;
+}
+
 .skill-logo {
+  width: 80px;
+  height: 80px;
+  object-fit: contain;
+  transition: filter 0.3s ease, color 0.3s ease;
+  padding-top: 15px;
+}
+
+.skill-logo-3 {
   width: 80px;
   height: 80px;
   object-fit: contain;
@@ -253,15 +285,24 @@
 }
 
 img.skill-logo {
-  filter: grayscale(100%) brightness(0.6);
+  opacity: 0;
 }
 
-i.skill-logo {
-  color: var(--roxo-escuro);
+img.skill-logo-3 {
+  opacity: 0;
+}
+
+
+.skill-card:hover img.skill-logo-1 {
+  opacity: 0;
 }
 
 .skill-card:hover img.skill-logo {
-  filter: grayscale(0%);
+  opacity: 1;
+}
+
+.skill-card:hover img.skill-logo-3 {
+  opacity: 1;
 }
 
 .skill-card:hover i.skill-logo {

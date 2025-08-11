@@ -1,0 +1,15 @@
+:root {
+        --roxo-escuro: #332b45;
+        --roxo-claro: #9e14fa;
+        --roxo-mais-claro: #d3b9ee;
+        --amarelo: #ffba60;
+        --cor-fundo: #342c3c;
+        --cor-branca: #ffffff;
+        --roxo-desligado: #574a68; 
+      }
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}

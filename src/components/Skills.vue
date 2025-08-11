@@ -5,9 +5,8 @@
         <div class="skills-title-container">
           <h2 class="skills-title">Skills</h2>
           <div class="skills-line">
-            <img src="https://via.placeholder.com/100x20/9e14fa/ffffff?text=Deco1" alt="Decoração 1"
-              style="z-index: 2" />
-            <img src="https://via.placeholder.com/100x20/574a68/ffffff?text=Deco2" alt="Decoração 2"
+            <img class="linha-skill" src="../assets/Linha Skills.svg" alt="linha decorativa" style="z-index: 2" />
+            <img class="estrelas-skill" src="../assets/estrelasSkills.svg" alt="Estrelas decorativas"
               style="z-index: 1" />
           </div>
         </div>
@@ -184,9 +183,9 @@
 
 .skills-line {
   position: relative;
-  width: 100px;
-  height: 20px;
-  margin-top: 10px;
+  width: 180px;
+  height: 100px;
+  margin-top: -3%;
 }
 
 .skills-line img {

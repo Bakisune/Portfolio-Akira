@@ -20,7 +20,6 @@
 </template>
 
 <style scoped>
-
 .expertizes {
     margin-top: 20px;
     padding: 40px;

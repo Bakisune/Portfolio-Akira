@@ -3,16 +3,11 @@
     <h2 class="about-title">ABOUT ME</h2>
     <div class="about-content-wrapper">
       <p class="about-text">
-        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut tellus
-        felis, tincidunt vel vehicula in, convallis eget erat. Sed
-        scelerisque quam quis mattis pulvinar. Fusce varius, lorem eget
-        rutrum vehicula, orci sapien hendrerit diam, ac accumsan metus elit
-        eu ex. Duis enim dolor, tempor ut dui et, pretium interdum odio.
-        Vestibulum in leo lectus. In non diam id lectus ullamcorper
-        consequat. Nam eu mi eget massa porta ullamcorper. Suspendisse nisl
-        sem, convallis et pretium et, gravida a ipsum. Sed a sodales metus,
-        ac mollis velit. Nullam dictum gravida mauris. Cras congue et est eu
-        pellentesque.
+        Oi! Me chamo Akira Alcantara, também conhecido como Bakisune. Sou um entusiasta da tecnologia e da criatividade,
+        e adoro mergulhar em projetos que unem esses dois mundos. Minha jornada me levou a explorar áreas como
+        desenvolvimento de software, design, desenvolvimento de jogos, ilustração e animação. Meu objetivo é transformar
+        ideias em realidade, criando experiências que não só funcionam bem, mas também são visualmente incríveis. Estou
+        sempre aprendendo e pronto para criar algo novo e que cause um impacto positivo.
       </p>
       <div class="about-image-container">
         <div class="gray-box"></div>
@@ -106,6 +101,7 @@
   line-height: 1.8;
   font-size: 1.1em;
   text-align: justify;
+  margin-right: 10%;
 }
 
 .about-image-container {

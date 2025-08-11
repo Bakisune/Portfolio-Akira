@@ -7,8 +7,8 @@
                 <li><a href="#"><i class="bi bi-award-fill"></i></a></li>
                 <li><a href="#"><i class="bi bi-stars"></i></a></li>
                 <li><a href="#"><i class="bi bi-book"></i>
-                <!-- <i class="bi bi-book-fill"></i> -->
-                </a></li>
+                        <!-- <i class="bi bi-book-fill"></i> -->
+                    </a></li>
                 <li><a href="#"><i class="bi bi-send-fill"></i></a></li>
                 <li><a href="#"><i class="bi bi-translate"></i></a></li>
             </ul>
@@ -16,7 +16,7 @@
     </header>
 </template>
 
-<style scoped > 
+<style scoped>
 .nav {
     display: flex;
     justify-content: space-between;
@@ -52,11 +52,11 @@
 }
 
 .nav-list a:hover {
-    color:var(--roxo-claro); 
+    color: var(--roxo-claro);
     transform: scale(1.1);
 }
 
 html {
-    scroll-behavior: smooth; 
+    scroll-behavior: smooth;
 }
 </style>

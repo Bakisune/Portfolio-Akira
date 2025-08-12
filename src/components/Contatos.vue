@@ -3,7 +3,7 @@
     <h1 class="contact-title">Contact Me</h1>
 
     <div class="contact-wrapper">
-      <p class="contact-subtitle">Feel free to reach out! Let's build<br> something great together.</p>
+      <p class="contact-subtitle">Feel free to reach out! Let's build <br> something great together.</p>
       <form class="contact-form">
         <div class="form-group">
           <input type="text" placeholder="Name" class="form-input" />
@@ -16,19 +16,17 @@
         </div>
 
         <div class="button-row">
-          <!-- Botão para o Telegram, agora à esquerda -->
           <button type="button" class="btn-icon">
-            <i class="bi bi-telegram"></i>
+            <img src="../assets/Telegram.svg" alt="Botão pro Telegram" class="button-image" />
           </button>
 
           <button type="submit" class="btn-send">
             Send
+            <img src="../assets/Fill.svg" alt="Botão pro Vgen" class="button-image" />
           </button>
 
-          <!-- Novo botão com uma imagem de um arquivo -->
           <button type="button" class="btn-icon">
-            <!-- Substitua esta URL pela URL da sua imagem -->
-            <img src="#" alt="Adicionar Imagem" class="button-image" />
+            <img src="../assets/VGen.svg" alt="Botão pro Vgen" class="button-image" />
           </button>
         </div>
       </form>
@@ -49,17 +47,18 @@
 }
 
 .contact-wrapper {
-  border-right: 2px solid var(--roxo-desligado);
-  border-top: 2px solid var(--roxo-desligado);
+  border-right: 3px solid var(--roxo-desligado);
+  border-top: 3px solid var(--roxo-desligado);
   border-bottom: none;
   border-left: none;
-  padding: 2rem;
+  padding: 5rem;
   max-width: 600px;
   width: 100%;
-  border-radius: 0 8px 8px 0;
+  border-radius: 0 8px 0 0;
   background-color: var(--branco);
   margin-top: 1.5rem;
   box-sizing: border-box;
+  font-family: 'Poppins', sans-serif;
 }
 
 .contact-title {
@@ -68,7 +67,7 @@
   font-style: italic;
   color: var(--roxo-claro);
   font-size: 2.5rem;
-  margin-bottom: 0.5rem;
+  margin-bottom: -2rem;
 }
 
 .contact-subtitle {
@@ -78,6 +77,7 @@
   font-weight: 500;
   font-size: 1rem;
   margin-bottom: 1.5rem;
+  text-align: center;
 }
 
 .contact-form {
@@ -140,16 +140,18 @@
 }
 
 .btn-icon i {
-  font-size: 20px; /* Ajusta o tamanho do ícone */
+  font-size: 20px;
 }
 
 .btn-send {
   padding: 0.75rem 1.5rem;
+  font-size: medium;
   font-weight: 500;
   gap: 0.5rem;
+  color: var(--cor-branca);
 }
 
-/* Estilo para a imagem dentro do botão */
+
 .button-image {
   width: 20px;
   height: 20px;
@@ -157,6 +159,6 @@
 
 .btn-icon:hover,
 .btn-send:hover {
-  background-color: #8800cc;
+  background-color: var(--amarelo);
 }
 </style>

@@ -3,11 +3,11 @@
     <h2 class="about-title">ABOUT ME</h2>
     <div class="about-content-wrapper">
       <p class="about-text">
-        Oi! Me chamo Akira Alcantara, também conhecido como Bakisune. Sou um entusiasta da tecnologia e da criatividade,
-        e adoro mergulhar em projetos que unem esses dois mundos. Minha jornada me levou a explorar áreas como
-        desenvolvimento de software, design, desenvolvimento de jogos, ilustração e animação. Meu objetivo é transformar
-        ideias em realidade, criando experiências que não só funcionam bem, mas também são visualmente incríveis. Estou
-        sempre aprendendo e pronto para criar algo novo e que cause um impacto positivo.
+        Hi! My name is Akira Alcantara, also known as Bakisune. I'm a technology and creativity enthusiast, and I love
+        diving into projects that bring these two worlds together. My journey has led me to explore areas such as
+        software development, design, game development, illustration, and animation. My goal is to turn ideas into
+        reality, creating experiences that not only work well but also look stunning. I'm always learning and ready to
+        create something new that makes a positive impact.
       </p>
       <div class="about-image-container">
         <div class="gray-box"></div>

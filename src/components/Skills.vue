@@ -11,7 +11,6 @@
           </div>
         </div>
 
-        <!-- PRIMEIRA LINHA -->
         <div class="skills-grid-container">
           <div class="skill-card">
             <a href="#">
@@ -24,8 +23,7 @@
           <div class="skill-card">
             <a href="#">
               <img src="../assets/CSS.svg" alt="CSS3 logo" class="skill-logo-1" />
-              <img src="../assets/CSS_LOGO.png"
-                class="skill-logo-3" />
+              <img src="../assets/CSS_LOGO.png" class="skill-logo-3" />
               <p class="skill-name">CSS</p>
             </a>
           </div>
@@ -33,15 +31,14 @@
             <a href="#">
               <img src="../assets/JavaScript.svg" alt="JavaScript logo" class="skill-logo-1" />
               <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg"
-               class="skill-logo" />
+                class="skill-logo" />
               <p class="skill-name">JavaScript</p>
             </a>
           </div>
           <div class="skill-card">
             <a href="#">
               <img src="../assets/TypeScript.svg" alt="TypeScript logo" class="skill-logo-1" />
-              <img src="../assets/ts_logo_color.png"
-               class="skill-logo-3" />
+              <img src="../assets/ts_logo_color.png" class="skill-logo-3" />
               <p class="skill-name">TypeScript</p>
             </a>
           </div>
@@ -65,13 +62,12 @@
             <a href="#">
               <img src="../assets/Bootstrap.svg" alt="Bootstrap logo" class="skill-logo-1" />
               <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/bootstrap/bootstrap-original.svg"
-               class="skill-logo-2" />
+                class="skill-logo-2" />
               <p class="skill-name">Bootstrap</p>
             </a>
           </div>
         </div>
 
-        <!-- SEGUNDA LINHA-->
         <div class="skills-grid-container">
           <div class="skill-card python-card">
             <a href="#">
@@ -84,8 +80,7 @@
           <div class="skill-card">
             <a href="#">
               <img src="../assets/CSharp.svg" alt="C# logo" class="skill-logo-1" />
-              <img src="../assets/CSHARP_LOGO.png"
-                class="skill-logo-3" />
+              <img src="../assets/CSHARP_LOGO.png" class="skill-logo-3" />
               <p class="skill-name">C#</p>
             </a>
           </div>
@@ -108,44 +103,38 @@
           <div class="skill-card">
             <a href="#">
               <img src="../assets/GIT.svg" alt="Git logo" class="skill-logo-1" />
-              <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/git/git-original.svg"
-                class="skill-logo" />
+              <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/git/git-original.svg" class="skill-logo" />
               <p class="skill-name">Git</p>
             </a>
           </div>
           <div class="skill-card">
             <a href="#">
               <img src="../assets/Photoshop.svg" alt="Photoshop logo" class="skill-logo-1" />
-              <img src="../assets/PS_LOGO.png"
-               class="skill-logo-3" />
+              <img src="../assets/PS_LOGO.png" class="skill-logo-3" />
               <p class="skill-name">Photoshop</p>
             </a>
           </div>
           <div class="skill-card">
             <a href="#">
               <img src="../assets/Illustrator.svg" alt="Illustrator logo" class="skill-logo-1" />
-              <img src="../assets/AI_LOGO.png"
-                  class="skill-logo-3" />
+              <img src="../assets/AI_LOGO.png" class="skill-logo-3" />
               <p class="skill-name">Illustrator</p>
             </a>
           </div>
         </div>
 
-        <!-- ÚLTIMA LINHA -->
         <div class="skills-last-row">
           <div class="skill-card">
             <a href="#">
               <img src="../assets/ClipStudio.svg" alt="Clip Studio Paint logo" class="skill-logo-1" />
-              <img src="../assets/CSP_LOGO_WHITE.png"
-                alt="Clip Studio Paint logo" class="skill-logo-3" />
+              <img src="../assets/CSP_LOGO_WHITE.png" alt="Clip Studio Paint logo" class="skill-logo-3" />
               <p class="skill-name">ClipStudio</p>
             </a>
           </div>
           <div class="skill-card">
             <a href="#">
               <img src="../assets/GameMaker.svg" alt="GameMaker logo" class="skill-logo-1" />
-              <img src="../assets/game-maker_ICON.png"
-                alt="GameMaker logo" class="skill-logo-3" />
+              <img src="../assets/game-maker_ICON.png" alt="GameMaker logo" class="skill-logo-3" />
               <p class="skill-name">GameMaker</p>
             </a>
           </div>
@@ -159,37 +148,26 @@
 <script>
 export default {
   setup() {
-    // Retorna a referência dos elementos para uso no template
+
     return {};
   },
   mounted() {
-    // Pega a referência do elemento `skills-section`
     const skillsSection = this.$refs.skillsSection;
-    // Pega a referência do elemento `estrelas-skill`
     const estrelasSkill = this.$refs.estrelasSkill;
-    // Pega a referência do elemento `linha-skill`
     const linhaSkill = this.$refs.linhaSkill;
-
-    // Configura um novo IntersectionObserver
     const observer = new IntersectionObserver(
       (entries) => {
-        // Itera sobre as entradas (elementos observados)
         entries.forEach((entry) => {
-          // Se a entrada estiver na área de visualização
           if (entry.isIntersecting) {
-            // Adiciona a classe de animação à linha e às estrelas
             estrelasSkill.classList.add('animate-estrelas');
-            linhaSkill.classList.add('animate-linha'); 
-            // Desconecta o observador depois de animar para evitar re-execução
+            linhaSkill.classList.add('animate-linha');
             observer.disconnect();
           }
         });
       },
-      // Opções do observador (threshold 0.5 significa que 50% do elemento deve estar visível)
       { threshold: 0.5 }
     );
 
-    // Começa a observar o elemento `skills-section`
     if (skillsSection) {
       observer.observe(skillsSection);
     }
@@ -253,8 +231,8 @@ export default {
   object-fit: contain;
   top: 0;
   left: 0;
-  transform: scaleX(0); /* Começa com largura zero para a animação */
-  transform-origin: center center; /* Define o ponto de origem do centro */
+  transform: scaleX(0);
+  transform-origin: center center;
   z-index: 1;
 }
 
@@ -265,16 +243,16 @@ export default {
   object-fit: contain;
   top: 50%;
   left: 50%;
-  transform: translate(-50%, -50%); /* Posição final */
-  opacity: 0; /* Começa com a opacidade zero para a animação */
+  transform: translate(-50%, -50%);
+  opacity: 0;
   z-index: 2;
 }
 
-/* Animação para a linha */
 @keyframes scaleXAnimation {
   from {
     transform: scaleX(0);
   }
+
   to {
     transform: scaleX(1);
   }
@@ -284,14 +262,14 @@ export default {
   animation: scaleXAnimation 1s ease-out forwards;
 }
 
-/* Animação para as estrelas */
 @keyframes fadeInUp {
   from {
-    transform: translate(-50%, 0%); /* Começa mais abaixo */
+    transform: translate(-50%, 0%);
     opacity: 0;
   }
+
   to {
-    transform: translate(-50%, -50%); /* Vai para a posição final */
+    transform: translate(-50%, -50%);
     opacity: 1;
   }
 }

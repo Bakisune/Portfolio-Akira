@@ -28,6 +28,7 @@ footer {
   align-items: center;
   justify-content: space-between;
   padding: 0 40px;
+  border-top: 3px solid var(--roxo-desligado);
 }
 
 .footer-direita {

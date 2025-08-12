@@ -53,7 +53,6 @@
     opacity: 0.8;
 }
 
-/* Estilo do título "SOBRE MIM" e "EXPERTISES" */
 .about-title {
     font-family: 'Poppins', sans-serif;
     color: var(--roxo-claro);

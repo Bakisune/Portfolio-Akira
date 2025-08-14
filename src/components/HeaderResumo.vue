@@ -1,8 +1,11 @@
 <template>
   <header class="header">
     <div class="left-strip"></div>
-    <div class="background-image"></div>
-    <div class="logo">LOGO AQUI</div>
+    <div class="background-image" alt="The Character Drawing: Bakisune, a light-skinned character with medium-length dark brown hair (hair slightly reaching the shoulders), and the inner part
+of theirs hair is dyed purple. Theirs eyes are yellow. Bakisune wears a lilac dress shirt, a black tie, and black belts on theirs shoulders.
+The drawing is only from the bust up, and Bakisune makes an O with theirs right hand in front of theirs right eye. The O in the word Portfolio is inside the O Bakisune makes with theirs hand.
+Behind Bakisune is a dark purple background. "></div>
+    <div class="logo" alt='Logo Bakisune'>LOGO AQUI</div>
     <div class="content">
       <p class="name">Akira Alcantara</p>
       <h1 class="title-part1">PORT</h1>

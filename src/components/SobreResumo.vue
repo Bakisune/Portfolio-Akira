@@ -9,9 +9,12 @@
         reality, creating experiences that not only work well but also look stunning. I'm always learning and ready to
         create something new that makes a positive impact.
       </p>
-      <div class="about-image-container">
-        <div class="gray-box"></div>
-        <div class="bakisune-info">バキスネ</div>
+      <div class="about-image-container"
+        alt="The background of the about me section is a torn paper with a drawing of me inside a light purple square">
+        <div class="gray-box" alt="Drawing of Me: I'm a person with dark brown hair and dark brown eyes. I'm wearing round gold glasses
+and a brown turtleneck sweater and gloves. I have a small smile and my right hand is waving at the screen.">
+        </div>
+        <div class="bakisune-info" alt="Purple text, written Bakisune in Japanese">バキスネ</div>
       </div>
     </div>
   </section>

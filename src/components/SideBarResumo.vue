@@ -7,16 +7,16 @@
       <ul class="nav-list" :class="{ 'hidden': !isSidebarOpen }">
         <li class="nav-group">
           <ul class="nav-list-grouped">
-            <li><a href="#" @click.prevent="scrollToSection('HeaderResumo')"><i class="bi bi-house-fill"></i></a></li>
-            <li><a href="#" @click.prevent="scrollToSection('SobreResumo')"><i class="bi bi-person-fill"></i></a></li>
-            <li><a href="#" @click.prevent="scrollToSection('Especialidades')"><i class="bi bi-award-fill"></i></a></li>
-            <li><a href="#" @click.prevent="scrollToSection('Skills')"><i class="bi bi-stars"></i></a></li>
+            <li><a href="#" @click.prevent="scrollToSection('HeaderResumo')"><i class="bi bi-house-fill" alt="Button that takes you to Home"></i></a></li>
+            <li><a href="#" @click.prevent="scrollToSection('SobreResumo')"><i class="bi bi-person-fill" alt="Button that takes you to About Me"></i></a></li>
+            <li><a href="#" @click.prevent="scrollToSection('Especialidades')"><i class="bi bi-award-fill" alt="Button that takes you to My Specialties"></i></a></li>
+            <li><a href="#" @click.prevent="scrollToSection('Skills')"><i class="bi bi-stars" alt="Button that takes you to My Skills"></i></a></li>
             <li>
-              <a href="#" @click.prevent="scrollToSection('Formacoes')"><i class="bi bi-book"></i>
+              <a href="#" @click.prevent="scrollToSection('Formacoes')"><i class="bi bi-book" alt="Button that takes you to My Academic Background"></i>
                 <!-- <i class="bi bi-book-fill"></i> -->
               </a>
             </li>
-            <li><a href="#" @click.prevent="scrollToSection('Contatos')"><i class="bi bi-send-fill"></i></a></li>
+            <li><a href="#" @click.prevent="scrollToSection('Contatos')"><i class="bi bi-send-fill" alt="Button that takes you to My Contacts"></i></a></li>
           </ul>
         </li>
         <li><a href="#"><i class="bi bi-translate"></i></a></li>

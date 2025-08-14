@@ -17,27 +17,33 @@
           <input type="email" v-model="form.email" name="email" placeholder="E-mail" class="form-input" required />
         </div>
         <div class="form-group">
-          <textarea v-model="form.message" name="message" placeholder="How can I help you?" class="form-textarea" required></textarea>
+          <textarea v-model="form.message" name="message" placeholder="How can I help you?" class="form-textarea"
+            required></textarea>
         </div>
 
         <div class="button-row">
-          <button type="button" class="btn-icon">
-            <img src="../assets/Telegram.svg" alt="Telegram button" class="button-image telegram-icon" />
-          </button>
+
+          <a href="https://t.me/bakisune"><button type="button" class="btn-icon">
+              <img src="../assets/Telegram.svg" alt="Telegram button" class="button-image telegram-icon" />
+            </button></a>
 
           <button type="submit" class="btn-send" :disabled="isSending">
             {{ isSending ? 'Sending...' : 'Send' }}
             <img src="../assets/Fill.svg" alt="Airplane icon" class="button-image send-icon" />
           </button>
 
-          <button type="button" class="btn-icon">
-            <img src="../assets/VGen.svg" alt="Vgen button" class="button-image vgen-icon" />
-          </button>
+          <a href="https://vgen.co/Bakisune">
+            <button type="button" class="btn-icon">
+              <img src="../assets/VGen.svg" alt="Vgen button" class="button-image vgen-icon" />
+            </button>
+          </a>
         </div>
         <span id="form-status" class="form-status" :class="statusClass">{{ statusMessage }}</span>
       </form>
     </div>
-    <img src="../assets/TesteYumi.png" alt="Contact background image" class="contact-side-image">
+    <img src="../assets/TesteYumi.png" alt="Yumi Mail Carrier Chibi drawing. She's a half-orange, half-burgundy fox. Her fur on her belly,
+neck, and lower face is beige. In this drawing, she's carrying a side bag with letters inside, and two letters
+have fallen out of the bag and are flying toward the ground. Yumi has a silly face and is sticking out her tongue." class="contact-side-image">
   </div>
 </template>
 
@@ -240,12 +246,19 @@
 }
 
 @keyframes bounce {
-  0%, 20%, 50%, 80%, 100% {
+
+  0%,
+  20%,
+  50%,
+  80%,
+  100% {
     transform: translateY(0);
   }
+
   40% {
     transform: translateY(-5px);
   }
+
   60% {
     transform: translateY(-2px);
   }

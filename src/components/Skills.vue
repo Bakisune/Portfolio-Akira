@@ -5,8 +5,10 @@
         <div class="skills-title-container">
           <h2 class="skills-title">Skills</h2>
           <div class="skills-line">
-            <img class="linha-skill" src="../assets/Linha Skills.svg" alt="linha decorativa" ref="linhaSkill" />
-            <img class="estrelas-skill" src="../assets/estrelasSkills.svg" alt="Estrelas decorativas"
+            <img class="linha-skill" src="../assets/Linha Skills.svg" alt="linha decorativa roxo claro que tem uma animação ao aparecer na tela dela sendo pequena e aumentando de tamanho 
+              até ficar um pouco mais larga que o título" ref="linhaSkill" />
+            <img class="estrelas-skill" src="../assets/estrelasSkills.svg"
+              alt="Estrelas decorativas, são 3 estrelas na cor roxo claro que aparecem de baixo e vai para o meio da linha decorativa abaixo do título Skills por meio de uma animação"
               ref="estrelasSkill" />
           </div>
         </div>
@@ -14,7 +16,7 @@
         <div class="skills-grid-container">
           <div class="skill-card">
             <a href="#">
-              <img src="../assets/HTML.svg" alt="HTML5 logo" class="skill-logo-1" />
+              <img src="../assets/HTML.svg" alt="HTML5 Logo" class="skill-logo-1" />
               <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/html5/html5-original.svg"
                 class="skill-logo" />
               <p class="skill-name">HTML</p>

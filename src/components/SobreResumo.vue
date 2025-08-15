@@ -64,6 +64,12 @@ onUnmounted(() => {
 </script>
 
 <style scoped lang="scss">
+
+@font-face {
+  font-family: 'Mokomori Kuro';
+  src: url('../assets/font/mikiyu-mokomori-kuro.ttf') format('truetype');
+}
+
 .new-section {
   position: relative;
   margin-top: -10vh;
@@ -218,8 +224,9 @@ onUnmounted(() => {
 }
 
 .bakisune-info {
+  font-family: 'Mokomori Kuro', sans-serif;
   position: absolute;
-  bottom: -24px;
+  bottom: -20px;
   left: 20px;
   display: flex;
   align-items: center;
@@ -227,7 +234,7 @@ onUnmounted(() => {
   color: var(--roxo-claro);
   font-weight: 600;
   font-size: 1.1em;
-  font-family: 'Mokomori Kuro', sans-serif;
+  
 }
 
 .bakisune-info::before {

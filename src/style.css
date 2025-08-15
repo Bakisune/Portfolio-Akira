@@ -6,10 +6,19 @@
         --cor-fundo: #342c3c;
         --cor-branca: #ffffff;
         --roxo-desligado: #574a68; 
+        --container: #69209b;
+        
       }
 
 * {
   box-sizing: border-box;
   margin: 0;
   padding: 0;
+}
+
+@font-face {
+  font-family: 'Mokomori Kuro';
+  src: url('/fonts/Mokomori Kuro.woff2') format('woff2');
+  font-weight: normal;
+  font-style: normal;
 }

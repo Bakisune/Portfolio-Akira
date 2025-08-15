@@ -5,11 +5,18 @@
         <div class="skills-title-container">
           <h2 class="skills-title">Skills</h2>
           <div class="skills-line">
-            <img class="linha-skill" src="../assets/Linha Skills.svg" alt="linha decorativa roxo claro que tem uma animação ao aparecer na tela dela sendo pequena e aumentando de tamanho 
-              até ficar um pouco mais larga que o título" ref="linhaSkill" />
-            <img class="estrelas-skill" src="../assets/estrelasSkills.svg"
+            <img 
+              class="linha-skill" 
+              src="../assets/Linha Skills.svg" 
+              alt="linha decorativa roxo claro que tem uma animação ao aparecer na tela dela sendo pequena e aumentando de tamanho até ficar um pouco mais larga que o título" 
+              :class="{ 'animate-linha': isSectionVisible }"
+            />
+            <img 
+              class="estrelas-skill" 
+              src="../assets/estrelasSkills.svg"
               alt="Estrelas decorativas, são 3 estrelas na cor roxo claro que aparecem de baixo e vai para o meio da linha decorativa abaixo do título Skills por meio de uma animação"
-              ref="estrelasSkill" />
+              :class="{ 'animate-estrelas': isSectionVisible }"
+            />
           </div>
         </div>
 
@@ -141,40 +148,36 @@
             </a>
           </div>
         </div>
-
       </div>
     </section>
   </div>
 </template>
 
-<script>
-export default {
-  setup() {
+<script setup>
+import { ref, onMounted, onUnmounted } from 'vue';
 
-    return {};
-  },
-  mounted() {
-    const skillsSection = this.$refs.skillsSection;
-    const estrelasSkill = this.$refs.estrelasSkill;
-    const linhaSkill = this.$refs.linhaSkill;
-    const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            estrelasSkill.classList.add('animate-estrelas');
-            linhaSkill.classList.add('animate-linha');
-            observer.disconnect();
-          }
-        });
+const skillsSection = ref(null);
+const isSectionVisible = ref(false);
+let observer;
+
+onMounted(() => {
+  if (skillsSection.value) {
+    observer = new IntersectionObserver(
+      ([entry]) => {
+        // Define o estado de visibilidade baseado na entrada
+        isSectionVisible.value = entry.isIntersecting;
       },
       { threshold: 0.5 }
     );
+    observer.observe(skillsSection.value);
+  }
+});
 
-    if (skillsSection) {
-      observer.observe(skillsSection);
-    }
-  },
-};
+onUnmounted(() => {
+  if (observer) {
+    observer.disconnect();
+  }
+});
 </script>
 
 <style scoped lang="scss">

@@ -1,10 +1,30 @@
+<script>
+// A forma mais recomendada de importar a imagem, para que o Webpack/Vite a processe
+import BackgroundImage from '../../assets/Teste.png';
+
+export default {
+  name: 'HeaderResumo',
+  data() {
+    return {
+      backgroundImageUrl: BackgroundImage
+    };
+  }
+};
+</script>
+
 <template>
   <header class="header">
     <div class="left-strip"></div>
-    <div class="background-image" alt="The Character Drawing: Bakisune, a light-skinned character with medium-length dark brown hair (hair slightly reaching the shoulders), and the inner part
+    <!-- 
+      Usando a URL da imagem a partir dos dados do componente.
+      Note que o 'background-image' é agora um estilo dinâmico.
+    -->
+    <div class="background-image" :style="{ backgroundImage: 'url(' + backgroundImageUrl + ')' }" 
+      alt="The Character Drawing: Bakisune, a light-skinned character with medium-length dark brown hair (hair slightly reaching the shoulders), and the inner part
 of theirs hair is dyed purple. Theirs eyes are yellow. Bakisune wears a lilac dress shirt, a black tie, and black belts on theirs shoulders.
 The drawing is only from the bust up, and Bakisune makes an O with theirs right hand in front of theirs right eye. The O in the word Portfolio is inside the O Bakisune makes with theirs hand.
 Behind Bakisune is a dark purple background. "></div>
+    
     <div class="logo" alt='Logo Bakisune'>LOGO AQUI</div>
     <div class="content">
       <p class="name">Akira Alcantara</p>
@@ -42,7 +62,9 @@ Behind Bakisune is a dark purple background. "></div>
     right: 0;
     width: 90%;
     height: 100%;
-    background-image: url('../assets/Teste.png');
+    /* Alternativa 1 (menos recomendada): usar o caminho relativo diretamente. 
+      background-image: url('../../assets/Teste.png'); 
+    */
     background-repeat: no-repeat;
     background-position: right center;
     background-size: contain;
@@ -108,7 +130,6 @@ Behind Bakisune is a dark purple background. "></div>
       font-style: italic;
       font-size: 1.35em;
       background-color: transparent;
-
     }
   }
 }

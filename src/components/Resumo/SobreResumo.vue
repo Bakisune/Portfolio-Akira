@@ -3,12 +3,8 @@
     <div class="about-content-wrapper-full">
       <div class="title-with-image">
         <h2 class="about-title" :class="{ 'animate-title-line': isSectionVisible }">ABOUT ME</h2>
-        <img
-          src="../assets/starsobre.svg" 
-          alt="Star Icon" 
-          class="section-image" 
-          :class="{ 'animate-shining-image': isSectionVisible }" 
-        />
+        <img :src="starIconUrl" alt="Star Icon" class="section-image"
+          :class="{ 'animate-shining-image': isSectionVisible }" />
       </div>
       <div class="about-content-wrapper">
         <p class="about-text">
@@ -20,7 +16,8 @@
         </p>
         <div class="about-image-container"
           alt="The background of the about me section is a torn paper with a drawing of me inside a light purple square">
-          <div class="image-box" alt="Drawing of Me: I'm a person with dark brown hair and dark brown eyes. I'm wearing round gold glasses and a brown turtleneck sweater and gloves. I have a small smile and my right hand is waving at the screen.">
+          <div class="image-box"
+            alt="Drawing of Me: I'm a person with dark brown hair and dark brown eyes. I'm wearing round gold glasses and a brown turtleneck sweater and gloves. I have a small smile and my right hand is waving at the screen.">
           </div>
           <div class="bakisune-info" alt="Purple text, written Bakisune in Japanese">
             <i class="bi bi-moon-stars-fill"></i> バキスネ
@@ -33,6 +30,9 @@
 
 <script setup>
 import { ref, onMounted, onUnmounted } from 'vue';
+import starIconUrl from '../../assets/starsobre.svg';
+import papelBackgroundUrl from '../../assets/Papel.png';
+import myDrawingUrl from '../../assets/Teste.png';
 
 const aboutSection = ref(null);
 const isSectionVisible = ref(false);
@@ -63,11 +63,16 @@ onUnmounted(() => {
 });
 </script>
 
-<style scoped lang="scss">
+<script>
+export default {
+  name: 'SobreResumo',
+};
+</script>
 
+<style scoped lang="scss">
 @font-face {
   font-family: 'Mokomori Kuro';
-  src: url('../assets/font/mikiyu-mokomori-kuro.ttf') format('truetype');
+  src: url('../../assets/font/mikiyu-mokomori-kuro.ttf') format('truetype');
 }
 
 .new-section {
@@ -101,7 +106,7 @@ onUnmounted(() => {
   left: 0;
   width: 100%;
   height: 100%;
-  background-image: url("../assets/Papel.png");
+  background-image: url("../../assets/Papel.png");
   background-size: cover;
   background-position: calc(30% + 0px) center;
   background-repeat: no-repeat;
@@ -160,9 +165,11 @@ onUnmounted(() => {
   0% {
     transform: rotate(0deg) scale(1);
   }
+
   50% {
     transform: rotate(180deg) scale(0.5);
   }
+
   100% {
     transform: rotate(360deg) scale(1);
   }
@@ -214,7 +221,7 @@ onUnmounted(() => {
 .image-box {
   width: 400px;
   height: 450px;
-  background-image: url("../assets/Teste.png");
+  background-image: url("../../assets/Teste.png");
   background-size: cover;
   background-position: center;
   border: 4px solid var(--roxo-claro);
@@ -234,11 +241,11 @@ onUnmounted(() => {
   color: var(--roxo-claro);
   font-weight: 600;
   font-size: 1.1em;
-  
+
 }
 
 .bakisune-info::before {
-    content: none;
+  content: none;
 }
 
 @media (max-width: 768px) {
@@ -247,7 +254,7 @@ onUnmounted(() => {
     align-items: center;
     margin-left: 0;
   }
-  
+
   .section-image {
     margin-left: 0;
     margin-top: 20px;

@@ -1,31 +1,20 @@
 <script lang="ts">
-import Especialidades from './components/Especialidades.vue';
-import Formações from './components/Formações.vue';
-import HeaderResumo from './components/HeaderResumo.vue';
-import Rodape from './components/Rodape.vue';
-import Skills from './components/Skills.vue';
-import SobreResumo from './components/SobreResumo.vue';
-import SideBarResumo from './components/SideBarResumo.vue';
+import { defineComponent } from 'vue';
 import Contatos from './components/Contatos.vue';
+import Rodape from './components/Rodape.vue';
 
-
-export default {
+export default defineComponent({
   name: 'App',
   components: {
-    HeaderResumo, Rodape, SobreResumo, Especialidades, Skills, Formações, SideBarResumo, Contatos
+    Contatos,
+    Rodape
   }
-};
+});
 </script>
 
 <template>
-  <SideBarResumo />
-  <HeaderResumo id="HeaderResumo" />
-  <SobreResumo id="SobreResumo" />
-  <Especialidades id="Especialidades" />
-  <Skills id="Skills" />
-  <Formações id="Formacoes" />
+
+  <router-view></router-view>
   <Contatos id="Contatos" />
   <Rodape />
-
 </template>
-

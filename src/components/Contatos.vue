@@ -47,6 +47,72 @@ have fallen out of the bag and are flying toward the ground. Yumi has a silly fa
   </div>
 </template>
 
+<script setup>
+import { ref, computed } from 'vue';
+
+const form = ref({
+  name: '',
+  email: '',
+  message: ''
+});
+const statusMessage = ref('');
+const isSending = ref(false);
+
+const statusClass = computed(() => {
+  if (statusMessage.value.includes('successfully')) {
+    return 'success';
+  } else if (statusMessage.value.includes('Error')) {
+    return 'error';
+  }
+  return '';
+});
+
+const handleSubmit = async () => {
+  isSending.value = true;
+  statusMessage.value = 'Sending...';
+
+  const formspreeEndpoint = 'https://formspree.io/f/xldlvdje';
+  const data = new FormData();
+  data.append('name', form.value.name);
+  data.append('email', form.value.email);
+  data.append('message', form.value.message);
+
+  try {
+    const response = await fetch(formspreeEndpoint, {
+      method: 'POST',
+      body: data,
+      headers: {
+        'Accept': 'application/json'
+      }
+    });
+
+    if (response.ok) {
+      statusMessage.value = 'Message sent successfully!';
+      form.value.name = '';
+      form.value.email = '';
+      form.value.message = '';
+    } else {
+      const result = await response.json();
+      if (result.errors) {
+        statusMessage.value = 'Error sending. Check the fields.';
+      } else {
+        statusMessage.value = 'Error sending message. Please try again.';
+      }
+    }
+  } catch (error) {
+    statusMessage.value = 'A connection error occurred. Please try again.';
+  } finally {
+    isSending.value = false;
+  }
+};
+</script>
+
+<script>
+export default {
+  name: 'Contatos',
+};
+</script>
+
 <style>
 :root {
   --branco: #ffffff;
@@ -286,63 +352,3 @@ have fallen out of the bag and are flying toward the ground. Yumi has a silly fa
   font-weight: bold;
 }
 </style>
-
-<script setup>
-import { ref, computed } from 'vue';
-
-const form = ref({
-  name: '',
-  email: '',
-  message: ''
-});
-const statusMessage = ref('');
-const isSending = ref(false);
-
-const statusClass = computed(() => {
-  if (statusMessage.value.includes('successfully')) {
-    return 'success';
-  } else if (statusMessage.value.includes('Error')) {
-    return 'error';
-  }
-  return '';
-});
-
-const handleSubmit = async () => {
-  isSending.value = true;
-  statusMessage.value = 'Sending...';
-
-  const formspreeEndpoint = 'https://formspree.io/f/xldlvdje';
-  const data = new FormData();
-  data.append('name', form.value.name);
-  data.append('email', form.value.email);
-  data.append('message', form.value.message);
-
-  try {
-    const response = await fetch(formspreeEndpoint, {
-      method: 'POST',
-      body: data,
-      headers: {
-        'Accept': 'application/json'
-      }
-    });
-
-    if (response.ok) {
-      statusMessage.value = 'Message sent successfully!';
-      form.value.name = '';
-      form.value.email = '';
-      form.value.message = '';
-    } else {
-      const result = await response.json();
-      if (result.errors) {
-        statusMessage.value = 'Error sending. Check the fields.';
-      } else {
-        statusMessage.value = 'Error sending message. Please try again.';
-      }
-    }
-  } catch (error) {
-    statusMessage.value = 'A connection error occurred. Please try again.';
-  } finally {
-    isSending.value = false;
-  }
-};
-</script>

@@ -7,13 +7,13 @@
           <div class="skills-line">
             <img 
               class="linha-skill" 
-              src="../assets/Linha Skills.svg" 
+              :src="linhaSkillUrl" 
               alt="linha decorativa roxo claro que tem uma animação ao aparecer na tela dela sendo pequena e aumentando de tamanho até ficar um pouco mais larga que o título" 
               :class="{ 'animate-linha': isSectionVisible }"
             />
             <img 
               class="estrelas-skill" 
-              src="../assets/estrelasSkills.svg"
+              :src="estrelasSkillUrl"
               alt="Estrelas decorativas, são 3 estrelas na cor roxo claro que aparecem de baixo e vai para o meio da linha decorativa abaixo do título Skills por meio de uma animação"
               :class="{ 'animate-estrelas': isSectionVisible }"
             />
@@ -23,7 +23,7 @@
         <div class="skills-grid-container">
           <div class="skill-card">
             <a href="#">
-              <img src="../assets/HTML.svg" alt="HTML5 Logo" class="skill-logo-1" />
+              <img :src="htmlIconUrl" alt="HTML5 Logo" class="skill-logo-1" />
               <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/html5/html5-original.svg"
                 class="skill-logo" />
               <p class="skill-name">HTML</p>
@@ -31,14 +31,14 @@
           </div>
           <div class="skill-card">
             <a href="#">
-              <img src="../assets/CSS.svg" alt="CSS3 logo" class="skill-logo-1" />
-              <img src="../assets/CSS_LOGO.png" class="skill-logo-3" />
+              <img :src="cssIconUrl" alt="CSS3 logo" class="skill-logo-1" />
+              <img :src="cssLogoUrl" class="skill-logo-3" />
               <p class="skill-name">CSS</p>
             </a>
           </div>
           <div class="skill-card">
             <a href="#">
-              <img src="../assets/JavaScript.svg" alt="JavaScript logo" class="skill-logo-1" />
+              <img :src="jsIconUrl" alt="JavaScript logo" class="skill-logo-1" />
               <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg"
                 class="skill-logo" />
               <p class="skill-name">JavaScript</p>
@@ -46,14 +46,14 @@
           </div>
           <div class="skill-card">
             <a href="#">
-              <img src="../assets/TypeScript.svg" alt="TypeScript logo" class="skill-logo-1" />
-              <img src="../assets/ts_logo_color.png" class="skill-logo-3" />
+              <img :src="tsIconUrl" alt="TypeScript logo" class="skill-logo-1" />
+              <img :src="tsLogoUrl" class="skill-logo-3" />
               <p class="skill-name">TypeScript</p>
             </a>
           </div>
           <div class="skill-card">
             <a href="#">
-              <img src="../assets/React.svg" alt="React logo" class="skill-logo-1" />
+              <img :src="reactIconUrl" alt="React logo" class="skill-logo-1" />
               <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg"
                 class="skill-logo" />
               <p class="skill-name">React</p>
@@ -61,7 +61,7 @@
           </div>
           <div class="skill-card">
             <a href="#">
-              <img src="../assets/VUE-logo.svg" alt="Vue.js logo" class="skill-logo-1" />
+              <img :src="vueIconUrl" alt="Vue.js logo" class="skill-logo-1" />
               <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/vuejs/vuejs-original.svg"
                 class="skill-logo" />
               <p class="skill-name">Vue.js</p>
@@ -69,7 +69,7 @@
           </div>
           <div class="skill-card">
             <a href="#">
-              <img src="../assets/Bootstrap.svg" alt="Bootstrap logo" class="skill-logo-1" />
+              <img :src="bootstrapIconUrl" alt="Bootstrap logo" class="skill-logo-1" />
               <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/bootstrap/bootstrap-original.svg"
                 class="skill-logo-2" />
               <p class="skill-name">Bootstrap</p>
@@ -80,7 +80,7 @@
         <div class="skills-grid-container">
           <div class="skill-card python-card">
             <a href="#">
-              <img src="../assets/Python.svg" alt="Python logo" class="skill-logo-1" />
+              <img :src="pythonIconUrl" alt="Python logo" class="skill-logo-1" />
               <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original.svg"
                 class="skill-logo-2" />
               <p class="skill-name">Python</p>
@@ -88,14 +88,14 @@
           </div>
           <div class="skill-card">
             <a href="#">
-              <img src="../assets/CSharp.svg" alt="C# logo" class="skill-logo-1" />
-              <img src="../assets/CSHARP_LOGO.png" class="skill-logo-3" />
+              <img :src="csharpIconUrl" alt="C# logo" class="skill-logo-1" />
+              <img :src="csharpLogoUrl" class="skill-logo-3" />
               <p class="skill-name">C#</p>
             </a>
           </div>
           <div class="skill-card">
             <a href="#">
-              <img src="../assets/MySQL.svg" alt="MySQL logo" class="skill-logo-1" />
+              <img :src="mysqlIconUrl" alt="MySQL logo" class="skill-logo-1" />
               <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mysql/mysql-original.svg"
                 class="skill-logo" />
               <p class="skill-name">MySQL</p>
@@ -103,7 +103,7 @@
           </div>
           <div class="skill-card">
             <a href="#">
-              <img src="../assets/FIGMA.svg" alt="Figma logo" class="skill-logo-1" />
+              <img :src="figmaIconUrl" alt="Figma logo" class="skill-logo-1" />
               <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/figma/figma-original.svg"
                 class="skill-logo" />
               <p class="skill-name">Figma</p>
@@ -111,22 +111,22 @@
           </div>
           <div class="skill-card">
             <a href="#">
-              <img src="../assets/GIT.svg" alt="Git logo" class="skill-logo-1" />
+              <img :src="gitIconUrl" alt="Git logo" class="skill-logo-1" />
               <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/git/git-original.svg" class="skill-logo" />
               <p class="skill-name">Git</p>
             </a>
           </div>
           <div class="skill-card">
             <a href="#">
-              <img src="../assets/Photoshop.svg" alt="Photoshop logo" class="skill-logo-1" />
-              <img src="../assets/PS_LOGO.png" class="skill-logo-3" />
+              <img :src="photoshopIconUrl" alt="Photoshop logo" class="skill-logo-1" />
+              <img :src="psLogoUrl" class="skill-logo-3" />
               <p class="skill-name">Photoshop</p>
             </a>
           </div>
           <div class="skill-card">
             <a href="#">
-              <img src="../assets/Illustrator.svg" alt="Illustrator logo" class="skill-logo-1" />
-              <img src="../assets/AI_LOGO.png" class="skill-logo-3" />
+              <img :src="illustratorIconUrl" alt="Illustrator logo" class="skill-logo-1" />
+              <img :src="aiLogoUrl" class="skill-logo-3" />
               <p class="skill-name">Illustrator</p>
             </a>
           </div>
@@ -135,15 +135,15 @@
         <div class="skills-last-row">
           <div class="skill-card">
             <a href="#">
-              <img src="../assets/ClipStudio.svg" alt="Clip Studio Paint logo" class="skill-logo-1" />
-              <img src="../assets/CSP_LOGO_WHITE.png" alt="Clip Studio Paint logo" class="skill-logo-3" />
+              <img :src="clipStudioIconUrl" alt="Clip Studio Paint logo" class="skill-logo-1" />
+              <img :src="cspLogoWhiteUrl" alt="Clip Studio Paint logo" class="skill-logo-3" />
               <p class="skill-name">ClipStudio</p>
             </a>
           </div>
           <div class="skill-card">
             <a href="#">
-              <img src="../assets/GameMaker.svg" alt="GameMaker logo" class="skill-logo-1" />
-              <img src="../assets/game-maker_ICON.png" alt="GameMaker logo" class="skill-logo-3" />
+              <img :src="gameMakerIconUrl" alt="GameMaker logo" class="skill-logo-1" />
+              <img :src="gameMakerLogoUrl" alt="GameMaker logo" class="skill-logo-3" />
               <p class="skill-name">GameMaker</p>
             </a>
           </div>
@@ -156,6 +156,33 @@
 <script setup>
 import { ref, onMounted, onUnmounted } from 'vue';
 
+// Importa todos os assets localmente
+import linhaSkillUrl from '../../assets/Linha Skills.svg';
+import estrelasSkillUrl from '../../assets/estrelasSkills.svg';
+import htmlIconUrl from '../../assets/HTML.svg';
+import cssIconUrl from '../../assets/CSS.svg';
+import cssLogoUrl from '../../assets/CSS_LOGO.png';
+import jsIconUrl from '../../assets/JavaScript.svg';
+import tsIconUrl from '../../assets/TypeScript.svg';
+import tsLogoUrl from '../../assets/ts_logo_color.png';
+import reactIconUrl from '../../assets/React.svg';
+import vueIconUrl from '../../assets/VUE-logo.svg';
+import bootstrapIconUrl from '../../assets/Bootstrap.svg';
+import pythonIconUrl from '../../assets/Python.svg';
+import csharpIconUrl from '../../assets/CSharp.svg';
+import csharpLogoUrl from '../../assets/CSHARP_LOGO.png';
+import mysqlIconUrl from '../../assets/MySQL.svg';
+import figmaIconUrl from '../../assets/FIGMA.svg';
+import gitIconUrl from '../../assets/GIT.svg';
+import photoshopIconUrl from '../../assets/Photoshop.svg';
+import psLogoUrl from '../../assets/PS_LOGO.png';
+import illustratorIconUrl from '../../assets/Illustrator.svg';
+import aiLogoUrl from '../../assets/AI_LOGO.png';
+import clipStudioIconUrl from '../../assets/ClipStudio.svg';
+import cspLogoWhiteUrl from '../../assets/CSP_LOGO_WHITE.png';
+import gameMakerIconUrl from '../../assets/GameMaker.svg';
+import gameMakerLogoUrl from '../../assets/game-maker_ICON.png';
+
 const skillsSection = ref(null);
 const isSectionVisible = ref(false);
 let observer;
@@ -164,7 +191,6 @@ onMounted(() => {
   if (skillsSection.value) {
     observer = new IntersectionObserver(
       ([entry]) => {
-        // Define o estado de visibilidade baseado na entrada
         isSectionVisible.value = entry.isIntersecting;
       },
       { threshold: 0.5 }
@@ -178,6 +204,12 @@ onUnmounted(() => {
     observer.disconnect();
   }
 });
+</script>
+
+<script>
+export default {
+  name: 'SkillsResumo',
+};
 </script>
 
 <style scoped lang="scss">

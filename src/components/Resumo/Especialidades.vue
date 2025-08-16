@@ -6,14 +6,23 @@
             for more details!
         </p>
         <div class="expertise-cards-container">
+            <!-- Card para UX/UI Design -->
             <div class="expertise-card">
-                <a href="#" class="expertise-card-link">Programming and UX/UI Design</a>
+                <router-link to="/dev-ux-uidesign" class="expertise-card-link">
+                    Programming and UX/UI Design
+                </router-link>
             </div>
+            <!-- Card para Illustration -->
             <div class="expertise-card">
-                <a href="#" class="expertise-card-link">Illustration and Animation</a>
+                <router-link to="/illustration" class="expertise-card-link">
+                    Illustration and Animation
+                </router-link>
             </div>
+            <!-- Card para Game Dev and Design -->
             <div class="expertise-card">
-                <a href="#" class="expertise-card-link">Game Dev and Design</a>
+                <router-link to="/gamedev-design" class="expertise-card-link">
+                    Game Dev and Design
+                </router-link>
             </div>
         </div>
     </section>
@@ -31,7 +40,6 @@
     background-color: var(--cor-fundo);
     color: var(--cor-branca);
 }
-
 
 .expertizes .about-title {
     color: var(--roxo-mais-claro);
@@ -92,7 +100,6 @@
     cursor: pointer;
 }
 
-
 .expertise-card:hover {
     transform: scale(1.05);
     background-color: var(--roxo-claro);
@@ -120,8 +127,13 @@
     padding-bottom: 20px;
 }
 
-
 .expertise-card:hover .expertise-card-link {
     color: var(--amarelo);
 }
 </style>
+
+<script>
+export default {
+    name: 'Especialidades',
+};
+</script>

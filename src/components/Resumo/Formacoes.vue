@@ -9,7 +9,7 @@
           Academic Background
         </h2>
         <img 
-          src="../assets/star.svg" 
+          :src="starUrl" 
           alt="Star Icon" 
           class="section-image" 
           :class="{ 'animate-shining-image': isSectionVisible }"
@@ -18,7 +18,7 @@
 
       <div class="timeline-wrapper">
         <div class="timeline-item timeline-item-even">
-          <img src="../assets/imagemcard.svg" alt="Card Icon" class="card-icon" />
+          <img :src="cardUrl" alt="Card Icon" class="card-icon" />
           <div class="timeline-dot"></div>
           <div class="timeline-content">
             <p class="course-title">2018-2020</p>
@@ -27,7 +27,7 @@
           </div>
         </div>
         <div class="timeline-item timeline-item-odd">
-          <img src="../assets/imagemcard.svg" alt="Card Icon" class="card-icon" />
+          <img :src="cardUrl" alt="Card Icon" class="card-icon" />
           <div class="timeline-dot"></div>
           <div class="timeline-content">
             <p class="course-title">2022-Current</p>
@@ -37,7 +37,7 @@
           </div>
         </div>
         <div class="timeline-item timeline-item-even">
-          <img src="../assets/imagemcard.svg" alt="Card Icon" class="card-icon" />
+          <img :src="cardUrl" alt="Card Icon" class="card-icon" />
           <div class="timeline-dot"></div>
           <div class="timeline-content">
             <p class="course-title">2022-Current</p>
@@ -53,6 +53,10 @@
 
 <script setup>
 import { ref, onMounted, onUnmounted } from 'vue';
+
+// Importa os assets para garantir que os caminhos estejam corretos
+import starUrl from '../../assets/star.svg';
+import cardUrl from '../../assets/imagemcard.svg';
 
 const educationSection = ref(null);
 const isSectionVisible = ref(false);
@@ -81,6 +85,12 @@ onUnmounted(() => {
     observer.disconnect();
   }
 });
+</script>
+
+<script>
+export default {
+  name: 'Formacoes',
+};
 </script>
 
 <style scoped>

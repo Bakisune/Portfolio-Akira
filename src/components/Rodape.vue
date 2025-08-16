@@ -18,6 +18,14 @@
   </footer>
 </template>
 
+<script>
+// A exportação padrão é necessária para que o componente seja importado
+// corretamente em outros arquivos.
+export default {
+  name: 'Rodape',
+};
+</script>
+
 <style scoped lang="scss">
 footer {
   font-family: 'Poppins', sans-serif;

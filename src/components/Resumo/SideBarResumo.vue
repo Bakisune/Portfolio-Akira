@@ -47,16 +47,12 @@
 
 <script>
 export default {
-  // `unmounted` is the new name for `beforeDestroy` in Vue 3.
-  // It's a good practice to use `unmounted` for cleaning up.
-  // We'll use `beforeDestroy` for compatibility.
+  name: 'SideBarResumo',
   beforeDestroy() {
     window.removeEventListener('scroll', this.handleScroll);
   },
   mounted() {
-    // Add the scroll event listener when the component is mounted
     window.addEventListener('scroll', this.handleScroll);
-    // Initial check on load
     this.handleScroll();
   },
   data() {
@@ -75,35 +71,28 @@ export default {
       const element = document.getElementById(sectionId);
       if (element) {
         element.scrollIntoView({ behavior: 'smooth' });
-        // Manually set the active section when clicking a link
-        // This provides immediate feedback and a better user experience
         this.activeSectionId = sectionId;
       }
     },
 
     handleScroll() {
-      // Find the currently active section based on scroll position
       const scrollPosition = window.scrollY;
       const viewportHeight = window.innerHeight;
 
-      // Loop through all section IDs to find the one that is currently in the viewport
       let newActiveSectionId = null;
       for (const sectionId of this.sectionIds) {
         const element = document.getElementById(sectionId);
         if (element) {
           const rect = element.getBoundingClientRect();
-          // Define a threshold (e.g., when the section's top is near the top of the viewport)
           const threshold = viewportHeight * 0.5;
 
-          // Check if the section is in the top half of the viewport
           if (rect.top <= threshold && rect.bottom >= threshold) {
             newActiveSectionId = sectionId;
-            break; // We found the top-most visible section, so we can stop looking
+            break; 
           }
         }
       }
       
-      // If a section is found, update the active section state
       if (newActiveSectionId) {
         this.activeSectionId = newActiveSectionId;
       }
@@ -194,7 +183,6 @@ export default {
   padding: 0;
 }
 
-/* Style for non-active and hover links */
 .nav-list a {
   color: var(--roxo-desligado);
   text-decoration: none;
@@ -209,7 +197,6 @@ export default {
   color: var(--roxo-claro);
 }
 
-/* Style for the currently active link */
 .nav-list a.active-link,
 .nav-list a.active-link:hover {
   color: var(--roxo-claro);

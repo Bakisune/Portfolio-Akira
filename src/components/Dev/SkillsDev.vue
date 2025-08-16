@@ -151,7 +151,6 @@
 <script setup>
 import { ref, onMounted, onUnmounted } from 'vue';
 
-// Importa todos os assets localmente
 import linhaSkillUrl from '../../assets/Linha Skills.svg';
 import estrelasSkillUrl from '../../assets/estrelasSkills.svg';
 import htmlIconUrl from '../../assets/HTML.svg';

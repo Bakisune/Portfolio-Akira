@@ -2,18 +2,11 @@
   <section class="education-section" ref="educationSection">
     <div class="container-content">
       <div class="title-with-image">
-        <h2 
-          class="education-title" 
-          :class="{ 'animate-title-line': isSectionVisible }"
-        >
+        <h2 class="education-title" :class="{ 'animate-title-line': isSectionVisible }">
           Academic Background
         </h2>
-        <img 
-          :src="starUrl" 
-          alt="Star Icon" 
-          class="section-image" 
-          :class="{ 'animate-shining-image': isSectionVisible }"
-        />
+        <img :src="starUrl" alt="Star Icon" class="section-image"
+          :class="{ 'animate-shining-image': isSectionVisible }" />
       </div>
 
       <div class="timeline-wrapper">
@@ -54,7 +47,6 @@
 <script setup>
 import { ref, onMounted, onUnmounted } from 'vue';
 
-// Importa os assets para garantir que os caminhos estejam corretos
 import starUrl from '../../assets/star.svg';
 import cardUrl from '../../assets/imagemcard.svg';
 
@@ -170,10 +162,12 @@ export default {
     transform: translateY(-50%) rotate(0deg) scale(1);
     filter: brightness(1);
   }
+
   50% {
     transform: translateY(-50%) rotate(180deg) scale(0.5);
     filter: brightness(1.5);
   }
+
   100% {
     transform: translateY(-50%) rotate(360deg) scale(1);
     filter: brightness(1);

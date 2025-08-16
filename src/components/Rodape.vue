@@ -19,8 +19,6 @@
 </template>
 
 <script>
-// A exportação padrão é necessária para que o componente seja importado
-// corretamente em outros arquivos.
 export default {
   name: 'Rodape',
 };

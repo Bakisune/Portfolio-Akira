@@ -78,7 +78,6 @@ export default {
 <style scoped lang="scss">
 @font-face {
     font-family: 'Mokomori Kuro';
-    /* O caminho da fonte também foi corrigido */
     src: url('../../assets/font/mikiyu-mokomori-kuro.ttf') format('truetype');
 }
 
@@ -113,7 +112,6 @@ export default {
     left: 0;
     width: 100%;
     height: 100%;
-    /* A URL de background foi corrigida */
     background-image: url("../../assets/Papel.png");
     background-size: cover;
     background-position: calc(30% + 0px) center;

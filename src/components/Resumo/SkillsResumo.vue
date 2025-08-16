@@ -5,18 +5,12 @@
         <div class="skills-title-container">
           <h2 class="skills-title">Skills</h2>
           <div class="skills-line">
-            <img 
-              class="linha-skill" 
-              :src="linhaSkillUrl" 
-              alt="linha decorativa roxo claro que tem uma animação ao aparecer na tela dela sendo pequena e aumentando de tamanho até ficar um pouco mais larga que o título" 
-              :class="{ 'animate-linha': isSectionVisible }"
-            />
-            <img 
-              class="estrelas-skill" 
-              :src="estrelasSkillUrl"
+            <img class="linha-skill" :src="linhaSkillUrl"
+              alt="linha decorativa roxo claro que tem uma animação ao aparecer na tela dela sendo pequena e aumentando de tamanho até ficar um pouco mais larga que o título"
+              :class="{ 'animate-linha': isSectionVisible }" />
+            <img class="estrelas-skill" :src="estrelasSkillUrl"
               alt="Estrelas decorativas, são 3 estrelas na cor roxo claro que aparecem de baixo e vai para o meio da linha decorativa abaixo do título Skills por meio de uma animação"
-              :class="{ 'animate-estrelas': isSectionVisible }"
-            />
+              :class="{ 'animate-estrelas': isSectionVisible }" />
           </div>
         </div>
 
@@ -155,8 +149,6 @@
 
 <script setup>
 import { ref, onMounted, onUnmounted } from 'vue';
-
-// Importa todos os assets localmente
 import linhaSkillUrl from '../../assets/Linha Skills.svg';
 import estrelasSkillUrl from '../../assets/estrelasSkills.svg';
 import htmlIconUrl from '../../assets/HTML.svg';

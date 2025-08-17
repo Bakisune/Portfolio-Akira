@@ -151,7 +151,7 @@
 <script setup>
 import { ref, onMounted, onUnmounted } from 'vue';
 
-import linhaSkillUrl from '../../assets/Linha Skills.svg';
+import linhaSkillUrl from '../../assets/LinhaSkills.svg';
 import estrelasSkillUrl from '../../assets/estrelasSkills.svg';
 import htmlIconUrl from '../../assets/HTML.svg';
 import cssIconUrl from '../../assets/CSS.svg';

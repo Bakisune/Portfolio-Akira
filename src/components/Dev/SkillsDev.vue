@@ -149,33 +149,32 @@
 </template>
 
 <script setup>
-import { ref, onMounted, onUnmounted } from 'vue';
-
-import linhaSkillUrl from '../../assets/LinhaSkills.svg';
-import estrelasSkillUrl from '../../assets/estrelasSkills.svg';
-import htmlIconUrl from '../../assets/HTML.svg';
-import cssIconUrl from '../../assets/CSS.svg';
-import cssLogoUrl from '../../assets/CSS_LOGO.png';
-import jsIconUrl from '../../assets/JavaScript.svg';
-import tsIconUrl from '../../assets/TypeScript.svg';
-import tsLogoUrl from '../../assets/ts_logo_color.png';
-import reactIconUrl from '../../assets/React.svg';
-import vueIconUrl from '../../assets/VUE-logo.svg';
-import bootstrapIconUrl from '../../assets/Bootstrap.svg';
-import pythonIconUrl from '../../assets/Python.svg';
-import csharpIconUrl from '../../assets/CSharp.svg';
-import csharpLogoUrl from '../../assets/CSHARP_LOGO.png';
-import mysqlIconUrl from '../../assets/MySQL.svg';
-import figmaIconUrl from '../../assets/FIGMA.svg';
-import gitIconUrl from '../../assets/GIT.svg';
-import photoshopIconUrl from '../../assets/Photoshop.svg';
-import psLogoUrl from '../../assets/PS_LOGO.png';
-import illustratorIconUrl from '../../assets/Illustrator.svg';
-import aiLogoUrl from '../../assets/AI_LOGO.png';
-import clipStudioIconUrl from '../../assets/ClipStudio.svg';
-import cspLogoWhiteUrl from '../../assets/CSP_LOGO_WHITE.png';
-import gameMakerIconUrl from '../../assets/GameMaker.svg';
-import gameMakerLogoUrl from '../../assets/game-maker_ICON.png';
+import { ref, onMounted, onUnmounted } from "vue";
+import linhaSkillUrl from "../../assets/LinhaSkills.svg";
+import estrelasSkillUrl from "../../assets/estrelasSkills.svg";
+import htmlIconUrl from "../../assets/HTML.svg";
+import cssIconUrl from "../../assets/CSS.svg";
+import cssLogoUrl from "../../assets/CSS_LOGO.png";
+import jsIconUrl from "../../assets/JavaScript.svg";
+import tsIconUrl from "../../assets/TypeScript.svg";
+import tsLogoUrl from "../../assets/ts_logo_color.png";
+import reactIconUrl from "../../assets/React.svg";
+import vueIconUrl from "../../assets/VUE-logo.svg";
+import bootstrapIconUrl from "../../assets/Bootstrap.svg";
+import pythonIconUrl from "../../assets/Python.svg";
+import csharpIconUrl from "../../assets/CSharp.svg";
+import csharpLogoUrl from "../../assets/CSHARP_LOGO.png";
+import mysqlIconUrl from "../../assets/MySQL.svg";
+import figmaIconUrl from "../../assets/FIGMA.svg";
+import gitIconUrl from "../../assets/GIT.svg";
+import photoshopIconUrl from "../../assets/Photoshop.svg";
+import psLogoUrl from "../../assets/PS_LOGO.png";
+import illustratorIconUrl from "../../assets/Illustrator.svg";
+import aiLogoUrl from "../../assets/AI_LOGO.png";
+import clipStudioIconUrl from "../../assets/ClipStudio.svg";
+import cspLogoWhiteUrl from "../../assets/CSP_LOGO_WHITE.png";
+import gameMakerIconUrl from "../../assets/GameMaker.svg";
+import gameMakerLogoUrl from "../../assets/game-maker_ICON.png";
 
 const skillsSection = ref(null);
 const isSectionVisible = ref(false);
@@ -198,12 +197,6 @@ onUnmounted(() => {
         observer.disconnect();
     }
 });
-</script>
-
-<script>
-export default {
-    name: 'SkillsResumo',
-};
 </script>
 
 <style scoped lang="scss">
@@ -240,7 +233,7 @@ export default {
 }
 
 .skills-title {
-    font-family: 'Poppins', sans-serif;
+    font-family: "Poppins", sans-serif;
     color: var(--roxo-claro);
     font-size: 3em;
     font-weight: 900;
@@ -308,7 +301,6 @@ export default {
 .animate-estrelas {
     animation: fadeInUp 1.5s ease-in-out forwards;
 }
-
 
 .skills-grid-container {
     display: flex;
@@ -406,7 +398,7 @@ img.skill-logo-2 {
     transition: color 0.3s ease;
     text-decoration: none;
     font-style: italic;
-    font-family: 'Poppins', sans-serif;
+    font-family: "Poppins", sans-serif;
 }
 
 .skill-card:hover .skill-name {

@@ -5,7 +5,7 @@ export default {
   name: 'HeaderResumo',
   data() {
     return {
-      backgroundImageUrl: BackgroundImage
+      backgroundImageUrl: BackgroundImage,
     };
   }
 };
@@ -19,7 +19,9 @@ of theirs hair is dyed purple. Theirs eyes are yellow. Bakisune wears a lilac dr
 The drawing is only from the bust up, and Bakisune makes an O with theirs right hand in front of theirs right eye. The O in the word Portfolio is inside the O Bakisune makes with theirs hand.
 Behind Bakisune is a dark purple background. "></div>
 
-    <div class="logo" alt='Logo Bakisune'>LOGO AQUI</div>
+    <!-- O logo agora é um elemento `div` que será estilizado via CSS -->
+    <div class="logo"></div>
+
     <div class="content">
       <p class="name">Akira Alcantara</p>
       <h1 class="title-part1">PORT</h1>
@@ -63,14 +65,16 @@ Behind Bakisune is a dark purple background. "></div>
   }
 
   .logo {
-    font-family: Poppins, sans-serif;
-    font-weight: 700;
     position: absolute;
     top: 40px;
     left: 30px;
     z-index: 2;
-    color: var(--cor-branca);
-    font-size: 1em;
+    height: 80px;
+    width: 80px;
+    background-image: url('/bakisunestickerlogo.svg');
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
   }
 
   .content {
@@ -100,7 +104,6 @@ Behind Bakisune is a dark purple background. "></div>
       color: var(--cor-branca);
       margin-bottom: 2%;
       background-color: transparent;
-
     }
 
     .title-part2 {
@@ -116,7 +119,7 @@ Behind Bakisune is a dark purple background. "></div>
 
     .skills {
       font-family: Poppins, sans-serif;
-      color: var('--cor-branca');
+      color: var(--cor-branca);
       margin-top: 12px;
       font-style: italic;
       font-size: 1.35em;

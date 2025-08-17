@@ -34,8 +34,6 @@
 
 <script setup>
 import { ref, onMounted, onUnmounted } from 'vue';
-
-// Importa os assets
 import starIconUrl from '../../assets/starsobre.svg';
 import papelBackgroundUrl from '../../assets/Papel.png';
 import myDrawingUrl from '../../assets/Teste.png';

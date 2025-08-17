@@ -8,19 +8,19 @@
         <div class="expertise-cards-container">
             <!-- Card para UX/UI Design -->
             <div class="expertise-card">
-                <router-link to="/dev-ux-uidesign" class="expertise-card-link">
+                <router-link to="/soon" class="expertise-card-link">
                     Programming and UX/UI Design
                 </router-link>
             </div>
             <!-- Card para Illustration -->
             <div class="expertise-card">
-                <router-link to="/illustration" class="expertise-card-link">
+                <router-link to="/soon" class="expertise-card-link">
                     Illustration and Animation
                 </router-link>
             </div>
             <!-- Card para Game Dev and Design -->
             <div class="expertise-card">
-                <router-link to="/gamedev-design" class="expertise-card-link">
+                <router-link to="/soon" class="expertise-card-link">
                     Game Dev and Design
                 </router-link>
             </div>

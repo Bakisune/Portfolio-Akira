@@ -1,21 +1,31 @@
 <template>
-    <HeaderGame id="HeaderResumo" />
-    <SobreGame id="SobreResumo" />
-    <SkillsDev id="SkillsResumo" />
+    <HeaderIllustration />
+    <SobreIllustration />
+    <ProjetosArte />
+    <Arts />
+    <SocialMedias />
+    <Characters />
 </template>
 
 <script lang="ts">
 import { defineComponent } from 'vue';
-import HeaderGame from '../components/Game/HeaderGame.vue';
-import SobreGame from '../components/Game/SobreGame.vue';
-import SkillsDev from '../components/Dev/SkillsDev.vue';
+import HeaderIllustration from '../components/Illustracao/HeaderIllustration.vue';
+import SobreIllustration from '../components/Illustracao/SobreIllustration.vue';
+import ProjetosArte from '../components/Illustracao/ProjetosArte.vue';
+import Arts from '../components/Illustracao/Arts.vue';
+import SocialMedias from '../components/Illustracao/SocialMedias.vue';
+import Characters from '../components/Illustracao/Characters.vue';
+
 
 export default defineComponent({
-    name: 'GameDevDesign',
+    name: 'Illustration',
     components: {
-        HeaderGame,
-        SobreGame,
-        SkillsDev,
+        HeaderIllustration
+        , SobreIllustration
+        , ProjetosArte
+        , Arts
+        , SocialMedias
+        , Characters
     }
 });
 </script>

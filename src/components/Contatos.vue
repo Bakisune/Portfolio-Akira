@@ -23,7 +23,7 @@
 
         <div class="button-row">
 
-          <a href="https://t.me/bakisune"><button type="button" class="btn-icon">
+          <a href="https://t.me/bakisune" target="_blank"><button type="button" class="btn-icon">
               <img src="../assets/Telegram.svg" alt="Telegram button" class="button-image telegram-icon" />
             </button></a>
 
@@ -32,7 +32,7 @@
             <img src="../assets/Fill.svg" alt="Airplane icon" class="button-image send-icon" />
           </button>
 
-          <a href="https://vgen.co/Bakisune">
+          <a href="https://vgen.co/Bakisune" target="_blank">
             <button type="button" class="btn-icon">
               <img src="../assets/VGen.svg" alt="Vgen button" class="button-image vgen-icon" />
             </button>
@@ -43,7 +43,8 @@
     </div>
     <img src="../assets/TesteYumi.png" alt="Yumi Mail Carrier Chibi drawing. She's a half-orange, half-burgundy fox. Her fur on her belly,
 neck, and lower face is beige. In this drawing, she's carrying a side bag with letters inside, and two letters
-have fallen out of the bag and are flying toward the ground. Yumi has a silly face and is sticking out her tongue." class="contact-side-image">
+have fallen out of the bag and are flying toward the ground. Yumi has a silly face and is sticking out her tongue."
+      class="contact-side-image">
   </div>
 </template>
 

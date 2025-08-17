@@ -8,58 +8,86 @@
         <li class="nav-group">
           <ul class="nav-list-grouped">
             <li>
-              <a href="#" @click.prevent="scrollToSection('HeaderResumo')" :class="{ 'active-link': activeSectionId === 'HeaderResumo' }">
+              <a href="#" @click.prevent="scrollToSection('HeaderResumo')"
+                :class="{ 'active-link': activeSectionId === 'HeaderResumo' }">
                 <i class="bi bi-house-fill" alt="Button that takes you to Home"></i>
               </a>
             </li>
             <li>
-              <a href="#" @click.prevent="scrollToSection('SobreResumo')" :class="{ 'active-link': activeSectionId === 'SobreResumo' }">
+              <a href="#" @click.prevent="scrollToSection('SobreResumo')"
+                :class="{ 'active-link': activeSectionId === 'SobreResumo' }">
                 <i class="bi bi-person-fill" alt="Button that takes you to About Me"></i>
               </a>
             </li>
             <li>
-              <a href="#" @click.prevent="scrollToSection('Especialidades')" :class="{ 'active-link': activeSectionId === 'Especialidades' }">
+              <a href="#" @click.prevent="scrollToSection('Especialidades')"
+                :class="{ 'active-link': activeSectionId === 'Especialidades' }">
                 <i class="bi bi-award-fill" alt="Button that takes you to My Specialties"></i>
               </a>
             </li>
             <li>
-              <a href="#" @click.prevent="scrollToSection('Skills')" :class="{ 'active-link': activeSectionId === 'Skills' }">
+              <a href="#" @click.prevent="scrollToSection('Skills')"
+                :class="{ 'active-link': activeSectionId === 'Skills' }">
                 <i class="bi bi-stars" alt="Button that takes you to My Skills"></i>
               </a>
             </li>
             <li>
-              <a href="#" @click.prevent="scrollToSection('Formacoes')" :class="{ 'active-link': activeSectionId === 'Formacoes' }">
+              <a href="#" @click.prevent="scrollToSection('Formacoes')"
+                :class="{ 'active-link': activeSectionId === 'Formacoes' }">
                 <i class="bi bi-book" alt="Button that takes you to My Academic Background"></i>
               </a>
             </li>
             <li>
-              <a href="#" @click.prevent="scrollToSection('Contatos')" :class="{ 'active-link': activeSectionId === 'Contatos' }">
+              <a href="#" @click.prevent="scrollToSection('Contatos')"
+                :class="{ 'active-link': activeSectionId === 'Contatos' }">
                 <i class="bi bi-send-fill" alt="Button that takes you to My Contacts"></i>
               </a>
             </li>
           </ul>
         </li>
-        <li><a href="#"><i class="bi bi-translate"></i></a></li>
+        <li @click.prevent="toggleLanguage"><a href="#"><i class="bi bi-translate"></i></a></li>
       </ul>
     </nav>
   </header>
 </template>
 
 <script>
+import { Howl } from 'howler';
+
 export default {
   name: 'SideBarResumo',
   beforeDestroy() {
     window.removeEventListener('scroll', this.handleScroll);
+    if (this.sound) {
+      this.sound.unload();
+    }
   },
   mounted() {
+    console.log('Componente SideBarResumo montado.');
     window.addEventListener('scroll', this.handleScroll);
     this.handleScroll();
+
+    console.log('Tentando carregar o áudio de /audios/trade.mp3...');
+    this.sound = new Howl({
+      src: ['/audios/trade.mp3'],
+      html5: true,
+      onend: () => {
+        console.log('O som parou de tocar.');
+      },
+      onload: () => {
+        console.log('Áudio carregado com sucesso!');
+      },
+      onloaderror: (id, err) => {
+        console.error('Erro ao carregar o áudio. O arquivo pode não existir ou o caminho está incorreto.', { id, err });
+      }
+    });
   },
   data() {
     return {
       isSidebarOpen: true,
       activeSectionId: 'HeaderResumo',
-      sectionIds: ['HeaderResumo', 'SobreResumo', 'Especialidades', 'Skills', 'Formacoes', 'Contatos']
+      sectionIds: ['HeaderResumo', 'SobreResumo', 'Especialidades', 'Skills', 'Formacoes', 'Contatos'],
+      sound: null,
     };
   },
   methods: {
@@ -68,6 +96,8 @@ export default {
     },
 
     scrollToSection(sectionId) {
+      this.playSound();
+
       const element = document.getElementById(sectionId);
       if (element) {
         element.scrollIntoView({ behavior: 'smooth' });
@@ -88,14 +118,40 @@ export default {
 
           if (rect.top <= threshold && rect.bottom >= threshold) {
             newActiveSectionId = sectionId;
-            break; 
+            break;
           }
         }
       }
-      
+
       if (newActiveSectionId) {
         this.activeSectionId = newActiveSectionId;
       }
+    },
+
+    playSound() {
+      if (!this.sound) {
+        console.warn('Objeto de áudio não foi inicializado. Verifique se o mounted() foi executado.');
+        return;
+      }
+      if (this.sound.state() === 'loading') {
+        console.log('Áudio ainda está carregando. Tente novamente mais tarde.');
+        return;
+      }
+      if (this.sound.state() === 'unloaded') {
+        console.warn('O áudio não pôde ser carregado. Verifique o caminho do arquivo e o erro no console.');
+        return;
+      }
+
+      try {
+        this.sound.play();
+        console.log('Tentando tocar o áudio...');
+      } catch (e) {
+        console.error("Erro ao tocar o áudio:", e);
+      }
+    },
+
+    toggleLanguage() {
+      console.log('Botão de tradução clicado!');
     }
   }
 };

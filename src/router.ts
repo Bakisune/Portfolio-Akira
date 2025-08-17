@@ -22,7 +22,14 @@ const routes = [
 const router = createRouter({
   history: createWebHashHistory(),
   routes,
+  // AQUI ESTÃO AS VARIÁVEIS 'to', 'from', e 'savedPosition' sendo utilizadas
   scrollBehavior(to, from, savedPosition) {
+    // Se existir uma posição salva (por exemplo, ao usar o botão de voltar),
+    // a página retorna para essa posição
+    if (savedPosition) {
+      return savedPosition;
+    }
+    // Caso contrário, a página rola para o topo
     return { top: 0 };
   },
 });

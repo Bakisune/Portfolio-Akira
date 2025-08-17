@@ -27,6 +27,8 @@ import { useRoute } from 'vue-router';
 import Contatos from './components/Contatos.vue';
 import Rodape from './components/Rodape.vue';
 import Loading from './components/Loading.vue';
+import UnderConstrution from './views/UnderConstrution.vue';
+import NotFoundPage from './views/NotFoundPage.vue';
 
 export default defineComponent({
   name: 'App',
@@ -34,6 +36,8 @@ export default defineComponent({
     Contatos,
     Rodape,
     Loading,
+    UnderConstrution,
+    NotFoundPage,
   },
   setup() {
     const route = useRoute();
@@ -62,7 +66,8 @@ export default defineComponent({
       }, 500);
     };
 
-    watch(() => route.path, (newPath, oldPath) => {
+    // AQUI ESTÁ A CORREÇÃO: 'oldPath' foi removido dos parâmetros
+    watch(() => route.path, (newPath) => {
       if (!canTransition.value) {
         return;
       }

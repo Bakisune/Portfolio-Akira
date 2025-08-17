@@ -66,7 +66,6 @@ export default defineComponent({
       }, 500);
     };
 
-    // AQUI ESTÁ A CORREÇÃO: 'oldPath' foi removido dos parâmetros
     watch(() => route.path, (newPath) => {
       if (!canTransition.value) {
         return;

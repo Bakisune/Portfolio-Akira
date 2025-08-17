@@ -22,11 +22,11 @@ const routes = [
 const router = createRouter({
   history: createWebHashHistory(),
   routes,
-  scrollBehavior(to) {
+  scrollBehavior: (to) => {
     if (to.hash) {
       return {
         el: to.hash,
-        behavior: 'smooth',
+        behavior: "smooth",
       };
     }
     return { top: 0 };

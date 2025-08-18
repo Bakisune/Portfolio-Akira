@@ -17,7 +17,6 @@
                 <div class="skills-grid-container">
                     <div class="skill-card">
                         <a href="#">
-                            <!-- Revertido para usar a variável do script, mais fiável -->
                             <img :src="htmlIconUrl" alt="HTML5 Logo" class="skill-logo-1" />
                             <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/html5/html5-original.svg"
                                 class="skill-logo" />
@@ -26,7 +25,6 @@
                     </div>
                     <div class="skill-card">
                         <a href="#">
-                            <!-- Revertido para usar a variável do script, mais fiável -->
                             <img :src="cssIconUrl" alt="CSS3 logo" class="skill-logo-1" />
                             <img :src="cssLogoUrl" class="skill-logo-3" />
                             <p class="skill-name">CSS</p>
@@ -34,7 +32,6 @@
                     </div>
                     <div class="skill-card">
                         <a href="#">
-                            <!-- Revertido para usar a variável do script, mais fiável -->
                             <img :src="jsIconUrl" alt="JavaScript logo" class="skill-logo-1" />
                             <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg"
                                 class="skill-logo" />
@@ -43,7 +40,6 @@
                     </div>
                     <div class="skill-card">
                         <a href="#">
-                            <!-- Revertido para usar a variável do script, mais fiável -->
                             <img :src="tsIconUrl" alt="TypeScript logo" class="skill-logo-1" />
                             <img :src="tsLogoUrl" class="skill-logo-3" />
                             <p class="skill-name">TypeScript</p>
@@ -51,7 +47,6 @@
                     </div>
                     <div class="skill-card">
                         <a href="#">
-                            <!-- Revertido para usar a variável do script, mais fiável -->
                             <img :src="reactIconUrl" alt="React logo" class="skill-logo-1" />
                             <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg"
                                 class="skill-logo" />
@@ -60,7 +55,6 @@
                     </div>
                     <div class="skill-card">
                         <a href="#">
-                            <!-- Revertido para usar a variável do script, mais fiável -->
                             <img :src="vueIconUrl" alt="Vue.js logo" class="skill-logo-1" />
                             <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/vuejs/vuejs-original.svg"
                                 class="skill-logo" />
@@ -69,7 +63,6 @@
                     </div>
                     <div class="skill-card">
                         <a href="#">
-                            <!-- Revertido para usar a variável do script, mais fiável -->
                             <img :src="bootstrapIconUrl" alt="Bootstrap logo" class="skill-logo-1" />
                             <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/bootstrap/bootstrap-original.svg"
                                 class="skill-logo-2" />
@@ -81,7 +74,6 @@
                 <div class="skills-grid-container">
                     <div class="skill-card python-card">
                         <a href="#">
-                            <!-- Revertido para usar a variável do script, mais fiável -->
                             <img :src="pythonIconUrl" alt="Python logo" class="skill-logo-1" />
                             <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original.svg"
                                 class="skill-logo-2" />
@@ -90,7 +82,6 @@
                     </div>
                     <div class="skill-card">
                         <a href="#">
-                            <!-- Revertido para usar a variável do script, mais fiável -->
                             <img :src="csharpIconUrl" alt="C# logo" class="skill-logo-1" />
                             <img :src="csharpLogoUrl" class="skill-logo-3" />
                             <p class="skill-name">C#</p>
@@ -98,7 +89,6 @@
                     </div>
                     <div class="skill-card">
                         <a href="#">
-                            <!-- Revertido para usar a variável do script, mais fiável -->
                             <img :src="mysqlIconUrl" alt="MySQL logo" class="skill-logo-1" />
                             <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mysql/mysql-original.svg"
                                 class="skill-logo" />
@@ -107,7 +97,6 @@
                     </div>
                     <div class="skill-card">
                         <a href="#">
-                            <!-- Revertido para usar a variável do script, mais fiável -->
                             <img :src="figmaIconUrl" alt="Figma logo" class="skill-logo-1" />
                             <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/figma/figma-original.svg"
                                 class="skill-logo" />
@@ -116,7 +105,6 @@
                     </div>
                     <div class="skill-card">
                         <a href="#">
-                            <!-- Revertido para usar a variável do script, mais fiável -->
                             <img :src="gitIconUrl" alt="Git logo" class="skill-logo-1" />
                             <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/git/git-original.svg"
                                 class="skill-logo" />
@@ -125,7 +113,6 @@
                     </div>
                     <div class="skill-card">
                         <a href="#">
-                            <!-- Revertido para usar a variável do script, mais fiável -->
                             <img :src="photoshopIconUrl" alt="Photoshop logo" class="skill-logo-1" />
                             <img :src="psLogoUrl" class="skill-logo-3" />
                             <p class="skill-name">Photoshop</p>
@@ -133,7 +120,6 @@
                     </div>
                     <div class="skill-card">
                         <a href="#">
-                            <!-- Revertido para usar a variável do script, mais fiável -->
                             <img :src="illustratorIconUrl" alt="Illustrator logo" class="skill-logo-1" />
                             <img :src="aiLogoUrl" class="skill-logo-3" />
                             <p class="skill-name">Illustrator</p>
@@ -144,7 +130,6 @@
                 <div class="skills-last-row">
                     <div class="skill-card">
                         <a href="#">
-                            <!-- Revertido para usar a variável do script, mais fiável -->
                             <img :src="clipStudioIconUrl" alt="Clip Studio Paint logo" class="skill-logo-1" />
                             <img :src="cspLogoWhiteUrl" alt="Clip Studio Paint logo" class="skill-logo-3" />
                             <p class="skill-name">ClipStudio</p>
@@ -152,7 +137,6 @@
                     </div>
                     <div class="skill-card">
                         <a href="#">
-                            <!-- Revertido para usar a variável do script, mais fiável -->
                             <img :src="gameMakerIconUrl" alt="GameMaker logo" class="skill-logo-1" />
                             <img :src="gameMakerLogoUrl" alt="GameMaker logo" class="skill-logo-3" />
                             <p class="skill-name">GameMaker</p>
@@ -165,10 +149,7 @@
 </template>
 
 <script setup>
-// Nota: O erro "Failed to resolve import" acontece porque o Vite não consegue encontrar
-// os ficheiros. A solução é reverter para a abordagem de importação em que o Vite
-// processa os assets corretamente, tanto em desenvolvimento como em produção.
-// Importa os URLs das imagens
+import { ref, onMounted, onUnmounted } from 'vue';
 import linhaSkillUrl from '../../assets/LinhaSkills.svg';
 import estrelasSkillUrl from '../../assets/estrelasSkills.svg';
 import htmlIconUrl from '../../assets/HTML.svg';
@@ -195,37 +176,33 @@ import cspLogoWhiteUrl from '../../assets/CSP_LOGO_WHITE.png';
 import gameMakerIconUrl from '../../assets/GameMaker.svg';
 import gameMakerLogoUrl from '../../assets/game-maker_ICON.png';
 
-// Importa as funções do Vue
-import { ref, onMounted, onUnmounted } from 'vue';
-
-// Referência ao elemento da seção de skills para observar a visibilidade
 const skillsSection = ref(null);
-// Estado reativo para controlar a visibilidade da seção
 const isSectionVisible = ref(false);
 let observer;
 
-// Hook do ciclo de vida: executa quando o componente é montado
 onMounted(() => {
     if (skillsSection.value) {
-        // Cria um IntersectionObserver para verificar quando a seção entra na viewport
         observer = new IntersectionObserver(
             ([entry]) => {
                 isSectionVisible.value = entry.isIntersecting;
             },
-            { threshold: 0.5 } // Gatilho quando 50% da seção está visível
+            { threshold: 0.5 }
         );
-        // Observa o elemento da seção
         observer.observe(skillsSection.value);
     }
 });
 
-// Hook do ciclo de vida: executa quando o componente é desmontado
 onUnmounted(() => {
     if (observer) {
-        // Desconecta o observador para evitar vazamento de memória
         observer.disconnect();
     }
 });
+</script>
+
+<script>
+export default {
+    name: 'SkillsResumo',
+};
 </script>
 
 <style scoped lang="scss">

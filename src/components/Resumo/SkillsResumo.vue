@@ -156,7 +156,7 @@ import htmlIconUrl from '../../assets/HTML.svg';
 import cssIconUrl from '../../assets/CSS.svg';
 import cssLogoUrl from '../../assets/CSS_LOGO.png';
 import jsIconUrl from '../../assets/JavaScript.svg';
-import tsIconUrl from '../../assets/TypeScript.svg';
+import tsIconUrl from '../../assets/Typescript.svg';
 import tsLogoUrl from '../../assets/ts_logo_color.png';
 import reactIconUrl from '../../assets/React.svg';
 import vueIconUrl from '../../assets/Vue-logo.svg';

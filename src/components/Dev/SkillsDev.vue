@@ -159,7 +159,7 @@ import jsIconUrl from '../../assets/JavaScript.svg';
 import tsIconUrl from '../../assets/TypeScript.svg';
 import tsLogoUrl from '../../assets/ts_logo_color.png';
 import reactIconUrl from '../../assets/React.svg';
-import vueIconUrl from '../../assets/VUE-logo.svg';
+import vueIconUrl from '../../assets/Vue-logo.svg';
 import bootstrapIconUrl from '../../assets/Bootstrap.svg';
 import pythonIconUrl from '../../assets/Python.svg';
 import csharpIconUrl from '../../assets/CSharp.svg';
@@ -171,9 +171,9 @@ import photoshopIconUrl from '../../assets/Photoshop.svg';
 import psLogoUrl from '../../assets/PS_LOGO.png';
 import illustratorIconUrl from '../../assets/Illustrator.svg';
 import aiLogoUrl from '../../assets/AI_LOGO.png';
-import clipStudioIconUrl from '../../assets/ClipStudio.svg';
+import clipStudioIconUrl from '../../assets/CLIPSTUDIO.svg';
 import cspLogoWhiteUrl from '../../assets/CSP_LOGO_WHITE.png';
-import gameMakerIconUrl from '../../assets/GameMaker.svg';
+import gameMakerIconUrl from '../../assets/GAMEMAKER.svg';
 import gameMakerLogoUrl from '../../assets/game-maker_ICON.png';
 
 const skillsSection = ref(null);
@@ -201,7 +201,7 @@ onUnmounted(() => {
 
 <script>
 export default {
-    name: 'SkillsResumo',
+    name: 'SkillsDev',
 };
 </script>
 

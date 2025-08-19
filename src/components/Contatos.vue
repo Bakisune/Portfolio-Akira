@@ -70,55 +70,69 @@ let observer;
 const sendSuccessSound = ref(null);
 const socialButtonSound = ref(null);
 
-// Dados e lógicas para a animação de typewriter
+// Dados e lógicas para a animação de máquina de escrever
 const fullText = ["Feel free to reach out!", "Let's build something great together."];
 const typedText = ref('');
 const isTyping = ref(false);
 const isTypingFinished = ref(false);
 
-const typeText = async () => {
+// Função que digita o texto, caractere por caractere
+const typeText = async (textToType) => {
   isTyping.value = true;
-  typedText.value = '';
-  // Loop through each line of the full text
-  for (let lineIndex = 0; lineIndex < fullText.length; lineIndex++) {
-    const currentLine = fullText[lineIndex];
-    // Type out the characters of the current line
-    for (let i = 0; i < currentLine.length; i++) {
-      typedText.value += currentLine.charAt(i);
-      await new Promise(resolve => setTimeout(resolve, 50)); // Typing speed
-    }
-    // Add a line break if it's not the last line
-    if (lineIndex < fullText.length - 1) {
-      typedText.value += '<br>';
-    }
+  for (let i = 0; i < textToType.length; i++) {
+    typedText.value += textToType.charAt(i);
+    await new Promise(resolve => setTimeout(resolve, 50)); // Velocidade da digitação
   }
   isTyping.value = false;
-  isTypingFinished.value = true;
 };
 
+// Função que apaga o texto, caractere por caractere
+const eraseText = async () => {
+  isTyping.value = true;
+  while (typedText.value.length > 0) {
+    // Apaga um caractere de cada vez
+    typedText.value = typedText.value.slice(0, -1);
+    await new Promise(resolve => setTimeout(resolve, 30)); // Velocidade da exclusão
+  }
+  isTyping.value = false;
+};
+
+// Função que controla o loop de digitação principal
 const startTypingLoop = async () => {
-  if (isSectionVisible.value) {
-    await typeText();
-    await new Promise(resolve => setTimeout(resolve, 3000)); // Delay before erasing
+  while (true) {
+    // 1. Digita a primeira linha
+    await typeText(fullText[0]);
+
+    // 2. Adiciona a quebra de linha para começar a segunda
+    typedText.value += '<br>';
+    await new Promise(resolve => setTimeout(resolve, 50)); // Pausa curta depois da quebra de linha
+
+    // 3. Digita a segunda linha
+    await typeText(fullText[1]);
+
+    // 4. Faz uma pausa para que a frase seja lida
+    isTypingFinished.value = true;
+    await new Promise(resolve => setTimeout(resolve, 3000));
+
+    // 5. Apaga a linha digitada, caractere por caractere
     isTypingFinished.value = false;
-    await new Promise(resolve => setTimeout(resolve, 500)); // Small delay for the "erasing" effect
-    startTypingLoop(); // Restart the loop
+    await eraseText();
+
+    // 6. Faz uma pausa curta antes de digitar a próxima
+    await new Promise(resolve => setTimeout(resolve, 500));
   }
 };
 
 onMounted(() => {
+  // Inicia o loop de digitação assim que o componente é montado.
+  // Ele não depende mais do IntersectionObserver.
+  startTypingLoop();
+
+  // O IntersectionObserver continua sendo usado apenas para a animação da imagem
   if (contactSection.value) {
     observer = new IntersectionObserver(
       ([entry]) => {
-        if (entry.isIntersecting) {
-          isSectionVisible.value = true;
-          startTypingLoop();
-        } else {
-          isSectionVisible.value = false;
-          isTyping.value = false;
-          isTypingFinished.value = false;
-          typedText.value = ''; // Reset text when section leaves viewport
-        }
+        isSectionVisible.value = entry.isIntersecting;
       },
       { threshold: 0.1 }
     );
@@ -210,8 +224,6 @@ export default {
 .typewriter-text {
   overflow: hidden;
   /* Ensures text doesn't appear before animation */
-  white-space: nowrap;
-  /* Prevents text from wrapping to a new line */
   letter-spacing: 0.1rem;
   /* Spacing effect */
 
@@ -485,11 +497,13 @@ export default {
 }
 
 .form-status.success {
+  font-family: 'Poppins', sans-serif;
   color: green;
   font-weight: bold;
 }
 
 .form-status.error {
+  font-family: 'Poppins', sans-serif;
   color: red;
   font-weight: bold;
 }

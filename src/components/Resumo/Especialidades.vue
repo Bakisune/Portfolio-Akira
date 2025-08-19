@@ -40,110 +40,88 @@ const specialtiesSection = ref(null);
 const isSectionVisible = ref(false);
 let observer;
 
-// Data and logic for the typewriter animation
+// Dados e lógica para a animação de máquina de escrever
 const fullText = "Here you can learn more about my core competencies. Click each card for more details!";
 const typedText = ref('');
 const isTyping = ref(false);
 const isTypingFinished = ref(false);
 
+// Função que digita o texto, caractere por caractere
 const typeText = async () => {
     isTyping.value = true;
     typedText.value = '';
     for (let i = 0; i < fullText.length; i++) {
         typedText.value += fullText.charAt(i);
-        await new Promise(resolve => setTimeout(resolve, 30)); // Typing speed
+        await new Promise(resolve => setTimeout(resolve, 30)); // Velocidade da digitação
     }
     isTyping.value = false;
     isTypingFinished.value = true;
 };
 
+// Função que apaga o texto, caractere por caractere
+const eraseText = async () => {
+    isTyping.value = true;
+    while (typedText.value.length > 0) {
+        typedText.value = typedText.value.slice(0, -1);
+        await new Promise(resolve => setTimeout(resolve, 30)); // Velocidade da exclusão
+    }
+    isTyping.value = false;
+};
+
+// Função que controla o loop de digitação
 const startTypingLoop = async () => {
-    if (isSectionVisible.value) {
+    while (true) {
+        // 1. Digita o texto
         await typeText();
-        await new Promise(resolve => setTimeout(resolve, 3000)); // Delay before erasing
-        isTypingFinished.value = false;
-        typedText.value = ''; // Erase text instantly for a cleaner look
-        await new Promise(resolve => setTimeout(resolve, 500)); // Small delay before restarting the loop
-        startTypingLoop();
+
+        // 2. Faz uma pausa para que a frase seja lida
+        await new Promise(resolve => setTimeout(resolve, 3000));
+
+        // 3. Apaga a linha digitada, caractere por caractere
+        await eraseText();
+
+        // 4. Faz uma pausa curta antes de digitar a próxima
+        await new Promise(resolve => setTimeout(resolve, 500));
+    }
+};
+
+const clickSound = new Howl({
+    src: ['/audios/game.mp3'],
+    html5: true
+});
+
+const playSound = () => {
+    if (clickSound && clickSound.state() === 'loaded') {
+        clickSound.play();
+    } else {
+        console.warn('O áudio de clique não pôde ser tocado. Pode não ter sido carregado.');
     }
 };
 
 onMounted(() => {
+    // Inicia o loop de digitação assim que o componente é montado.
+    startTypingLoop();
+
+    // O IntersectionObserver continua sendo usado apenas para as animações de linha e estrela.
     if (specialtiesSection.value) {
         observer = new IntersectionObserver(
             ([entry]) => {
-                if (entry.isIntersecting) {
-                    isSectionVisible.value = true;
-                    startTypingLoop();
-                } else {
-                    isSectionVisible.value = false;
-                    isTyping.value = false;
-                    isTypingFinished.value = false;
-                    typedText.value = ''; // Reset text when section leaves viewport
-                }
+                isSectionVisible.value = entry.isIntersecting;
             },
             { threshold: 0.1 }
         );
         observer.observe(specialtiesSection.value);
     }
-
-    const clickSound = new Howl({
-        src: ['/audios/game.mp3'],
-        html5: true
-    });
-
-    // Ensure playSound method is defined
-    window.playSound = () => {
-        if (clickSound && clickSound.state() === 'loaded') {
-            clickSound.play();
-        } else {
-            console.warn('O áudio de clique não pôde ser tocado. Pode não ter sido carregado.');
-        }
-    };
 });
 
 onUnmounted(() => {
     if (observer) {
         observer.disconnect();
     }
-});
-
-const clickSound = ref(null);
-
-onMounted(() => {
-    clickSound.value = new Howl({
-        src: ['/audios/game.mp3'],
-        html5: true
-    });
-});
-
-const playSound = () => {
-    if (clickSound.value && clickSound.value.state() === 'loaded') {
-        clickSound.value.play();
-    } else {
-        console.warn('O áudio de clique não pôde ser tocado. Pode não ter sido carregado.');
+    if (clickSound) {
+        clickSound.unload();
     }
-};
-</script>
-
-<script>
-export default {
-    name: 'Especialidades',
-    data() {
-        return {
-            clickSound: null
-        };
-    },
-    methods: {
-        playSound() {
-        }
-    },
-    beforeDestroy() {
-        if (this.clickSound) {
-            this.clickSound.unload();
-        }
-    }
-};
+});
 </script>
 
 <style>

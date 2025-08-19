@@ -8,7 +8,8 @@
 
     <div class="contact-wrapper">
       <p class="contact-subtitle">
-        Feel free to reach out! Let's build <br> something great together.
+        <span class="typewriter-text" v-html="typedText"></span>
+        <span class="cursor" :class="{ 'blinking': isTyping || isTypingFinished }"></span>
       </p>
       <form class="contact-form" @submit.prevent="handleSubmit">
         <div class="form-group">
@@ -23,10 +24,11 @@
         </div>
 
         <div class="button-row">
-
-          <a href="https://t.me/bakisune" target="_blank"><button type="button" class="btn-icon">
+          <a href="https://t.me/bakisune" target="_blank">
+            <button type="button" class="btn-icon" @click="playSocialSound">
               <img src="../assets/Telegram.svg" alt="Telegram button" class="button-image telegram-icon" />
-            </button></a>
+            </button>
+          </a>
 
           <button type="submit" class="btn-send" :disabled="isSending">
             {{ isSending ? 'Sending...' : 'Send' }}
@@ -34,7 +36,7 @@
           </button>
 
           <a href="https://vgen.co/Bakisune" target="_blank">
-            <button type="button" class="btn-icon">
+            <button type="button" class="btn-icon" @click="playSocialSound">
               <img src="../assets/VGen.svg" alt="Vgen button" class="button-image vgen-icon" />
             </button>
           </a>
@@ -51,6 +53,7 @@ have fallen out of the bag and are flying toward the ground. Yumi has a silly fa
 
 <script setup>
 import { ref, computed, onMounted, onUnmounted } from 'vue';
+import { Howl, Howler } from 'howler';
 
 const form = ref({
   name: '',
@@ -64,28 +67,74 @@ const contactSection = ref(null);
 const isSectionVisible = ref(false);
 let observer;
 
+const sendSuccessSound = ref(null);
+const socialButtonSound = ref(null);
+
+// Dados e lógicas para a animação de typewriter
+const fullText = ["Feel free to reach out!", "Let's build something great together."];
+const typedText = ref('');
+const isTyping = ref(false);
+const isTypingFinished = ref(false);
+
+const typeText = async () => {
+  isTyping.value = true;
+  typedText.value = '';
+  // Loop through each line of the full text
+  for (let lineIndex = 0; lineIndex < fullText.length; lineIndex++) {
+    const currentLine = fullText[lineIndex];
+    // Type out the characters of the current line
+    for (let i = 0; i < currentLine.length; i++) {
+      typedText.value += currentLine.charAt(i);
+      await new Promise(resolve => setTimeout(resolve, 50)); // Typing speed
+    }
+    // Add a line break if it's not the last line
+    if (lineIndex < fullText.length - 1) {
+      typedText.value += '<br>';
+    }
+  }
+  isTyping.value = false;
+  isTypingFinished.value = true;
+};
+
+const startTypingLoop = async () => {
+  if (isSectionVisible.value) {
+    await typeText();
+    await new Promise(resolve => setTimeout(resolve, 3000)); // Delay before erasing
+    isTypingFinished.value = false;
+    await new Promise(resolve => setTimeout(resolve, 500)); // Small delay for the "erasing" effect
+    startTypingLoop(); // Restart the loop
+  }
+};
+
 onMounted(() => {
   if (contactSection.value) {
     observer = new IntersectionObserver(
       ([entry]) => {
         if (entry.isIntersecting) {
-          setTimeout(() => {
-            isSectionVisible.value = true;
-          }, 300);
+          isSectionVisible.value = true;
+          startTypingLoop();
         } else {
           isSectionVisible.value = false;
+          isTyping.value = false;
+          isTypingFinished.value = false;
+          typedText.value = ''; // Reset text when section leaves viewport
         }
       },
       { threshold: 0.1 }
     );
     observer.observe(contactSection.value);
   }
+
+  sendSuccessSound.value = new Howl({ src: ['/audios/enviado.mp3'], html5: true, preload: true });
+  socialButtonSound.value = new Howl({ src: ['/audios/trade.mp3'], html5: true, preload: true });
 });
 
 onUnmounted(() => {
   if (observer) {
     observer.disconnect();
   }
+  if (sendSuccessSound.value) sendSuccessSound.value.unload();
+  if (socialButtonSound.value) socialButtonSound.value.unload();
 });
 
 const statusClass = computed(() => {
@@ -96,6 +145,12 @@ const statusClass = computed(() => {
   }
   return '';
 });
+
+const playSocialSound = () => {
+  if (socialButtonSound.value && socialButtonSound.value.state() === 'loaded') {
+    socialButtonSound.value.play();
+  }
+};
 
 const handleSubmit = async () => {
   isSending.value = true;
@@ -118,6 +173,9 @@ const handleSubmit = async () => {
 
     if (response.ok) {
       statusMessage.value = 'Message sent successfully!';
+      if (sendSuccessSound.value && sendSuccessSound.value.state() === 'loaded') {
+        sendSuccessSound.value.play();
+      }
       form.value.name = '';
       form.value.email = '';
       form.value.message = '';
@@ -146,6 +204,40 @@ export default {
 <style>
 :root {
   --branco: #ffffff;
+}
+
+/* Animations for typewriter and cursor */
+.typewriter-text {
+  overflow: hidden;
+  /* Ensures text doesn't appear before animation */
+  white-space: nowrap;
+  /* Prevents text from wrapping to a new line */
+  letter-spacing: 0.1rem;
+  /* Spacing effect */
+
+}
+
+.cursor {
+  font-weight: 500;
+  border-right: 2px solid var(--roxo-claro);
+  margin-left: 2px;
+
+}
+
+.blinking {
+  animation: blink-caret .75s step-end infinite;
+}
+
+@keyframes blink-caret {
+
+  from,
+  to {
+    border-color: transparent
+  }
+
+  50% {
+    border-color: var(--roxo-claro);
+  }
 }
 </style>
 
@@ -178,20 +270,16 @@ export default {
   font-size: 4.25rem;
 }
 
-/* Base style for the icon */
 .contact-title-icon {
   width: 5rem;
   height: auto;
   opacity: 0;
-  /* Torna o ícone invisível por padrão */
 }
 
-/* Animação de giro */
 @keyframes cardSpinEntrance {
   0% {
     opacity: 0;
     transform: scale(0.8) rotate(0deg);
-    /* O ícone agora só aparece e gira, sem vir de baixo */
   }
 
   100% {
@@ -259,7 +347,10 @@ export default {
   margin-left: -8rem;
   width: calc(100% + 4rem);
   text-align: center;
+  /* Alinhamento central */
   margin-top: -1rem;
+  min-height: 4rem;
+  /* Altura mínima para evitar quebra de layout */
 }
 
 .contact-form {
@@ -390,7 +481,7 @@ export default {
   text-align: center;
   margin-top: 1rem;
   font-size: 0.875rem;
-  color: var(--roxo-desligado);
+  color: var(--roxo-claro);
 }
 
 .form-status.success {

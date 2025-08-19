@@ -6,22 +6,50 @@
     <p>&copy; 2025 Akira Alcantara</p>
     <div class="footer-direita">
       <a href="https://www.linkedin.com/in/akiraalcantara-bakisune" class="social-icon" alt="Link para o Linkedin"
-        target="_blank"><i class="bi bi-linkedin"></i></a>
-      <a href="https://www.behance.net/bakisune" class="social-icon" alt="Link para o Behance" target="_blank"><i
-          class="bi bi-behance"></i></a>
-      <a href="https://github.com/Bakisune" class="social-icon" alt="Link para o Github" target="_blank"><i
-          class="bi bi-github"></i></a>
+        target="_blank" @click="playSound"><i class="bi bi-linkedin"></i></a>
+      <a href="https://www.behance.net/bakisune" class="social-icon" alt="Link para o Behance" target="_blank"
+        @click="playSound"><i class="bi bi-behance"></i></a>
+      <a href="https://github.com/Bakisune" class="social-icon" alt="Link para o Github" target="_blank"
+        @click="playSound"><i class="bi bi-github"></i></a>
       <a href="https://bsky.app/profile/bakisune.bsky.social" class="social-icon" alt="Link para o Bluesky"
-        target="_blank"><i class="fa-brands fa-bluesky"></i></a>
-      <a href="https://x.com/baki_sune" class="social-icon" alt="Link para o Twitter" target="_blank"><i
-          class="bi bi-twitter"></i></a>
+        target="_blank" @click="playSound"><i class="fa-brands fa-bluesky"></i></a>
+      <a href="https://x.com/baki_sune" class="social-icon" alt="Link para o Twitter" target="_blank"
+        @click="playSound"><i class="bi bi-twitter"></i></a>
     </div>
   </footer>
 </template>
 
 <script>
+import { Howl } from 'howler';
+
 export default {
   name: 'Rodape',
+  beforeDestroy() {
+    if (this.sound) {
+      this.sound.unload();
+    }
+  },
+  mounted() {
+    this.sound = new Howl({
+      src: ['/audios/trade.mp3'],
+      html5: true,
+      onloaderror: (id, err) => {
+        console.error('Error loading audio:', { id, err });
+      }
+    });
+  },
+  data() {
+    return {
+      sound: null,
+    };
+  },
+  methods: {
+    playSound() {
+      if (this.sound && this.sound.state() === 'loaded') {
+        this.sound.play();
+      }
+    }
+  }
 };
 </script>
 

@@ -52,7 +52,7 @@
 </template>
 
 <script>
-
+import { Howl } from 'howler';
 
 export default {
   name: 'SideBarResumo',
@@ -63,24 +63,15 @@ export default {
     }
   },
   mounted() {
-    console.log('Componente SideBarResumo montado.');
-    window.addEventListener('scroll', this.handleScroll);
-    this.handleScroll();
-
-    console.log('Tentando carregar o áudio de /audios/trade.mp3...');
     this.sound = new Howl({
       src: ['/audios/trade.mp3'],
       html5: true,
-      onend: () => {
-        console.log('O som parou de tocar.');
-      },
-      onload: () => {
-        console.log('Áudio carregado com sucesso!');
-      },
       onloaderror: (id, err) => {
         console.error('Erro ao carregar o áudio. O arquivo pode não existir ou o caminho está incorreto.', { id, err });
       }
     });
+    window.addEventListener('scroll', this.handleScroll);
+    this.handleScroll();
   },
   data() {
     return {
@@ -92,15 +83,32 @@ export default {
   },
   methods: {
     toggleSidebar() {
+      this.playSound();
       this.isSidebarOpen = !this.isSidebarOpen;
     },
 
     scrollToSection(sectionId) {
       this.playSound();
-
       const element = document.getElementById(sectionId);
       if (element) {
-        element.scrollIntoView({ behavior: 'smooth' });
+        // Obter a posição vertical do elemento
+        const elementPosition = element.getBoundingClientRect().top + window.pageYOffset;
+
+        let offset = 0;
+        // AQUI VOCÊ PODE MUDAR O OFFSET PARA CADA SEÇÃO
+        if (sectionId === 'Especialidades') {
+          offset = 150;
+        } else if (sectionId === 'Skills') {
+          // OFFSET PERSONALIZADO PARA A SEÇÃO DE SKILLS
+          offset = -50;
+        }
+
+        // Rolar para a nova posição ajustada
+        window.scrollTo({
+          top: elementPosition - offset,
+          behavior: 'smooth'
+        });
+
         this.activeSectionId = sectionId;
       }
     },
@@ -129,29 +137,13 @@ export default {
     },
 
     playSound() {
-      if (!this.sound) {
-        console.warn('Objeto de áudio não foi inicializado. Verifique se o mounted() foi executado.');
-        return;
-      }
-      if (this.sound.state() === 'loading') {
-        console.log('Áudio ainda está carregando. Tente novamente mais tarde.');
-        return;
-      }
-      if (this.sound.state() === 'unloaded') {
-        console.warn('O áudio não pôde ser carregado. Verifique o caminho do arquivo e o erro no console.');
-        return;
-      }
-
-      try {
+      if (this.sound && this.sound.state() === 'loaded') {
         this.sound.play();
-        console.log('Tentando tocar o áudio...');
-      } catch (e) {
-        console.error("Erro ao tocar o áudio:", e);
       }
     },
 
     toggleLanguage() {
-      console.log('Botão de tradução clicado!');
+      this.playSound();
     }
   }
 };

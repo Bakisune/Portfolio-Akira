@@ -16,7 +16,7 @@
 
                 <div class="skills-grid-container">
                     <div class="skill-card">
-                        <a href="#">
+                        <a>
                             <img :src="htmlIconUrl" alt="HTML5 Logo" class="skill-logo-1" />
                             <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/html5/html5-original.svg"
                                 class="skill-logo" />
@@ -24,14 +24,14 @@
                         </a>
                     </div>
                     <div class="skill-card">
-                        <a href="#">
+                        <a>
                             <img :src="cssIconUrl" alt="CSS3 logo" class="skill-logo-1" />
                             <img :src="cssLogoUrl" class="skill-logo-3" />
                             <p class="skill-name">CSS</p>
                         </a>
                     </div>
                     <div class="skill-card">
-                        <a href="#">
+                        <a>
                             <img :src="jsIconUrl" alt="JavaScript logo" class="skill-logo-1" />
                             <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg"
                                 class="skill-logo" />
@@ -39,14 +39,14 @@
                         </a>
                     </div>
                     <div class="skill-card">
-                        <a href="#">
+                        <a>
                             <img :src="tsIconUrl" alt="TypeScript logo" class="skill-logo-1" />
                             <img :src="tsLogoUrl" class="skill-logo-3" />
                             <p class="skill-name">TypeScript</p>
                         </a>
                     </div>
                     <div class="skill-card">
-                        <a href="#">
+                        <a>
                             <img :src="reactIconUrl" alt="React logo" class="skill-logo-1" />
                             <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg"
                                 class="skill-logo" />
@@ -54,7 +54,7 @@
                         </a>
                     </div>
                     <div class="skill-card">
-                        <a href="#">
+                        <a>
                             <img :src="vueIconUrl" alt="Vue.js logo" class="skill-logo-1" />
                             <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/vuejs/vuejs-original.svg"
                                 class="skill-logo" />
@@ -62,7 +62,7 @@
                         </a>
                     </div>
                     <div class="skill-card">
-                        <a href="#">
+                        <a>
                             <img :src="bootstrapIconUrl" alt="Bootstrap logo" class="skill-logo-1" />
                             <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/bootstrap/bootstrap-original.svg"
                                 class="skill-logo-2" />
@@ -73,7 +73,7 @@
 
                 <div class="skills-grid-container">
                     <div class="skill-card python-card">
-                        <a href="#">
+                        <a>
                             <img :src="pythonIconUrl" alt="Python logo" class="skill-logo-1" />
                             <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original.svg"
                                 class="skill-logo-2" />
@@ -81,14 +81,14 @@
                         </a>
                     </div>
                     <div class="skill-card">
-                        <a href="#">
+                        <a>
                             <img :src="csharpIconUrl" alt="C# logo" class="skill-logo-1" />
                             <img :src="csharpLogoUrl" class="skill-logo-3" />
                             <p class="skill-name">C#</p>
                         </a>
                     </div>
                     <div class="skill-card">
-                        <a href="#">
+                        <a>
                             <img :src="mysqlIconUrl" alt="MySQL logo" class="skill-logo-1" />
                             <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mysql/mysql-original.svg"
                                 class="skill-logo" />
@@ -96,7 +96,7 @@
                         </a>
                     </div>
                     <div class="skill-card">
-                        <a href="#">
+                        <a>
                             <img :src="figmaIconUrl" alt="Figma logo" class="skill-logo-1" />
                             <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/figma/figma-original.svg"
                                 class="skill-logo" />
@@ -104,7 +104,7 @@
                         </a>
                     </div>
                     <div class="skill-card">
-                        <a href="#">
+                        <a>
                             <img :src="gitIconUrl" alt="Git logo" class="skill-logo-1" />
                             <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/git/git-original.svg"
                                 class="skill-logo" />
@@ -112,14 +112,14 @@
                         </a>
                     </div>
                     <div class="skill-card">
-                        <a href="#">
+                        <a>
                             <img :src="photoshopIconUrl" alt="Photoshop logo" class="skill-logo-1" />
                             <img :src="psLogoUrl" class="skill-logo-3" />
                             <p class="skill-name">Photoshop</p>
                         </a>
                     </div>
                     <div class="skill-card">
-                        <a href="#">
+                        <a>
                             <img :src="illustratorIconUrl" alt="Illustrator logo" class="skill-logo-1" />
                             <img :src="aiLogoUrl" class="skill-logo-3" />
                             <p class="skill-name">Illustrator</p>
@@ -129,14 +129,14 @@
 
                 <div class="skills-last-row">
                     <div class="skill-card">
-                        <a href="#">
+                        <a>
                             <img :src="clipStudioIconUrl" alt="Clip Studio Paint logo" class="skill-logo-1" />
                             <img :src="cspLogoWhiteUrl" alt="Clip Studio Paint logo" class="skill-logo-3" />
                             <p class="skill-name">ClipStudio</p>
                         </a>
                     </div>
                     <div class="skill-card">
-                        <a href="#">
+                        <a>
                             <img :src="gameMakerIconUrl" alt="GameMaker logo" class="skill-logo-1" />
                             <img :src="gameMakerLogoUrl" alt="GameMaker logo" class="skill-logo-3" />
                             <p class="skill-name">GameMaker</p>
@@ -337,7 +337,7 @@ export default {
     width: 140px;
     height: 140px;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-    cursor: pointer;
+    cursor: default;
     transition: background-color 0.3s ease, transform 0.3s ease, border 0.3s ease;
     border: 2px solid var(--roxo-desligado);
 }

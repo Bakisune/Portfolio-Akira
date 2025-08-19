@@ -88,6 +88,10 @@ export default {
 </script>
 
 <style scoped>
+:root {
+  --amarelo: #ffc107;
+}
+
 .education-section {
   font-family: Poppins, sans-serif;
   position: relative;
@@ -231,6 +235,19 @@ export default {
   z-index: 0;
 }
 
+.education-section .timeline-wrapper::after {
+  content: '';
+  position: absolute;
+  top: 13.5%;
+  left: 10px;
+  width: 10px;
+  height: 10px;
+  background-color: var(--amarelo);
+  border-radius: 50%;
+  transform: translateY(-50%);
+  z-index: 2;
+}
+
 .education-section .timeline-item {
   position: relative;
   width: 250px;
@@ -358,6 +375,10 @@ export default {
     transform: translateX(-50%);
     width: 2px;
     height: 100%;
+  }
+
+  .education-section .timeline-wrapper::after {
+    left: calc(50% - 15px);
   }
 
   .education-section .timeline-dot {

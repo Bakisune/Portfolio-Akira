@@ -22,3 +22,31 @@
   font-weight: normal;
   font-style: normal;
 }
+
+::-webkit-scrollbar {
+  width: 12px;
+  height: 12px; 
+}
+
+
+::-webkit-scrollbar-thumb {
+  background-color: var(--roxo-claro);
+  border-radius: 6px;
+  border: 3px solid var(--cor-branca); 
+}
+
+
+::-webkit-scrollbar-track {
+  background-color: var(--cor-branca);
+  border-radius: 6px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background-color: var(--roxo-escuro);
+}
+
+* {
+  scrollbar-color: var(--roxo-claro) var(--cor-fundo);
+  scrollbar-width: thin;
+}
+

@@ -1,9 +1,13 @@
 <template>
-    <section class="expertizes">
-        <h2 class="about-title">Specialities</h2>
+    <section class="expertizes" ref="specialtiesSection">
+        <div class="title-with-image">
+            <h2 class="about-title" :class="{ 'animate-title-line': isSectionVisible }">Specialities</h2>
+            <img src="../../assets/especialidades.svg" alt="Star Icon" class="section-image"
+                :class="{ 'animate-shining-image': isSectionVisible }" />
+        </div>
         <p class="expertizes-description">
-            Here you can learn more about my core competencies. Click each card
-            for more details!
+            <span class="typewriter-text">{{ typedText }}</span>
+            <span class="cursor" :class="{ 'blinking': isTyping || isTypingFinished }"></span>
         </p>
         <div class="expertise-cards-container">
             <!-- Card para UX/UI Design -->
@@ -27,6 +31,151 @@
         </div>
     </section>
 </template>
+
+<script setup>
+import { ref, onMounted, onUnmounted } from 'vue';
+import { Howl } from 'howler';
+
+const specialtiesSection = ref(null);
+const isSectionVisible = ref(false);
+let observer;
+
+// Data and logic for the typewriter animation
+const fullText = "Here you can learn more about my core competencies. Click each card for more details!";
+const typedText = ref('');
+const isTyping = ref(false);
+const isTypingFinished = ref(false);
+
+const typeText = async () => {
+    isTyping.value = true;
+    typedText.value = '';
+    for (let i = 0; i < fullText.length; i++) {
+        typedText.value += fullText.charAt(i);
+        await new Promise(resolve => setTimeout(resolve, 30)); // Typing speed
+    }
+    isTyping.value = false;
+    isTypingFinished.value = true;
+};
+
+const startTypingLoop = async () => {
+    if (isSectionVisible.value) {
+        await typeText();
+        await new Promise(resolve => setTimeout(resolve, 3000)); // Delay before erasing
+        isTypingFinished.value = false;
+        typedText.value = ''; // Erase text instantly for a cleaner look
+        await new Promise(resolve => setTimeout(resolve, 500)); // Small delay before restarting the loop
+        startTypingLoop();
+    }
+};
+
+onMounted(() => {
+    if (specialtiesSection.value) {
+        observer = new IntersectionObserver(
+            ([entry]) => {
+                if (entry.isIntersecting) {
+                    isSectionVisible.value = true;
+                    startTypingLoop();
+                } else {
+                    isSectionVisible.value = false;
+                    isTyping.value = false;
+                    isTypingFinished.value = false;
+                    typedText.value = ''; // Reset text when section leaves viewport
+                }
+            },
+            { threshold: 0.1 }
+        );
+        observer.observe(specialtiesSection.value);
+    }
+
+    const clickSound = new Howl({
+        src: ['/audios/game.mp3'],
+        html5: true
+    });
+
+    // Ensure playSound method is defined
+    window.playSound = () => {
+        if (clickSound && clickSound.state() === 'loaded') {
+            clickSound.play();
+        } else {
+            console.warn('O áudio de clique não pôde ser tocado. Pode não ter sido carregado.');
+        }
+    };
+});
+
+onUnmounted(() => {
+    if (observer) {
+        observer.disconnect();
+    }
+});
+
+const clickSound = ref(null);
+
+onMounted(() => {
+    clickSound.value = new Howl({
+        src: ['/audios/game.mp3'],
+        html5: true
+    });
+});
+
+const playSound = () => {
+    if (clickSound.value && clickSound.value.state() === 'loaded') {
+        clickSound.value.play();
+    } else {
+        console.warn('O áudio de clique não pôde ser tocado. Pode não ter sido carregado.');
+    }
+};
+</script>
+
+<script>
+export default {
+    name: 'Especialidades',
+    data() {
+        return {
+            clickSound: null
+        };
+    },
+    methods: {
+        playSound() {
+        }
+    },
+    beforeDestroy() {
+        if (this.clickSound) {
+            this.clickSound.unload();
+        }
+    }
+};
+</script>
+
+<style>
+/* Estilos para a animação de typewriter */
+.typewriter-text {
+    overflow: hidden;
+    white-space: nowrap;
+    letter-spacing: 0.1rem;
+}
+
+.cursor {
+    font-weight: 500;
+    border-right: 2px solid var(--roxo-mais-claro);
+    margin-left: 2px;
+}
+
+.blinking {
+    animation: blink-caret .75s step-end infinite;
+}
+
+@keyframes blink-caret {
+
+    from,
+    to {
+        border-color: transparent
+    }
+
+    50% {
+        border-color: var(--roxo-mais-claro);
+    }
+}
+</style>
 
 <style scoped>
 .expertizes {
@@ -130,37 +279,84 @@
 .expertise-card:hover .expertise-card-link {
     color: var(--amarelo);
 }
-</style>
 
-<script>
-import { Howl } from 'howler';
+.title-with-image {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    align-self: flex-start;
+    margin-bottom: 50px;
+    padding-left: 10%;
+    box-sizing: border-box;
+}
 
-export default {
-    name: 'Especialidades',
-    data() {
-        return {
-            clickSound: true
-        };
-    },
-    mounted() {
-        this.clickSound = new Howl({
-            src: ['/audios/game.mp3'],
-            html5: true
-        });
-    },
-    methods: {
-        playSound() {
-            if (this.clickSound && this.clickSound.state() === 'loaded') {
-                this.clickSound.play();
-            } else {
-                console.warn('O áudio de clique não pôde ser tocado. Pode não ter sido carregado.');
-            }
-        }
-    },
-    beforeDestroy() {
-        if (this.clickSound) {
-            this.clickSound.unload();
-        }
+.expertizes .about-title {
+    margin-bottom: 0;
+    margin-left: 0;
+}
+
+.expertizes .about-title::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: -3px;
+    width: 0;
+    height: 4px;
+    background-color: var(--roxo-mais-claro);
+    border-radius: 2px;
+    transition: width 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+.expertizes .about-title.animate-title-line::after {
+    width: 108%;
+}
+
+.section-image {
+    width: 50px;
+    height: 50px;
+    object-fit: cover;
+    background: transparent;
+    margin-left: 30px;
+    margin-top: 3.2rem;
+}
+
+@keyframes shiningEffect {
+    0% {
+        transform: rotate(0deg) scale(1);
     }
-};
-</script>
+
+    50% {
+        transform: rotate(180deg) scale(0.5);
+    }
+
+    100% {
+        transform: rotate(360deg) scale(1);
+    }
+}
+
+.animate-shining-image {
+    animation: shiningEffect 1.90s ease-in-out infinite;
+}
+
+@media (max-width: 768px) {
+    .title-with-image {
+        flex-direction: column;
+        align-items: center;
+        padding-left: 0;
+    }
+
+    .expertizes .about-title {
+        text-align: center;
+    }
+
+    .expertizes .about-title::after {
+        left: 50%;
+        transform: translateX(-50%);
+    }
+
+    .section-image {
+        margin-left: 0;
+        margin-top: 10px;
+    }
+}
+</style>

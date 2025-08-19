@@ -139,7 +139,7 @@ export default {
     name: 'Especialidades',
     data() {
         return {
-            clickSound: null
+            clickSound: true
         };
     },
     mounted() {

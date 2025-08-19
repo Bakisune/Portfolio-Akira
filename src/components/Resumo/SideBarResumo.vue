@@ -52,7 +52,7 @@
 </template>
 
 <script>
-import { Howl } from 'howler';
+
 
 export default {
   name: 'SideBarResumo',

@@ -11,7 +11,8 @@
 
       <div class="timeline-wrapper">
         <div class="timeline-item timeline-item-even">
-          <img :src="cardUrl" alt="Card Icon" class="card-icon" />
+          <img :src="cardUrl" alt="Card Icon" class="card-icon"
+            :class="{ 'animate-card-entrance': isSectionVisible }" />
           <div class="timeline-dot"></div>
           <div class="timeline-content">
             <p class="course-title">2018-2020</p>
@@ -20,22 +21,22 @@
           </div>
         </div>
         <div class="timeline-item timeline-item-odd">
-          <img :src="cardUrl" alt="Card Icon" class="card-icon" />
+          <img :src="cardUrl" alt="Card Icon" class="card-icon"
+            :class="{ 'animate-card-entrance': isSectionVisible }" />
           <div class="timeline-dot"></div>
           <div class="timeline-content">
             <p class="course-title">2022-Current</p>
-            <p class="institution-info">• Bachelor in Software
-              Engineering</p>
+            <p class="institution-info">• Bachelor in Software Engineering</p>
             <p class="institution-local"> UNINTER-MA</p>
           </div>
         </div>
         <div class="timeline-item timeline-item-even">
-          <img :src="cardUrl" alt="Card Icon" class="card-icon" />
+          <img :src="cardUrl" alt="Card Icon" class="card-icon"
+            :class="{ 'animate-card-entrance': isSectionVisible }" />
           <div class="timeline-dot"></div>
           <div class="timeline-content">
             <p class="course-title">2022-Current</p>
-            <p class="institution-info">• Jovem Tech
-              Program</p>
+            <p class="institution-info">• Jovem Tech Program</p>
             <p class="institution-local"> PULSE-MA</p>
           </div>
         </div>
@@ -47,6 +48,7 @@
 <script setup>
 import { ref, onMounted, onUnmounted } from 'vue';
 
+// Mantendo os caminhos de imagem originais
 import starUrl from '../../assets/star.svg';
 import cardUrl from '../../assets/imagemcard.svg';
 
@@ -135,7 +137,7 @@ export default {
   bottom: -8px;
   width: 0;
   height: 4px;
-  background-color: var(--roxo-claro);
+  background-color: var(--cor-branca);
   border-radius: 2px;
   transition: width 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
 }
@@ -178,6 +180,36 @@ export default {
   animation: shiningEffect 1.90s ease-in-out infinite;
 }
 
+/* Animação para os ícones dos cards */
+@keyframes cardSpinEntrance {
+  0% {
+    opacity: 0;
+    transform: translateY(20px) scale(0.8) rotate(0deg);
+  }
+
+  100% {
+    opacity: 1;
+    transform: translateY(0) scale(1) rotate(360deg);
+  }
+}
+
+.animate-card-entrance {
+  animation: cardSpinEntrance 0.8s ease-out forwards;
+}
+
+/* Efeito de atraso para cada item */
+.timeline-item:nth-child(1) .animate-card-entrance {
+  animation-delay: 0.1s;
+}
+
+.timeline-item:nth-child(2) .animate-card-entrance {
+  animation-delay: 0.3s;
+}
+
+.timeline-item:nth-child(3) .animate-card-entrance {
+  animation-delay: 0.5s;
+}
+
 .education-section .timeline-wrapper {
   position: relative;
   width: 100%;
@@ -213,6 +245,7 @@ export default {
   text-align: center;
 }
 
+/* Garante que os ícones do cartão fiquem invisíveis por padrão */
 .card-icon {
   position: absolute;
   top: -15px;
@@ -223,6 +256,8 @@ export default {
   background-color: transparent;
   object-fit: cover;
   z-index: 2;
+  opacity: 0;
+  /* AQUI: agora os ícones estão invisíveis por padrão */
   transition: transform 0.3s ease;
 }
 
@@ -232,8 +267,9 @@ export default {
 }
 
 .education-section .timeline-item-odd:hover {
+  /* Box shadow foi ajustada para combinar com a dos outros items */
   transform: translateY(calc(-100% + 5px)) scale(1.02);
-  box-shadow: 6px 12px rgba(0, 0, 0, 0.25);
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.25);
 }
 
 .education-section .timeline-item:hover .timeline-dot {

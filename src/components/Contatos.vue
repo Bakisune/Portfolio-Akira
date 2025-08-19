@@ -1,8 +1,9 @@
 <template>
-  <div class="page-container">
+  <div class="page-container" ref="contactSection">
     <div class="contact-title-container">
       <h1 class="contact-title">Contact Me</h1>
-      <img src="../assets/Contatos.png" alt="Contact icon" class="contact-title-icon" />
+      <img src="../assets/Contatos.png" alt="Contact icon" class="contact-title-icon"
+        :class="{ 'animate-contact-entrance': isSectionVisible }" />
     </div>
 
     <div class="contact-wrapper">
@@ -49,7 +50,7 @@ have fallen out of the bag and are flying toward the ground. Yumi has a silly fa
 </template>
 
 <script setup>
-import { ref, computed } from 'vue';
+import { ref, computed, onMounted, onUnmounted } from 'vue';
 
 const form = ref({
   name: '',
@@ -58,6 +59,34 @@ const form = ref({
 });
 const statusMessage = ref('');
 const isSending = ref(false);
+
+const contactSection = ref(null);
+const isSectionVisible = ref(false);
+let observer;
+
+onMounted(() => {
+  if (contactSection.value) {
+    observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setTimeout(() => {
+            isSectionVisible.value = true;
+          }, 300);
+        } else {
+          isSectionVisible.value = false;
+        }
+      },
+      { threshold: 0.1 }
+    );
+    observer.observe(contactSection.value);
+  }
+});
+
+onUnmounted(() => {
+  if (observer) {
+    observer.disconnect();
+  }
+});
 
 const statusClass = computed(() => {
   if (statusMessage.value.includes('successfully')) {
@@ -149,9 +178,30 @@ export default {
   font-size: 4.25rem;
 }
 
+/* Base style for the icon */
 .contact-title-icon {
   width: 5rem;
   height: auto;
+  opacity: 0;
+  /* Torna o ícone invisível por padrão */
+}
+
+/* Animação de giro */
+@keyframes cardSpinEntrance {
+  0% {
+    opacity: 0;
+    transform: scale(0.8) rotate(0deg);
+    /* O ícone agora só aparece e gira, sem vir de baixo */
+  }
+
+  100% {
+    opacity: 1;
+    transform: scale(1) rotate(360deg);
+  }
+}
+
+.animate-contact-entrance {
+  animation: cardSpinEntrance 0.8s ease-out forwards;
 }
 
 .contact-wrapper {

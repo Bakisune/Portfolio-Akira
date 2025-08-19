@@ -8,19 +8,19 @@
         <div class="expertise-cards-container">
             <!-- Card para UX/UI Design -->
             <div class="expertise-card">
-                <router-link to="/soon" class="expertise-card-link">
+                <router-link to="/soon" class="expertise-card-link" @click.native="playSound">
                     Programming and UX/UI Design
                 </router-link>
             </div>
             <!-- Card para Illustration -->
             <div class="expertise-card">
-                <router-link to="/soon" class="expertise-card-link">
+                <router-link to="/soon" class="expertise-card-link" @click.native="playSound">
                     Illustration and Animation
                 </router-link>
             </div>
             <!-- Card para Game Dev and Design -->
             <div class="expertise-card">
-                <router-link to="/soon" class="expertise-card-link">
+                <router-link to="/soon" class="expertise-card-link" @click.native="playSound">
                     Game Dev and Design
                 </router-link>
             </div>
@@ -133,7 +133,34 @@
 </style>
 
 <script>
+import { Howl } from 'howler';
+
 export default {
     name: 'Especialidades',
+    data() {
+        return {
+            clickSound: null
+        };
+    },
+    mounted() {
+        this.clickSound = new Howl({
+            src: ['/audios/game.mp3'],
+            html5: true
+        });
+    },
+    methods: {
+        playSound() {
+            if (this.clickSound && this.clickSound.state() === 'loaded') {
+                this.clickSound.play();
+            } else {
+                console.warn('O áudio de clique não pôde ser tocado. Pode não ter sido carregado.');
+            }
+        }
+    },
+    beforeDestroy() {
+        if (this.clickSound) {
+            this.clickSound.unload();
+        }
+    }
 };
 </script>

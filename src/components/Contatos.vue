@@ -54,7 +54,7 @@
 
 <script setup>
 import { ref, computed, onMounted, onUnmounted, watch } from 'vue';
-import { Howl, Howler } from 'howler';
+import { Howl } from 'howler';
 import { translations } from '../translations';
 import { activeLanguage } from '../languageStore';
 
@@ -73,30 +73,30 @@ let observer;
 const sendSuccessSound = ref(null);
 const socialButtonSound = ref(null);
 
-// Reactive translation data
+// Dados de tradução reativos
 const translated = computed(() => {
   return translations.ContactosResumo[activeLanguage.value] || translations.ContactosResumo.pt;
 });
 
-// Reactive state for the typewriter effect
+// Estado reativo para o efeito de máquina de escrever
 const typedText = ref('');
 const isTyping = ref(false);
 const isTypingFinished = ref(false);
 const textOpacity = ref(1);
-let loopRunning = ref(false); // New state to control the typing loop
+const runId = ref(0); // ID de controle para o ciclo de digitação atual
 
-// The full text to be typed, now dependent on the active language
+// O texto completo a ser digitado, agora dependente do idioma ativo
 const fullText = computed(() => translated.value.description);
 
 // Função que digita o texto, caractere por caractere
-const typeText = async (textToType) => {
+const typeText = async (currentRunId) => {
   isTyping.value = true;
   typedText.value = '';
-  const lines = textToType.split('<br>');
+  const lines = fullText.value.split('<br>');
   for (const line of lines) {
-    if (!loopRunning.value) return; // Exit if the loop is stopped
+    if (currentRunId !== runId.value) return; // Aborta se o ID do ciclo não for mais o atual
     for (let i = 0; i < line.length; i++) {
-      if (!loopRunning.value) return;
+      if (currentRunId !== runId.value) return;
       typedText.value += line.charAt(i);
       await new Promise(resolve => setTimeout(resolve, 50)); // Velocidade da digitação
     }
@@ -110,12 +110,11 @@ const typeText = async (textToType) => {
 };
 
 // Função que apaga o texto, caractere por caractere
-const eraseText = async () => {
+const eraseText = async (currentRunId) => {
   isTyping.value = true;
   while (typedText.value.length > 0) {
-    if (!loopRunning.value) return; // Exit if the loop is stopped
+    if (currentRunId !== runId.value) return; // Aborta se o ID do ciclo não for mais o atual
     // Apaga um caractere de cada vez, incluindo a tag <br>
-    const lastChar = typedText.value.slice(-1);
     if (typedText.value.endsWith('<br>')) {
       typedText.value = typedText.value.slice(0, -4);
     } else {
@@ -128,14 +127,16 @@ const eraseText = async () => {
 
 // Função que controla o loop de digitação principal
 const startTypingLoop = async () => {
-  loopRunning.value = true;
-  while (loopRunning.value) {
-    await typeText(fullText.value);
-    if (!loopRunning.value) break; // Check again to be safe
+  runId.value++; // Incrementa o ID para iniciar um novo ciclo
+  const currentRunId = runId.value;
+
+  while (currentRunId === runId.value) {
+    await typeText(currentRunId);
+    if (currentRunId !== runId.value) break; // Check again to be safe
     await new Promise(resolve => setTimeout(resolve, 3000));
-    if (!loopRunning.value) break;
-    await eraseText();
-    if (!loopRunning.value) break;
+    if (currentRunId !== runId.value) break;
+    await eraseText(currentRunId);
+    if (currentRunId !== runId.value) break;
     await new Promise(resolve => setTimeout(resolve, 500));
   }
 };
@@ -168,10 +169,13 @@ onUnmounted(() => {
 // Watch for language changes and handle the transition
 watch(fullText, async (newText, oldText) => {
   if (newText !== oldText) {
-    // Stop the old loop
-    loopRunning.value = false;
+    // Incrementa o ID para forçar a parada da animação anterior
+    runId.value++;
+
+    // Reseta estados
     isTyping.value = false;
     isTypingFinished.value = false;
+    typedText.value = '';
 
     // Fade out
     textOpacity.value = 0;
@@ -180,7 +184,6 @@ watch(fullText, async (newText, oldText) => {
     await new Promise(resolve => setTimeout(resolve, 500));
 
     // Reset text and start a new loop
-    typedText.value = '';
     textOpacity.value = 1;
     startTypingLoop();
   }
@@ -261,14 +264,12 @@ export default {
   /* Ensures text doesn't appear before animation */
   letter-spacing: 0.1rem;
   /* Spacing effect */
-
 }
 
 .cursor {
   font-weight: 500;
   border-right: 2px solid var(--roxo-claro);
   margin-left: 2px;
-
 }
 
 .blinking {

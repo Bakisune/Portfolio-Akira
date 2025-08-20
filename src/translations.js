@@ -1,4 +1,5 @@
 export const translations = {
+  // Tradução para o componente da barra lateral
   HeaderResumo: {
     en: {
       home: "Home",
@@ -227,7 +228,7 @@ export const translations = {
     en: {
       title: "Specialties",
       description:
-        "Here you can learn more about my core competencies. Click each card for more details!",
+        'Here you can learn more about my core competencies.<br> Click each card for more details!',
       altStar: "Star Icon",
       cards: {
         card1: {
@@ -247,7 +248,7 @@ export const translations = {
     pt: {
       title: "Especialidades",
       description:
-        "Aqui você pode aprender mais sobre minhas competências principais. Clique em cada cartão para mais detalhes!",
+        'Aqui você pode aprender mais sobre minhas competências principais.<br> Clique em cada cartão para mais detalhes!',
       altStar: "Ícone de Estrela",
       cards: {
         card1: {
@@ -269,7 +270,7 @@ export const translations = {
     es: {
       title: "Especialidades",
       description:
-        "Aquí puedes aprender más sobre mis competencias principales. ¡Haz clic en cada tarjeta para más detalles!",
+        'Aquí puedes aprender más sobre mis competencias principales.<br> ¡Haz clic en cada tarjeta para más detalles!',
       altStar: "Icono de Estrella",
       cards: {
         card1: {
@@ -292,79 +293,67 @@ export const translations = {
   },
   ContactosResumo: {
     en: {
-      title: "Contact Me",
-      description:
-        "Feel free to reach out!<br>Let's build something great together.",
-      altIcon: "Contact icon",
-      altYumi:
-        "Yumi Mail Carrier Chibi drawing. She's a half-orange, half-burgundy fox. Her fur on her belly, neck, and lower face is beige. In this drawing, she's carrying a side bag with letters inside, and two letters have fallen out of the bag and are flying toward the ground. Yumi has a silly face and is sticking out her tongue.",
+      title: 'Contact',
+      altIcon: 'Contact Icon',
+      description: 'If you have a project you\'d like to discuss,<br> please feel free to send me a message.',
       form: {
-        namePlaceholder: "Name",
-        emailPlaceholder: "E-mail",
-        messagePlaceholder: "How can I help you?",
-        sendingText: "Sending...",
-        sendText: "Send",
-        success: "Message sent successfully!",
-        error: "Error sending. Check the fields.",
-        genericError: "Error sending message. Please try again.",
-        connectionError: "A connection error occurred. Please try again.",
+        namePlaceholder: 'Your name',
+        emailPlaceholder: 'Your email',
+        messagePlaceholder: 'Your message',
+        sendingText: 'Sending...',
+        success: 'Message sent successfully!',
+        error: 'Error sending. Please check your information.',
+        genericError: 'Something went wrong. Please try again later.',
+        connectionError: 'Connection error. Check your network and try again.'
       },
       buttons: {
-        telegramAlt: "Telegram button",
-        vgenAlt: "Vgen button",
-        sendIconAlt: "Airplane icon",
-      },
+        telegramAlt: 'Telegram link',
+        sendText: 'Send',
+        sendIconAlt: 'Send Icon',
+        vgenAlt: 'VGen link'
+      }
     },
     pt: {
-      title: "Contato",
-      description:
-        "Sinta-se à vontade para entrar em contato!<br>Vamos construir algo incrível juntos.",
-      altIcon: "Ícone de Contato",
-      altYumi:
-        "Desenho da Yumi, uma raposa chibi carteira. Ela é metade laranja e metade borgonha. Seu pelo na barriga, pescoço e parte inferior do rosto é bege. Neste desenho, ela está carregando uma bolsa lateral com cartas dentro, e duas cartas caíram da bolsa e estão voando em direção ao chão. Yumi tem uma cara boba e está mostrando a língua.",
+      title: 'Contato',
+      altIcon: 'Ícone de Contato',
+      description: 'Se tem um projeto que gostaria de discutir,<br> sinta-se à vontade para me enviar uma mensagem.',
       form: {
-        namePlaceholder: "Nome",
-        emailPlaceholder: "E-mail",
-        messagePlaceholder: "Como posso te ajudar?",
-        sendingText: "Enviando...",
-        sendText: "Enviar",
-        success: "Mensagem enviada com sucesso!",
-        error: "Erro ao enviar. Verifique os campos.",
-        genericError: "Erro ao enviar mensagem. Por favor, tente novamente.",
-        connectionError:
-          "Ocorreu um erro de conexão. Por favor, tente novamente.",
+        namePlaceholder: 'Seu nome',
+        emailPlaceholder: 'Seu email',
+        messagePlaceholder: 'Sua mensagem',
+        sendingText: 'Enviando...',
+        success: 'Mensagem enviada com sucesso!',
+        error: 'Erro ao enviar. Por favor, verifique as informações.',
+        genericError: 'Algo deu errado. Tente novamente mais tarde.',
+        connectionError: 'Erro de conexão. Verifique sua rede e tente novamente.'
       },
       buttons: {
-        telegramAlt: "Botão do Telegram",
-        vgenAlt: "Botão Vgen",
-        sendIconAlt: "Ícone de avião",
-      },
+        telegramAlt: 'Link para Telegram',
+        sendText: 'Enviar',
+        sendIconAlt: 'Ícone de Enviar',
+        vgenAlt: 'Link para VGen'
+      }
     },
     es: {
-      title: "Contacto",
-      description:
-        "¡No dudes en contactarme!<br>Construyamos algo grandioso juntos.",
-      altIcon: "Icono de Contacto",
-      altYumi:
-        "Dibujo de Yumi, una zorra chibi cartero. Es mitad naranja y mitad burdeos. Su pelaje en el vientre, cuello y parte inferior de la cara es beige. En este dibujo, lleva un bolso lateral con cartas dentro, y dos cartas se han caído del bolso y están volando hacia el suelo. Yumi tiene una cara tonta y está sacando la lengua.",
+      title: 'Contacto',
+      altIcon: 'Icono de Contacto',
+      description: 'Si tienes un proyecto que te gustaría discutir,<br> no dudes en enviarme un mensaje.',
       form: {
-        namePlaceholder: "Nombre",
-        emailPlaceholder: "Correo electrónico",
-        messagePlaceholder: "¿Cómo puedo ayudarte?",
-        sendingText: "Enviando...",
-        sendText: "Enviar",
-        success: "¡Mensaje enviado con éxito!",
-        error: "Error al enviar. Verifique los campos.",
-        genericError:
-          "Error al enviar el mensaje. Por favor, inténtalo de nuevo.",
-        connectionError:
-          "Ocurrió un error de conexión. Por favor, inténtalo de nuevo.",
+        namePlaceholder: 'Tu nombre',
+        emailPlaceholder: 'Tu correo electrónico',
+        messagePlaceholder: 'Tu mensaje',
+        sendingText: 'Enviando...',
+        success: '¡Mensaje enviado con éxito!',
+        error: 'Error al enviar. Por favor, revisa tu información.',
+        genericError: 'Algo salió mal. Inténtalo de nuevo más tarde.',
+        connectionError: 'Error de conexión. Revisa tu red e inténtalo de nuevo.'
       },
       buttons: {
-        telegramAlt: "Botón de Telegram",
-        vgenAlt: "Botón Vgen",
-        sendIconAlt: "Icono de avión",
-      },
-    },
-  },
+        telegramAlt: 'Enlace a Telegram',
+        sendText: 'Enviar',
+        sendIconAlt: 'Icono de Enviar',
+        vgenAlt: 'Enlace a VGen'
+      }
+    }
+  }
 };

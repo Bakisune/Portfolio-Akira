@@ -6,27 +6,29 @@
                 :class="{ 'animate-shining-image': isSectionVisible }" />
         </div>
         <p class="expertizes-description" :style="{ opacity: textOpacity }">
-            <span class="typewriter-text">{{ typedText }}</span>
+            <!-- A mágica acontece nesta linha! O white-space é aplicado apenas durante a digitação. -->
+            <span class="typewriter-text" :style="{ 'white-space': isTyping ? 'nowrap' : 'normal' }"
+                v-html="typedText"></span>
             <span class="cursor" :class="{ 'blinking': isTyping || isTypingFinished }"></span>
         </p>
         <div class="expertise-cards-container">
             <!-- Card para UX/UI Design -->
             <div class="expertise-card">
-                <router-link to="/soon" class="expertise-card-link" @click.native="playSound"
+                <router-link to="/dev-ux-uidesign" class="expertise-card-link" @click.native="playSound"
                     :aria-label="translated.cards.card1.ariaLabel">
                     {{ translated.cards.card1.text }}
                 </router-link>
             </div>
             <!-- Card para Illustration -->
             <div class="expertise-card">
-                <router-link to="/soon" class="expertise-card-link" @click.native="playSound"
+                <router-link to="/illustration" class="expertise-card-link" @click.native="playSound"
                     :aria-label="translated.cards.card2.ariaLabel">
                     {{ translated.cards.card2.text }}
                 </router-link>
             </div>
             <!-- Card para Game Dev and Design -->
             <div class="expertise-card">
-                <router-link to="/soon" class="expertise-card-link" @click.native="playSound"
+                <router-link to="/gamedev-design" class="expertise-card-link" @click.native="playSound"
                     :aria-label="translated.cards.card3.ariaLabel">
                     {{ translated.cards.card3.text }}
                 </router-link>
@@ -37,7 +39,7 @@
 
 <script setup>
 import { ref, onMounted, onUnmounted, computed, watch } from 'vue';
-import { Howl } from 'howler';
+import { Howl, Howler } from 'howler';
 import { translations } from '../../translations';
 import { activeLanguage } from '../../languageStore';
 
@@ -45,98 +47,138 @@ const specialtiesSection = ref(null);
 const isSectionVisible = ref(false);
 let observer;
 
-// Reactive state for the typewriter effect
+// Estado reativo para o efeito de máquina de escrever
 const typedText = ref('');
 const isTyping = ref(false);
 const isTypingFinished = ref(false);
-const textOpacity = ref(1); // New state to control opacity
-let loopRunning = ref(false); // New state to control the typing loop
+const textOpacity = ref(1);
+const runId = ref(0);
 
-// Reactive translation data
+// Estado para o áudio
+const isSoundLoaded = ref(false);
+
+// Dados de tradução reativos
 const translated = computed(() => {
     return translations.ExpertizesResumo[activeLanguage.value] || translations.ExpertizesResumo.pt;
 });
 
-// The full text to be typed, now dependent on the active language
+// O texto completo a ser digitado, agora dependente do idioma ativo
 const fullText = computed(() => translated.value.description);
 
-// Function to type text character by character
-const typeText = async () => {
+// Configuração e carregamento do áudio com Howler.js
+const clickSound = new Howl({
+    src: ['/audios/game.mp3'],
+    onload: () => {
+        isSoundLoaded.value = true;
+        console.log('Áudio carregado com sucesso!');
+    },
+    onloaderror: (id, error) => {
+        console.error('Falha ao carregar o áudio:', error);
+    }
+});
+
+const playSound = async () => {
+    // Tenta reiniciar o contexto de áudio se ele estiver suspenso.
+    // Isso é necessário para contornar as políticas de reprodução automática do navegador.
+    if (Howler.ctx.state === 'suspended') {
+        console.log('Contexto de áudio suspenso, tentando reiniciar...');
+        try {
+            await Howler.ctx.resume();
+            console.log('Contexto de áudio reiniciado com sucesso!');
+        } catch (e) {
+            console.error('Falha ao reiniciar o contexto de áudio:', e);
+            return;
+        }
+    }
+
+    // Toca o som apenas se ele estiver carregado e o contexto estiver ativo
+    if (isSoundLoaded.value) {
+        clickSound.play();
+    } else {
+        console.warn('O áudio de clique não pôde ser tocado porque ainda não foi carregado.');
+    }
+};
+
+// Função para digitar o texto, agora compatível com tags HTML como <br>
+const typeText = async (currentRunId) => {
     isTyping.value = true;
     typedText.value = '';
-    for (let i = 0; i < fullText.value.length; i++) {
-        if (!loopRunning.value) return; // Exit if the loop is stopped
-        typedText.value += fullText.value.charAt(i);
-        await new Promise(resolve => setTimeout(resolve, 30)); // Typing speed
+    let i = 0;
+    while (i < fullText.value.length) {
+        if (currentRunId !== runId.value) return;
+        let char = fullText.value.charAt(i);
+        if (char === '<') {
+            const endTagIndex = fullText.value.indexOf('>', i);
+            if (endTagIndex !== -1) {
+                const tag = fullText.value.substring(i, endTagIndex + 1);
+                typedText.value += tag;
+                i = endTagIndex + 1;
+            } else {
+                typedText.value += char;
+                i++;
+            }
+        } else {
+            typedText.value += char;
+            i++;
+            await new Promise(resolve => setTimeout(resolve, 30));
+        }
     }
     isTyping.value = false;
     isTypingFinished.value = true;
 };
 
-// Function to erase text character by character
-const eraseText = async () => {
+// Função para apagar o texto caractere por caractere
+const eraseText = async (currentRunId) => {
     isTyping.value = true;
     while (typedText.value.length > 0) {
-        if (!loopRunning.value) return; // Exit if the loop is stopped
-        typedText.value = typedText.value.slice(0, -1);
-        await new Promise(resolve => setTimeout(resolve, 30)); // Erasing speed
+        if (currentRunId !== runId.value) return;
+        if (typedText.value.endsWith('>')) {
+            const startTagIndex = typedText.value.lastIndexOf('<');
+            if (startTagIndex !== -1) {
+                typedText.value = typedText.value.substring(0, startTagIndex);
+            } else {
+                typedText.value = typedText.value.slice(0, -1);
+            }
+        } else {
+            typedText.value = typedText.value.slice(0, -1);
+        }
+        await new Promise(resolve => setTimeout(resolve, 30));
     }
     isTyping.value = false;
 };
 
-// Function to control the typing loop
+// Função para controlar o loop de digitação
 const startTypingLoop = async () => {
-    loopRunning.value = true;
-    while (loopRunning.value) {
-        await typeText();
-        if (!loopRunning.value) break; // Check again to be safe
-        await new Promise(resolve => setTimeout(resolve, 3000)); // Pause to read the text
-        if (!loopRunning.value) break;
-        await eraseText();
-        if (!loopRunning.value) break;
-        await new Promise(resolve => setTimeout(resolve, 500)); // Pause before typing the next phrase
+    runId.value++;
+    const currentRunId = runId.value;
+
+    while (currentRunId === runId.value) {
+        await typeText(currentRunId);
+        if (currentRunId !== runId.value) break;
+        await new Promise(resolve => setTimeout(resolve, 3000));
+        if (currentRunId !== runId.value) break;
+        await eraseText(currentRunId);
+        if (currentRunId !== runId.value) break;
+        await new Promise(resolve => setTimeout(resolve, 500));
     }
 };
 
-const clickSound = new Howl({
-    src: ['/audios/game.mp3'],
-    html5: true
-});
-
-const playSound = () => {
-    if (clickSound && clickSound.state() === 'loaded') {
-        clickSound.play();
-    } else {
-        console.warn('O áudio de clique não pôde ser tocado. Pode não ter sido carregado.');
-    }
-};
-
-// Watch for language changes and handle the transition
+// Observar mudanças de idioma e lidar com a transição
 watch(fullText, async (newText, oldText) => {
     if (newText !== oldText) {
-        // Stop the old loop
-        loopRunning.value = false;
+        runId.value++;
         isTyping.value = false;
         isTypingFinished.value = false;
-
-        // Fade out
-        textOpacity.value = 0;
-
-        // Wait for the fade-out to complete before resetting the text
-        await new Promise(resolve => setTimeout(resolve, 500));
-
-        // Reset text and start a new loop
         typedText.value = '';
+        textOpacity.value = 0;
+        await new Promise(resolve => setTimeout(resolve, 500));
         textOpacity.value = 1;
         startTypingLoop();
     }
 });
 
 onMounted(() => {
-    // Start the typing loop when the component is mounted
     startTypingLoop();
-
-    // IntersectionObserver for line and star animations
     if (specialtiesSection.value) {
         observer = new IntersectionObserver(
             ([entry]) => {
@@ -162,7 +204,6 @@ onUnmounted(() => {
 /* Estilos para a animação de typewriter */
 .typewriter-text {
     overflow: hidden;
-    white-space: nowrap;
     letter-spacing: 0.1rem;
 }
 
@@ -281,7 +322,6 @@ onUnmounted(() => {
     left: 50%;
     transform: translateX(-50%);
     transition: color 0.3s ease;
-    white-space: nowrap;
     width: 100%;
     height: 100%;
     display: flex;

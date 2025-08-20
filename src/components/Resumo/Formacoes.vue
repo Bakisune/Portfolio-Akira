@@ -3,41 +3,41 @@
     <div class="container-content">
       <div class="title-with-image">
         <h2 class="education-title" :class="{ 'animate-title-line': isSectionVisible }">
-          Academic Background
+          {{ translated.title }}
         </h2>
-        <img :src="starUrl" alt="Star Icon" class="section-image"
+        <img :src="starUrl" :alt="translated.altStar" class="section-image"
           :class="{ 'animate-shining-image': isSectionVisible }" />
       </div>
 
       <div class="timeline-wrapper">
         <div class="timeline-item timeline-item-even">
-          <img :src="cardUrl" alt="Card Icon" class="card-icon"
+          <img :src="cardUrl" :alt="translated.altCard" class="card-icon"
             :class="{ 'animate-card-entrance': isSectionVisible }" />
           <div class="timeline-dot"></div>
           <div class="timeline-content">
-            <p class="course-title">2018-2020</p>
-            <p class="institution-info">• Design e Web Design</p>
-            <p class="institution-local"> ZION-RJ</p>
+            <p class="course-title">{{ translated.timeline.item1.title }}</p>
+            <p class="institution-info">{{ translated.timeline.item1.course }}</p>
+            <p class="institution-local">{{ translated.timeline.item1.institution }}</p>
           </div>
         </div>
         <div class="timeline-item timeline-item-odd">
-          <img :src="cardUrl" alt="Card Icon" class="card-icon"
+          <img :src="cardUrl" :alt="translated.altCard" class="card-icon"
             :class="{ 'animate-card-entrance': isSectionVisible }" />
           <div class="timeline-dot"></div>
           <div class="timeline-content">
-            <p class="course-title">2022-Current</p>
-            <p class="institution-info">• Bachelor in Software Engineering</p>
-            <p class="institution-local"> UNINTER-MA</p>
+            <p class="course-title">{{ translated.timeline.item2.title }}</p>
+            <p class="institution-info">{{ translated.timeline.item2.course }}</p>
+            <p class="institution-local">{{ translated.timeline.item2.institution }}</p>
           </div>
         </div>
         <div class="timeline-item timeline-item-even">
-          <img :src="cardUrl" alt="Card Icon" class="card-icon"
+          <img :src="cardUrl" :alt="translated.altCard" class="card-icon"
             :class="{ 'animate-card-entrance': isSectionVisible }" />
           <div class="timeline-dot"></div>
           <div class="timeline-content">
-            <p class="course-title">2022-Current</p>
-            <p class="institution-info">• Jovem Tech Program</p>
-            <p class="institution-local"> PULSE-MA</p>
+            <p class="course-title">{{ translated.timeline.item3.title }}</p>
+            <p class="institution-info">{{ translated.timeline.item3.course }}</p>
+            <p class="institution-local">{{ translated.timeline.item3.institution }}</p>
           </div>
         </div>
       </div>
@@ -46,7 +46,9 @@
 </template>
 
 <script setup>
-import { ref, onMounted, onUnmounted } from 'vue';
+import { ref, onMounted, onUnmounted, computed } from 'vue';
+import { translations } from '../../translations'; // Importa a nova tradução
+import { activeLanguage } from '../../languageStore'; // Importa o estado global de idioma
 
 // Mantendo os caminhos de imagem originais
 import starUrl from '../../assets/star.svg';
@@ -55,6 +57,11 @@ import cardUrl from '../../assets/imagemcard.svg';
 const educationSection = ref(null);
 const isSectionVisible = ref(false);
 let observer;
+
+// Lógica de tradução que agora depende do estado global
+const translated = computed(() => {
+  return translations.EducationResumo[activeLanguage.value] || translations.EducationResumo.pt;
+});
 
 onMounted(() => {
   if (educationSection.value) {
@@ -81,13 +88,9 @@ onUnmounted(() => {
 });
 </script>
 
-<script>
-export default {
-  name: 'Formacoes',
-};
-</script>
-
 <style scoped>
+/* Removemos os estilos relacionados aos botões de troca de idioma, pois não são mais necessários */
+
 :root {
   --amarelo: #ffc107;
 }

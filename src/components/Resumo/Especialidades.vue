@@ -1,31 +1,34 @@
 <template>
     <section class="expertizes" ref="specialtiesSection">
         <div class="title-with-image">
-            <h2 class="about-title" :class="{ 'animate-title-line': isSectionVisible }">Specialities</h2>
-            <img src="../../assets/especialidades.svg" alt="Star Icon" class="section-image"
+            <h2 class="about-title" :class="{ 'animate-title-line': isSectionVisible }">{{ translated.title }}</h2>
+            <img src="../../assets/especialidades.svg" :alt="translated.altStar" class="section-image"
                 :class="{ 'animate-shining-image': isSectionVisible }" />
         </div>
-        <p class="expertizes-description">
+        <p class="expertizes-description" :style="{ opacity: textOpacity }">
             <span class="typewriter-text">{{ typedText }}</span>
             <span class="cursor" :class="{ 'blinking': isTyping || isTypingFinished }"></span>
         </p>
         <div class="expertise-cards-container">
             <!-- Card para UX/UI Design -->
             <div class="expertise-card">
-                <router-link to="/soon" class="expertise-card-link" @click.native="playSound">
-                    Programming and UX/UI Design
+                <router-link to="/soon" class="expertise-card-link" @click.native="playSound"
+                    :aria-label="translated.cards.card1.ariaLabel">
+                    {{ translated.cards.card1.text }}
                 </router-link>
             </div>
             <!-- Card para Illustration -->
             <div class="expertise-card">
-                <router-link to="/soon" class="expertise-card-link" @click.native="playSound">
-                    Illustration and Animation
+                <router-link to="/soon" class="expertise-card-link" @click.native="playSound"
+                    :aria-label="translated.cards.card2.ariaLabel">
+                    {{ translated.cards.card2.text }}
                 </router-link>
             </div>
             <!-- Card para Game Dev and Design -->
             <div class="expertise-card">
-                <router-link to="/soon" class="expertise-card-link" @click.native="playSound">
-                    Game Dev and Design
+                <router-link to="/soon" class="expertise-card-link" @click.native="playSound"
+                    :aria-label="translated.cards.card3.ariaLabel">
+                    {{ translated.cards.card3.text }}
                 </router-link>
             </div>
         </div>
@@ -33,55 +36,65 @@
 </template>
 
 <script setup>
-import { ref, onMounted, onUnmounted } from 'vue';
+import { ref, onMounted, onUnmounted, computed, watch } from 'vue';
 import { Howl } from 'howler';
+import { translations } from '../../translations';
+import { activeLanguage } from '../../languageStore';
 
 const specialtiesSection = ref(null);
 const isSectionVisible = ref(false);
 let observer;
 
-// Dados e lógica para a animação de máquina de escrever
-const fullText = "Here you can learn more about my core competencies. Click each card for more details!";
+// Reactive state for the typewriter effect
 const typedText = ref('');
 const isTyping = ref(false);
 const isTypingFinished = ref(false);
+const textOpacity = ref(1); // New state to control opacity
+let loopRunning = ref(false); // New state to control the typing loop
 
-// Função que digita o texto, caractere por caractere
+// Reactive translation data
+const translated = computed(() => {
+    return translations.ExpertizesResumo[activeLanguage.value] || translations.ExpertizesResumo.pt;
+});
+
+// The full text to be typed, now dependent on the active language
+const fullText = computed(() => translated.value.description);
+
+// Function to type text character by character
 const typeText = async () => {
     isTyping.value = true;
     typedText.value = '';
-    for (let i = 0; i < fullText.length; i++) {
-        typedText.value += fullText.charAt(i);
-        await new Promise(resolve => setTimeout(resolve, 30)); // Velocidade da digitação
+    for (let i = 0; i < fullText.value.length; i++) {
+        if (!loopRunning.value) return; // Exit if the loop is stopped
+        typedText.value += fullText.value.charAt(i);
+        await new Promise(resolve => setTimeout(resolve, 30)); // Typing speed
     }
     isTyping.value = false;
     isTypingFinished.value = true;
 };
 
-// Função que apaga o texto, caractere por caractere
+// Function to erase text character by character
 const eraseText = async () => {
     isTyping.value = true;
     while (typedText.value.length > 0) {
+        if (!loopRunning.value) return; // Exit if the loop is stopped
         typedText.value = typedText.value.slice(0, -1);
-        await new Promise(resolve => setTimeout(resolve, 30)); // Velocidade da exclusão
+        await new Promise(resolve => setTimeout(resolve, 30)); // Erasing speed
     }
     isTyping.value = false;
 };
 
-// Função que controla o loop de digitação
+// Function to control the typing loop
 const startTypingLoop = async () => {
-    while (true) {
-        // 1. Digita o texto
+    loopRunning.value = true;
+    while (loopRunning.value) {
         await typeText();
-
-        // 2. Faz uma pausa para que a frase seja lida
-        await new Promise(resolve => setTimeout(resolve, 3000));
-
-        // 3. Apaga a linha digitada, caractere por caractere
+        if (!loopRunning.value) break; // Check again to be safe
+        await new Promise(resolve => setTimeout(resolve, 3000)); // Pause to read the text
+        if (!loopRunning.value) break;
         await eraseText();
-
-        // 4. Faz uma pausa curta antes de digitar a próxima
-        await new Promise(resolve => setTimeout(resolve, 500));
+        if (!loopRunning.value) break;
+        await new Promise(resolve => setTimeout(resolve, 500)); // Pause before typing the next phrase
     }
 };
 
@@ -98,11 +111,32 @@ const playSound = () => {
     }
 };
 
+// Watch for language changes and handle the transition
+watch(fullText, async (newText, oldText) => {
+    if (newText !== oldText) {
+        // Stop the old loop
+        loopRunning.value = false;
+        isTyping.value = false;
+        isTypingFinished.value = false;
+
+        // Fade out
+        textOpacity.value = 0;
+
+        // Wait for the fade-out to complete before resetting the text
+        await new Promise(resolve => setTimeout(resolve, 500));
+
+        // Reset text and start a new loop
+        typedText.value = '';
+        textOpacity.value = 1;
+        startTypingLoop();
+    }
+});
+
 onMounted(() => {
-    // Inicia o loop de digitação assim que o componente é montado.
+    // Start the typing loop when the component is mounted
     startTypingLoop();
 
-    // O IntersectionObserver continua sendo usado apenas para as animações de linha e estrela.
+    // IntersectionObserver for line and star animations
     if (specialtiesSection.value) {
         observer = new IntersectionObserver(
             ([entry]) => {
@@ -186,6 +220,8 @@ onUnmounted(() => {
     font-size: 1.1em;
     line-height: 1.6;
     opacity: 0.8;
+    transition: opacity 0.5s ease-in-out;
+    /* Adicionado para a transição de opacidade */
 }
 
 .about-title {

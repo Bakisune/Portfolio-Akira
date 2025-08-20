@@ -1,32 +1,28 @@
-<script>
+<script setup>
+import { computed } from 'vue';
 import BackgroundImage from '../../assets/Teste.png';
+import { translations } from '../../translations';
+import { activeLanguage } from '../../languageStore';
 
-export default {
-  name: 'HeaderResumo',
-  data() {
-    return {
-      backgroundImageUrl: BackgroundImage,
-    };
-  }
-};
+const translatedContent = computed(() => {
+  return translations.HeaderResumo[activeLanguage.value] || translations.HeaderResumo.en;
+});
 </script>
 
 <template>
   <header class="header">
     <div class="left-strip"></div>
-    <div class="background-image" :style="{ backgroundImage: 'url(' + backgroundImageUrl + ')' }" alt="The Character Drawing: Bakisune, a light-skinned character with medium-length dark brown hair (hair slightly reaching the shoulders), and the inner part
-of theirs hair is dyed purple. Theirs eyes are yellow. Bakisune wears a lilac dress shirt, a black tie, and black belts on theirs shoulders.
-The drawing is only from the bust up, and Bakisune makes an O with theirs right hand in front of theirs right eye. The O in the word Portfolio is inside the O Bakisune makes with theirs hand.
-Behind Bakisune is a dark purple background. "></div>
+    <div class="background-image" :style="{ backgroundImage: 'url(' + BackgroundImage + ')' }"
+      :alt="translatedContent.altBackground"></div>
 
-    <!-- O logo agora é um elemento `div` que será estilizado via CSS -->
-    <div class="logo"></div>
+    <div class="logo" :alt="translatedContent.altLogo">
+    </div>
 
     <div class="content">
       <p class="name">Akira Alcantara</p>
-      <h1 class="title-part1">PORT</h1>
-      <h1 class="title-part2">FOLIO</h1>
-      <p class="skills">Dev • UX/UI Designer • Game Designer • Illustrator • Animator</p>
+      <h1 class="title-part1">{{ translatedContent.titlePart1 }}</h1>
+      <h1 class="title-part2">{{ translatedContent.titlePart2 }}</h1>
+      <p class="skills">{{ translatedContent.skillsText }}</p>
     </div>
   </header>
 </template>

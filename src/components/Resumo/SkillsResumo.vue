@@ -3,13 +3,11 @@
         <section class="skills-section" ref="skillsSection">
             <div class="content-container">
                 <div class="skills-title-container">
-                    <h2 class="skills-title">Skills</h2>
+                    <h2 class="skills-title">{{ translatedContent.title }}</h2>
                     <div class="skills-line">
-                        <img class="linha-skill" :src="linhaSkillUrl"
-                            alt="linha decorativa roxo claro que tem uma animação ao aparecer na tela dela sendo pequena e aumentando de tamanho até ficar um pouco mais larga que o título"
+                        <img class="linha-skill" :src="linhaSkillUrl" :alt="translatedContent.lineAlt"
                             :class="{ 'animate-linha': isSectionVisible }" />
-                        <img class="estrelas-skill" :src="estrelasSkillUrl"
-                            alt="Estrelas decorativas, são 3 estrelas na cor roxo claro que aparecem de baixo e vai para o meio da linha decorativa abaixo do título Skills por meio de uma animação"
+                        <img class="estrelas-skill" :src="estrelasSkillUrl" :alt="translatedContent.starsAlt"
                             :class="{ 'animate-estrelas': isSectionVisible }" />
                     </div>
                 </div>
@@ -17,56 +15,56 @@
                 <div class="skills-grid-container">
                     <div class="skill-card">
                         <a>
-                            <img :src="htmlIconUrl" alt="HTML5 Logo" class="skill-logo-1" />
+                            <img :src="htmlIconUrl" :alt="translatedContent.html.alt" class="skill-logo-1" />
                             <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/html5/html5-original.svg"
                                 class="skill-logo" />
-                            <p class="skill-name">HTML</p>
+                            <p class="skill-name">{{ translatedContent.html.name }}</p>
                         </a>
                     </div>
                     <div class="skill-card">
                         <a>
-                            <img :src="cssIconUrl" alt="CSS3 logo" class="skill-logo-1" />
+                            <img :src="cssIconUrl" :alt="translatedContent.css.alt" class="skill-logo-1" />
                             <img :src="cssLogoUrl" class="skill-logo-3" />
-                            <p class="skill-name">CSS</p>
+                            <p class="skill-name">{{ translatedContent.css.name }}</p>
                         </a>
                     </div>
                     <div class="skill-card">
                         <a>
-                            <img :src="jsIconUrl" alt="JavaScript logo" class="skill-logo-1" />
+                            <img :src="jsIconUrl" :alt="translatedContent.javascript.alt" class="skill-logo-1" />
                             <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg"
                                 class="skill-logo" />
-                            <p class="skill-name">JavaScript</p>
+                            <p class="skill-name">{{ translatedContent.javascript.name }}</p>
                         </a>
                     </div>
                     <div class="skill-card">
                         <a>
-                            <img :src="tsIconUrl" alt="TypeScript logo" class="skill-logo-1" />
+                            <img :src="tsIconUrl" :alt="translatedContent.typescript.alt" class="skill-logo-1" />
                             <img :src="tsLogoUrl" class="skill-logo-3" />
-                            <p class="skill-name">TypeScript</p>
+                            <p class="skill-name">{{ translatedContent.typescript.name }}</p>
                         </a>
                     </div>
                     <div class="skill-card">
                         <a>
-                            <img :src="reactIconUrl" alt="React logo" class="skill-logo-1" />
+                            <img :src="reactIconUrl" :alt="translatedContent.react.alt" class="skill-logo-1" />
                             <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg"
                                 class="skill-logo" />
-                            <p class="skill-name">React</p>
+                            <p class="skill-name">{{ translatedContent.react.name }}</p>
                         </a>
                     </div>
                     <div class="skill-card">
                         <a>
-                            <img :src="vueIconUrl" alt="Vue.js logo" class="skill-logo-1" />
+                            <img :src="vueIconUrl" :alt="translatedContent.vue.alt" class="skill-logo-1" />
                             <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/vuejs/vuejs-original.svg"
                                 class="skill-logo" />
-                            <p class="skill-name">Vue.js</p>
+                            <p class="skill-name">{{ translatedContent.vue.name }}</p>
                         </a>
                     </div>
                     <div class="skill-card">
                         <a>
-                            <img :src="bootstrapIconUrl" alt="Bootstrap logo" class="skill-logo-1" />
+                            <img :src="bootstrapIconUrl" :alt="translatedContent.bootstrap.alt" class="skill-logo-1" />
                             <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/bootstrap/bootstrap-original.svg"
                                 class="skill-logo-2" />
-                            <p class="skill-name">Bootstrap</p>
+                            <p class="skill-name">{{ translatedContent.bootstrap.name }}</p>
                         </a>
                     </div>
                 </div>
@@ -74,55 +72,56 @@
                 <div class="skills-grid-container">
                     <div class="skill-card python-card">
                         <a>
-                            <img :src="pythonIconUrl" alt="Python logo" class="skill-logo-1" />
+                            <img :src="pythonIconUrl" :alt="translatedContent.python.alt" class="skill-logo-1" />
                             <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original.svg"
                                 class="skill-logo-2" />
-                            <p class="skill-name">Python</p>
+                            <p class="skill-name">{{ translatedContent.python.name }}</p>
                         </a>
                     </div>
                     <div class="skill-card">
                         <a>
-                            <img :src="csharpIconUrl" alt="C# logo" class="skill-logo-1" />
+                            <img :src="csharpIconUrl" :alt="translatedContent.csharp.alt" class="skill-logo-1" />
                             <img :src="csharpLogoUrl" class="skill-logo-3" />
-                            <p class="skill-name">C#</p>
+                            <p class="skill-name">{{ translatedContent.csharp.name }}</p>
                         </a>
                     </div>
                     <div class="skill-card">
                         <a>
-                            <img :src="mysqlIconUrl" alt="MySQL logo" class="skill-logo-1" />
+                            <img :src="mysqlIconUrl" :alt="translatedContent.mysql.alt" class="skill-logo-1" />
                             <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mysql/mysql-original.svg"
                                 class="skill-logo" />
-                            <p class="skill-name">MySQL</p>
+                            <p class="skill-name">{{ translatedContent.mysql.name }}</p>
                         </a>
                     </div>
                     <div class="skill-card">
                         <a>
-                            <img :src="figmaIconUrl" alt="Figma logo" class="skill-logo-1" />
+                            <img :src="figmaIconUrl" :alt="translatedContent.figma.alt" class="skill-logo-1" />
                             <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/figma/figma-original.svg"
                                 class="skill-logo" />
-                            <p class="skill-name">Figma</p>
+                            <p class="skill-name">{{ translatedContent.figma.name }}</p>
                         </a>
                     </div>
                     <div class="skill-card">
                         <a>
-                            <img :src="gitIconUrl" alt="Git logo" class="skill-logo-1" />
+                            <img :src="gitIconUrl" :alt="translatedContent.git.alt" class="skill-logo-1" />
                             <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/git/git-original.svg"
                                 class="skill-logo" />
-                            <p class="skill-name">Git</p>
+                            <p class="skill-name">{{ translatedContent.git.name }}</p>
                         </a>
                     </div>
                     <div class="skill-card">
                         <a>
-                            <img :src="photoshopIconUrl" alt="Photoshop logo" class="skill-logo-1" />
+                            <img :src="photoshopIconUrl" :alt="translatedContent.photoshop.alt" class="skill-logo-1" />
                             <img :src="psLogoUrl" class="skill-logo-3" />
-                            <p class="skill-name">Photoshop</p>
+                            <p class="skill-name">{{ translatedContent.photoshop.name }}</p>
                         </a>
                     </div>
                     <div class="skill-card">
                         <a>
-                            <img :src="illustratorIconUrl" alt="Illustrator logo" class="skill-logo-1" />
+                            <img :src="illustratorIconUrl" :alt="translatedContent.illustrator.alt"
+                                class="skill-logo-1" />
                             <img :src="aiLogoUrl" class="skill-logo-3" />
-                            <p class="skill-name">Illustrator</p>
+                            <p class="skill-name">{{ translatedContent.illustrator.name }}</p>
                         </a>
                     </div>
                 </div>
@@ -130,16 +129,17 @@
                 <div class="skills-last-row">
                     <div class="skill-card">
                         <a>
-                            <img :src="clipStudioIconUrl" alt="Clip Studio Paint logo" class="skill-logo-1" />
-                            <img :src="cspLogoWhiteUrl" alt="Clip Studio Paint logo" class="skill-logo-3" />
-                            <p class="skill-name">ClipStudio</p>
+                            <img :src="clipStudioIconUrl" :alt="translatedContent.clipStudio.alt"
+                                class="skill-logo-1" />
+                            <img :src="cspLogoWhiteUrl" :alt="translatedContent.clipStudio.alt" class="skill-logo-3" />
+                            <p class="skill-name">{{ translatedContent.clipStudio.name }}</p>
                         </a>
                     </div>
                     <div class="skill-card">
                         <a>
-                            <img :src="gameMakerIconUrl" alt="GameMaker logo" class="skill-logo-1" />
-                            <img :src="gameMakerLogoUrl" alt="GameMaker logo" class="skill-logo-3" />
-                            <p class="skill-name">GameMaker</p>
+                            <img :src="gameMakerIconUrl" :alt="translatedContent.gameMaker.alt" class="skill-logo-1" />
+                            <img :src="gameMakerLogoUrl" :alt="translatedContent.gameMaker.alt" class="skill-logo-3" />
+                            <p class="skill-name">{{ translatedContent.gameMaker.name }}</p>
                         </a>
                     </div>
                 </div>
@@ -149,7 +149,10 @@
 </template>
 
 <script setup>
-import { ref, onMounted, onUnmounted } from 'vue';
+import { ref, onMounted, onUnmounted, computed } from 'vue';
+import { translations } from '../../translations';
+import { activeLanguage } from '../../languageStore';
+
 import linhaSkillUrl from '../../assets/LinhaSkills.svg';
 import estrelasSkillUrl from '../../assets/estrelasSkills.svg';
 import htmlIconUrl from '../../assets/HTML.svg';
@@ -180,6 +183,10 @@ const skillsSection = ref(null);
 const isSectionVisible = ref(false);
 let observer;
 
+const translatedContent = computed(() => {
+    return translations.SkillsResumo[activeLanguage.value] || translations.SkillsResumo.en;
+});
+
 onMounted(() => {
     if (skillsSection.value) {
         observer = new IntersectionObserver(
@@ -197,12 +204,6 @@ onUnmounted(() => {
         observer.disconnect();
     }
 });
-</script>
-
-<script>
-export default {
-    name: 'SkillsResumo',
-};
 </script>
 
 <style scoped lang="scss">

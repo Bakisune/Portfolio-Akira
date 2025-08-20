@@ -1,59 +1,62 @@
 <template>
   <div class="page-container" ref="contactSection">
     <div class="contact-title-container">
-      <h1 class="contact-title">Contact Me</h1>
-      <img src="../assets/Contatos.png" alt="Contact icon" class="contact-title-icon"
+      <h1 class="contact-title">{{ translated.title }}</h1>
+      <img src="../assets/Contatos.png" :alt="translated.altIcon" class="contact-title-icon"
         :class="{ 'animate-contact-entrance': isSectionVisible }" />
     </div>
 
     <div class="contact-wrapper">
-      <p class="contact-subtitle">
+      <p class="contact-subtitle" :style="{ opacity: textOpacity }">
         <span class="typewriter-text" v-html="typedText"></span>
         <span class="cursor" :class="{ 'blinking': isTyping || isTypingFinished }"></span>
       </p>
       <form class="contact-form" @submit.prevent="handleSubmit">
         <div class="form-group">
-          <input type="text" v-model="form.name" name="name" placeholder="Name" class="form-input" required />
+          <input type="text" v-model="form.name" name="name" :placeholder="translated.form.namePlaceholder"
+            class="form-input" required />
         </div>
         <div class="form-group">
-          <input type="email" v-model="form.email" name="email" placeholder="E-mail" class="form-input" required />
+          <input type="email" v-model="form.email" name="email" :placeholder="translated.form.emailPlaceholder"
+            class="form-input" required />
         </div>
         <div class="form-group">
-          <textarea v-model="form.message" name="message" placeholder="How can I help you?" class="form-textarea"
-            required></textarea>
+          <textarea v-model="form.message" name="message" :placeholder="translated.form.messagePlaceholder"
+            class="form-textarea" required></textarea>
         </div>
 
         <div class="button-row">
           <a href="https://t.me/bakisune" target="_blank">
-            <button type="button" class="btn-icon" @click="playSocialSound">
-              <img src="../assets/Telegram.svg" alt="Telegram button" class="button-image telegram-icon" />
+            <button type="button" class="btn-icon" @click="playSocialSound"
+              :aria-label="translated.buttons.telegramAlt">
+              <img src="../assets/Telegram.svg" :alt="translated.buttons.telegramAlt"
+                class="button-image telegram-icon" />
             </button>
           </a>
 
           <button type="submit" class="btn-send" :disabled="isSending">
-            {{ isSending ? 'Sending...' : 'Send' }}
-            <img src="../assets/Fill.svg" alt="Airplane icon" class="button-image send-icon" />
+            {{ isSending ? translated.buttons.sendingText : translated.buttons.sendText }}
+            <img src="../assets/Fill.svg" :alt="translated.buttons.sendIconAlt" class="button-image send-icon" />
           </button>
 
           <a href="https://vgen.co/Bakisune" target="_blank">
-            <button type="button" class="btn-icon" @click="playSocialSound">
-              <img src="../assets/VGen.svg" alt="Vgen button" class="button-image vgen-icon" />
+            <button type="button" class="btn-icon" @click="playSocialSound" :aria-label="translated.buttons.vgenAlt">
+              <img src="../assets/VGen.svg" :alt="translated.buttons.vgenAlt" class="button-image vgen-icon" />
             </button>
           </a>
         </div>
         <span id="form-status" class="form-status" :class="statusClass">{{ statusMessage }}</span>
       </form>
     </div>
-    <img src="../assets/TesteYumi.png" alt="Yumi Mail Carrier Chibi drawing. She's a half-orange, half-burgundy fox. Her fur on her belly,
-neck, and lower face is beige. In this drawing, she's carrying a side bag with letters inside, and two letters
-have fallen out of the bag and are flying toward the ground. Yumi has a silly face and is sticking out her tongue."
-      class="contact-side-image">
+    <img src="../assets/TesteYumi.png" :alt="translated.altYumi" class="contact-side-image">
   </div>
 </template>
 
 <script setup>
-import { ref, computed, onMounted, onUnmounted } from 'vue';
+import { ref, computed, onMounted, onUnmounted, watch } from 'vue';
 import { Howl, Howler } from 'howler';
+import { translations } from '../translations';
+import { activeLanguage } from '../languageStore';
 
 const form = ref({
   name: '',
@@ -70,28 +73,54 @@ let observer;
 const sendSuccessSound = ref(null);
 const socialButtonSound = ref(null);
 
-// Dados e lógicas para a animação de máquina de escrever
-const fullText = ["Feel free to reach out!", "Let's build something great together."];
+// Reactive translation data
+const translated = computed(() => {
+  return translations.ContactosResumo[activeLanguage.value] || translations.ContactosResumo.pt;
+});
+
+// Reactive state for the typewriter effect
 const typedText = ref('');
 const isTyping = ref(false);
 const isTypingFinished = ref(false);
+const textOpacity = ref(1);
+let loopRunning = ref(false); // New state to control the typing loop
+
+// The full text to be typed, now dependent on the active language
+const fullText = computed(() => translated.value.description);
 
 // Função que digita o texto, caractere por caractere
 const typeText = async (textToType) => {
   isTyping.value = true;
-  for (let i = 0; i < textToType.length; i++) {
-    typedText.value += textToType.charAt(i);
-    await new Promise(resolve => setTimeout(resolve, 50)); // Velocidade da digitação
+  typedText.value = '';
+  const lines = textToType.split('<br>');
+  for (const line of lines) {
+    if (!loopRunning.value) return; // Exit if the loop is stopped
+    for (let i = 0; i < line.length; i++) {
+      if (!loopRunning.value) return;
+      typedText.value += line.charAt(i);
+      await new Promise(resolve => setTimeout(resolve, 50)); // Velocidade da digitação
+    }
+    if (lines.indexOf(line) < lines.length - 1) {
+      typedText.value += '<br>';
+      await new Promise(resolve => setTimeout(resolve, 50));
+    }
   }
   isTyping.value = false;
+  isTypingFinished.value = true;
 };
 
 // Função que apaga o texto, caractere por caractere
 const eraseText = async () => {
   isTyping.value = true;
   while (typedText.value.length > 0) {
-    // Apaga um caractere de cada vez
-    typedText.value = typedText.value.slice(0, -1);
+    if (!loopRunning.value) return; // Exit if the loop is stopped
+    // Apaga um caractere de cada vez, incluindo a tag <br>
+    const lastChar = typedText.value.slice(-1);
+    if (typedText.value.endsWith('<br>')) {
+      typedText.value = typedText.value.slice(0, -4);
+    } else {
+      typedText.value = typedText.value.slice(0, -1);
+    }
     await new Promise(resolve => setTimeout(resolve, 30)); // Velocidade da exclusão
   }
   isTyping.value = false;
@@ -99,36 +128,21 @@ const eraseText = async () => {
 
 // Função que controla o loop de digitação principal
 const startTypingLoop = async () => {
-  while (true) {
-    // 1. Digita a primeira linha
-    await typeText(fullText[0]);
-
-    // 2. Adiciona a quebra de linha para começar a segunda
-    typedText.value += '<br>';
-    await new Promise(resolve => setTimeout(resolve, 50)); // Pausa curta depois da quebra de linha
-
-    // 3. Digita a segunda linha
-    await typeText(fullText[1]);
-
-    // 4. Faz uma pausa para que a frase seja lida
-    isTypingFinished.value = true;
+  loopRunning.value = true;
+  while (loopRunning.value) {
+    await typeText(fullText.value);
+    if (!loopRunning.value) break; // Check again to be safe
     await new Promise(resolve => setTimeout(resolve, 3000));
-
-    // 5. Apaga a linha digitada, caractere por caractere
-    isTypingFinished.value = false;
+    if (!loopRunning.value) break;
     await eraseText();
-
-    // 6. Faz uma pausa curta antes de digitar a próxima
+    if (!loopRunning.value) break;
     await new Promise(resolve => setTimeout(resolve, 500));
   }
 };
 
 onMounted(() => {
-  // Inicia o loop de digitação assim que o componente é montado.
-  // Ele não depende mais do IntersectionObserver.
   startTypingLoop();
 
-  // O IntersectionObserver continua sendo usado apenas para a animação da imagem
   if (contactSection.value) {
     observer = new IntersectionObserver(
       ([entry]) => {
@@ -151,10 +165,31 @@ onUnmounted(() => {
   if (socialButtonSound.value) socialButtonSound.value.unload();
 });
 
+// Watch for language changes and handle the transition
+watch(fullText, async (newText, oldText) => {
+  if (newText !== oldText) {
+    // Stop the old loop
+    loopRunning.value = false;
+    isTyping.value = false;
+    isTypingFinished.value = false;
+
+    // Fade out
+    textOpacity.value = 0;
+
+    // Wait for the fade-out to complete before resetting the text
+    await new Promise(resolve => setTimeout(resolve, 500));
+
+    // Reset text and start a new loop
+    typedText.value = '';
+    textOpacity.value = 1;
+    startTypingLoop();
+  }
+});
+
 const statusClass = computed(() => {
-  if (statusMessage.value.includes('successfully')) {
+  if (statusMessage.value.includes(translated.value.form.success)) {
     return 'success';
-  } else if (statusMessage.value.includes('Error')) {
+  } else if (statusMessage.value.includes(translated.value.form.error)) {
     return 'error';
   }
   return '';
@@ -168,7 +203,7 @@ const playSocialSound = () => {
 
 const handleSubmit = async () => {
   isSending.value = true;
-  statusMessage.value = 'Sending...';
+  statusMessage.value = translated.value.form.sendingText;
 
   const formspreeEndpoint = 'https://formspree.io/f/xldlvdje';
   const data = new FormData();
@@ -186,7 +221,7 @@ const handleSubmit = async () => {
     });
 
     if (response.ok) {
-      statusMessage.value = 'Message sent successfully!';
+      statusMessage.value = translated.value.form.success;
       if (sendSuccessSound.value && sendSuccessSound.value.state() === 'loaded') {
         sendSuccessSound.value.play();
       }
@@ -196,13 +231,13 @@ const handleSubmit = async () => {
     } else {
       const result = await response.json();
       if (result.errors) {
-        statusMessage.value = 'Error sending. Check the fields.';
+        statusMessage.value = translated.value.form.error;
       } else {
-        statusMessage.value = 'Error sending message. Please try again.';
+        statusMessage.value = translated.value.form.genericError;
       }
     }
   } catch (error) {
-    statusMessage.value = 'A connection error occurred. Please try again.';
+    statusMessage.value = translated.value.form.connectionError;
   } finally {
     isSending.value = false;
   }
@@ -250,6 +285,10 @@ export default {
   50% {
     border-color: var(--roxo-claro);
   }
+}
+
+.contact-subtitle {
+  transition: opacity 0.5s ease-in-out;
 }
 </style>
 

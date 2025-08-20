@@ -2,24 +2,16 @@
   <section class="new-section" ref="aboutSection">
     <div class="about-content-wrapper-full">
       <div class="title-with-image">
-        <h2 class="about-title" :class="{ 'animate-title-line': isSectionVisible }">ABOUT ME</h2>
-        <img :src="starIconUrl" alt="Star Icon" class="section-image"
+        <h2 class="about-title" :class="{ 'animate-title-line': isSectionVisible }">{{ translatedContent.title }}</h2>
+        <img :src="starIconUrl" :alt="translatedContent.altStar" class="section-image"
           :class="{ 'animate-shining-image': isSectionVisible }" />
       </div>
       <div class="about-content-wrapper">
-        <p class="about-text">
-          Hi! My name is Akira Alcantara, also known as Bakisune. I'm a technology and creativity enthusiast, and I love
-          diving into projects that bring these two worlds together. My journey has led me to explore areas such as
-          software development, design, game development, illustration, and animation. My goal is to turn ideas into
-          reality, creating experiences that not only work well but also look stunning. I'm always learning and ready to
-          create something new that makes a positive impact.
-        </p>
-        <div class="about-image-container"
-          alt="The background of the about me section is a torn paper with a drawing of me inside a light purple square">
-          <div class="image-box"
-            alt="Drawing of Me: I'm a person with dark brown hair and dark brown eyes. I'm wearing round gold glasses and a brown turtleneck sweater and gloves. I have a small smile and my right hand is waving at the screen.">
+        <p class="about-text">{{ translatedContent.aboutText }}</p>
+        <div class="about-image-container" :alt="translatedContent.altPaperBackground">
+          <div class="image-box" :alt="translatedContent.altMyDrawing">
           </div>
-          <div class="bakisune-info" alt="Purple text, written Bakisune in Japanese">
+          <div class="bakisune-info" :alt="translatedContent.altBakisuneInfo">
             <i class="bi bi-moon-stars-fill"></i> バキスネ
           </div>
         </div>
@@ -29,7 +21,9 @@
 </template>
 
 <script setup>
-import { ref, onMounted, onUnmounted } from 'vue';
+import { ref, onMounted, onUnmounted, computed } from 'vue';
+import { translations } from '../../translations';
+import { activeLanguage } from '../../languageStore';
 import starIconUrl from '../../assets/starsobre.svg';
 import papelBackgroundUrl from '../../assets/Papel.png';
 import myDrawingUrl from '../../assets/Teste.png';
@@ -37,6 +31,10 @@ import myDrawingUrl from '../../assets/Teste.png';
 const aboutSection = ref(null);
 const isSectionVisible = ref(false);
 let observer;
+
+const translatedContent = computed(() => {
+  return translations.SobreResumo[activeLanguage.value] || translations.SobreResumo.en;
+});
 
 onMounted(() => {
   if (aboutSection.value) {
@@ -61,12 +59,6 @@ onUnmounted(() => {
     observer.disconnect();
   }
 });
-</script>
-
-<script>
-export default {
-  name: 'SobreResumo',
-};
 </script>
 
 <style scoped lang="scss">

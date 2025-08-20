@@ -9,143 +9,230 @@
           <ul class="nav-list-grouped">
             <li>
               <a href="#" @click.prevent="scrollToSection('HeaderResumo')"
-                :class="{ 'active-link': activeSectionId === 'HeaderResumo' }">
-                <i class="bi bi-house-fill" alt="Button that takes you to Home"></i>
+                :class="{ 'active-link': activeSectionId === 'HeaderResumo' }" :aria-label="translatedLinks.home"
+                :title="translatedLinks.home">
+                <i class="bi bi-house-fill"></i>
               </a>
             </li>
             <li>
               <a href="#" @click.prevent="scrollToSection('SobreResumo')"
-                :class="{ 'active-link': activeSectionId === 'SobreResumo' }">
-                <i class="bi bi-person-fill" alt="Button that takes you to About Me"></i>
+                :class="{ 'active-link': activeSectionId === 'SobreResumo' }" :aria-label="translatedLinks.about"
+                :title="translatedLinks.about">
+                <i class="bi bi-person-fill"></i>
               </a>
             </li>
             <li>
               <a href="#" @click.prevent="scrollToSection('Especialidades')"
-                :class="{ 'active-link': activeSectionId === 'Especialidades' }">
-                <i class="bi bi-award-fill" alt="Button that takes you to My Specialties"></i>
+                :class="{ 'active-link': activeSectionId === 'Especialidades' }"
+                :aria-label="translatedLinks.specialties" :title="translatedLinks.specialties">
+                <i class="bi bi-award-fill"></i>
               </a>
             </li>
             <li>
               <a href="#" @click.prevent="scrollToSection('Skills')"
-                :class="{ 'active-link': activeSectionId === 'Skills' }">
-                <i class="bi bi-stars" alt="Button that takes you to My Skills"></i>
+                :class="{ 'active-link': activeSectionId === 'Skills' }" :aria-label="translatedLinks.skills"
+                :title="translatedLinks.skills">
+                <i class="bi bi-stars"></i>
               </a>
             </li>
             <li>
               <a href="#" @click.prevent="scrollToSection('Formacoes')"
-                :class="{ 'active-link': activeSectionId === 'Formacoes' }">
-                <i class="bi bi-book" alt="Button that takes you to My Academic Background"></i>
+                :class="{ 'active-link': activeSectionId === 'Formacoes' }" :aria-label="translatedLinks.education"
+                :title="translatedLinks.education">
+                <i class="bi bi-book"></i>
               </a>
             </li>
             <li>
               <a href="#" @click.prevent="scrollToSection('Contatos')"
-                :class="{ 'active-link': activeSectionId === 'Contatos' }">
-                <i class="bi bi-send-fill" alt="Button that takes you to My Contacts"></i>
+                :class="{ 'active-link': activeSectionId === 'Contatos' }" :aria-label="translatedLinks.contact"
+                :title="translatedLinks.contact">
+                <i class="bi bi-send-fill"></i>
               </a>
             </li>
           </ul>
         </li>
-        <li @click.prevent="toggleLanguage"><a href="#"><i class="bi bi-translate"></i></a></li>
+        <li>
+          <a href="#" @click.prevent="toggleLanguage" class="language-toggle"
+            :class="{ 'active-link': isLanguageMenuOpen }" :aria-label="translatedLinks.translate"
+            :title="translatedLinks.translate">
+            <i class="bi bi-translate"></i>
+          </a>
+        </li>
       </ul>
     </nav>
   </header>
+
+  <transition name="language-fade">
+    <div v-show="isLanguageMenuOpen" class="language-box">
+      <ul class="language-options">
+        <li>
+          <a href="#" @click.prevent="setLanguage('en', $event)">
+            <div class="language-icon-container" :class="{ 'active-language-icon': activeLanguage === 'en' }">
+              <img src="../../assets/eng.svg" :alt="translatedFlags.en" width="35" height="35" class="language-flag">
+            </div>
+          </a>
+        </li>
+        <li>
+          <a href="#" @click.prevent="setLanguage('pt', $event)">
+            <div class="language-icon-container" :class="{ 'active-language-icon': activeLanguage === 'pt' }">
+              <img src="../../assets/Ptbr.svg" :alt="translatedFlags.pt" width="35" height="35" class="language-flag">
+            </div>
+          </a>
+        </li>
+        <li>
+          <a href="#" @click.prevent="setLanguage('es', $event)">
+            <div class="language-icon-container" :class="{ 'active-language-icon': activeLanguage === 'es' }">
+              <img src="../../assets/esp.svg" :alt="translatedFlags.es" width="35" height="35" class="language-flag">
+            </div>
+          </a>
+        </li>
+      </ul>
+    </div>
+  </transition>
 </template>
 
-<script>
+<script setup>
+import { ref, onMounted, onUnmounted, computed } from 'vue';
 import { Howl } from 'howler';
+import { translations } from '../../translations';
+import { activeLanguage, setGlobalLanguage } from '../../languageStore';
 
-export default {
-  name: 'SideBarResumo',
-  beforeDestroy() {
-    window.removeEventListener('scroll', this.handleScroll);
-    if (this.sound) {
-      this.sound.unload();
+const isSidebarOpen = ref(true);
+const activeSectionId = ref('HeaderResumo');
+const sectionIds = ['HeaderResumo', 'SobreResumo', 'Especialidades', 'Skills', 'Formacoes', 'Contatos'];
+const sound = ref(null);
+const isLanguageMenuOpen = ref(false);
+
+const translatedLinks = computed(() => {
+  return translations.HeaderResumo[activeLanguage.value] || translations.HeaderResumo.en;
+});
+
+const translatedFlags = computed(() => {
+  return {
+    en: "English",
+    pt: "Português",
+    es: "Español"
+  };
+});
+
+onMounted(() => {
+  const savedLanguage = localStorage.getItem('user-language');
+  if (savedLanguage) {
+    setGlobalLanguage(savedLanguage);
+  }
+
+  sound.value = new Howl({
+    src: ['/audios/trade.mp3'],
+    html5: true,
+    onloaderror: (id, err) => {
+      console.error('Erro ao carregar o áudio. O arquivo pode não existir ou o caminho está incorreto.', { id, err });
     }
-  },
-  mounted() {
-    this.sound = new Howl({
-      src: ['/audios/trade.mp3'],
-      html5: true,
-      onloaderror: (id, err) => {
-        console.error('Erro ao carregar o áudio. O arquivo pode não existir ou o caminho está incorreto.', { id, err });
-      }
+  });
+
+  window.addEventListener('scroll', handleScroll);
+  handleScroll();
+  animateActiveLanguage();
+});
+
+onUnmounted(() => {
+  window.removeEventListener('scroll', handleScroll);
+  if (sound.value) {
+    sound.value.unload();
+  }
+});
+
+const toggleSidebar = () => {
+  playSound();
+  if (isSidebarOpen.value && isLanguageMenuOpen.value) {
+    isLanguageMenuOpen.value = false;
+    setTimeout(() => {
+      isSidebarOpen.value = false;
+    }, 300);
+  } else {
+    isSidebarOpen.value = !isSidebarOpen.value;
+  }
+};
+
+const scrollToSection = (sectionId) => {
+  playSound();
+  if (isLanguageMenuOpen.value) {
+    isLanguageMenuOpen.value = false;
+  }
+  const element = document.getElementById(sectionId);
+  if (element) {
+    const elementPosition = element.getBoundingClientRect().top + window.pageYOffset;
+    let offset = 0;
+    if (sectionId === 'Especialidades') {
+      offset = 150;
+    } else if (sectionId === 'Skills') {
+      offset = -50;
+    }
+    window.scrollTo({
+      top: elementPosition - offset,
+      behavior: 'smooth'
     });
-    window.addEventListener('scroll', this.handleScroll);
-    this.handleScroll();
-  },
-  data() {
-    return {
-      isSidebarOpen: true,
-      activeSectionId: 'HeaderResumo',
-      sectionIds: ['HeaderResumo', 'SobreResumo', 'Especialidades', 'Skills', 'Formacoes', 'Contatos'],
-      sound: null,
-    };
-  },
-  methods: {
-    toggleSidebar() {
-      this.playSound();
-      this.isSidebarOpen = !this.isSidebarOpen;
-    },
+    activeSectionId.value = sectionId;
+  }
+};
 
-    scrollToSection(sectionId) {
-      this.playSound();
-      const element = document.getElementById(sectionId);
-      if (element) {
-        // Obter a posição vertical do elemento
-        const elementPosition = element.getBoundingClientRect().top + window.pageYOffset;
-
-        let offset = 0;
-        // AQUI VOCÊ PODE MUDAR O OFFSET PARA CADA SEÇÃO
-        if (sectionId === 'Especialidades') {
-          offset = 150;
-        } else if (sectionId === 'Skills') {
-          // OFFSET PERSONALIZADO PARA A SEÇÃO DE SKILLS
-          offset = -50;
-        }
-
-        // Rolar para a nova posição ajustada
-        window.scrollTo({
-          top: elementPosition - offset,
-          behavior: 'smooth'
-        });
-
-        this.activeSectionId = sectionId;
+const handleScroll = () => {
+  const scrollPosition = window.scrollY;
+  const viewportHeight = window.innerHeight;
+  let newActiveSectionId = null;
+  for (const sectionId of sectionIds) {
+    const element = document.getElementById(sectionId);
+    if (element) {
+      const rect = element.getBoundingClientRect();
+      const threshold = viewportHeight * 0.5;
+      if (rect.top <= threshold && rect.bottom >= threshold) {
+        newActiveSectionId = sectionId;
+        break;
       }
-    },
-
-    handleScroll() {
-      const scrollPosition = window.scrollY;
-      const viewportHeight = window.innerHeight;
-
-      let newActiveSectionId = null;
-      for (const sectionId of this.sectionIds) {
-        const element = document.getElementById(sectionId);
-        if (element) {
-          const rect = element.getBoundingClientRect();
-          const threshold = viewportHeight * 0.5;
-
-          if (rect.top <= threshold && rect.bottom >= threshold) {
-            newActiveSectionId = sectionId;
-            break;
-          }
-        }
-      }
-
-      if (newActiveSectionId) {
-        this.activeSectionId = newActiveSectionId;
-      }
-    },
-
-    playSound() {
-      if (this.sound && this.sound.state() === 'loaded') {
-        this.sound.play();
-      }
-    },
-
-    toggleLanguage() {
-      this.playSound();
     }
   }
+  if (newActiveSectionId) {
+    activeSectionId.value = newActiveSectionId;
+  }
+};
+
+const playSound = () => {
+  if (sound.value && sound.value.state() === 'loaded') {
+    sound.value.play();
+  }
+};
+
+const toggleLanguage = () => {
+  playSound();
+  isLanguageMenuOpen.value = !isLanguageMenuOpen.value;
+};
+
+const setLanguage = (lang, event) => {
+  playSound();
+  localStorage.setItem('user-language', lang);
+  setGlobalLanguage(lang);
+  const iconContainer = event.currentTarget.querySelector('.language-icon-container');
+  if (iconContainer) {
+    iconContainer.classList.remove('bounce-anim');
+    setTimeout(() => {
+      iconContainer.classList.add('bounce-anim');
+    }, 0);
+  }
+  console.log('Language set to:', lang);
+  setTimeout(() => {
+    isLanguageMenuOpen.value = false;
+  }, 800);
+};
+
+const animateActiveLanguage = () => {
+  setTimeout(() => {
+    const activeIcon = document.querySelector('.language-icon-container.active-language-icon');
+    if (activeIcon) {
+      activeIcon.classList.remove('bounce-anim');
+      setTimeout(() => {
+        activeIcon.classList.add('bounce-anim');
+      }, 0);
+    }
+  }, 100);
 };
 </script>
 
@@ -250,6 +337,72 @@ export default {
   color: var(--roxo-claro);
 }
 
+.language-box {
+  position: fixed;
+  z-index: 999;
+  top: 69.1%;
+  left: 85px;
+  transform: translateY(-50%);
+  padding: 8px;
+  border-radius: 0 25px 25px 0;
+  background-color: var(--roxo-mais-claro);
+  opacity: 0.8;
+}
+
+.language-options {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  gap: 2px;
+}
+
+.language-icon-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  font-size: 0.7em;
+  font-weight: bold;
+  color: var(--roxo-claro);
+  border: 1px solid var(--roxo-mais-claro);
+  transition: all 0.3s ease;
+  text-transform: uppercase;
+}
+
+.language-flag {
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.language-icon-container:hover {
+  border-color: var(--roxo-claro);
+}
+
+.language-icon-container.active-language-icon {
+  border: 2px solid var(--roxo-claro);
+  box-shadow: 0 0 10px rgba(138, 43, 226, 0.5);
+  transform: scale(1.1);
+}
+
+.language-fade-enter-active,
+.language-fade-leave-active {
+  transition: all 0.3s ease-in-out;
+}
+
+.language-fade-enter,
+.language-fade-leave-to {
+  opacity: 0;
+  transform: translateX(-20px) translateY(-50%);
+}
+
 html,
 body {
   margin: 0;
@@ -258,5 +411,21 @@ body {
 
 html {
   scroll-behavior: smooth;
+}
+
+@keyframes bounce {
+
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+
+  50% {
+    transform: translateY(-5px);
+  }
+}
+
+.language-icon-container.bounce-anim {
+  animation: bounce 0.4s ease-in-out;
 }
 </style>

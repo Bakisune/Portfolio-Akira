@@ -47,18 +47,14 @@
 
 <script setup>
 import { ref, onMounted, onUnmounted, computed } from 'vue';
-import { translations } from '../../translations'; // Importa a nova tradução
-import { activeLanguage } from '../../languageStore'; // Importa o estado global de idioma
-
-// Mantendo os caminhos de imagem originais
+import { translations } from '../../translations';
+import { activeLanguage } from '../../languageStore';
 import starUrl from '../../assets/star.svg';
 import cardUrl from '../../assets/imagemcard.svg';
 
 const educationSection = ref(null);
 const isSectionVisible = ref(false);
 let observer;
-
-// Lógica de tradução que agora depende do estado global
 const translated = computed(() => {
   return translations.EducationResumo[activeLanguage.value] || translations.EducationResumo.pt;
 });
@@ -89,8 +85,6 @@ onUnmounted(() => {
 </script>
 
 <style scoped>
-/* Removemos os estilos relacionados aos botões de troca de idioma, pois não são mais necessários */
-
 :root {
   --amarelo: #ffc107;
 }
@@ -187,7 +181,6 @@ onUnmounted(() => {
   animation: shiningEffect 1.90s ease-in-out infinite;
 }
 
-/* Animação para os ícones dos cards */
 @keyframes cardSpinEntrance {
   0% {
     opacity: 0;
@@ -265,7 +258,6 @@ onUnmounted(() => {
   text-align: center;
 }
 
-/* Garante que os ícones do cartão fiquem invisíveis por padrão */
 .card-icon {
   position: absolute;
   top: -15px;
@@ -277,7 +269,6 @@ onUnmounted(() => {
   object-fit: cover;
   z-index: 2;
   opacity: 0;
-  /* AQUI: agora os ícones estão invisíveis por padrão */
   transition: transform 0.3s ease;
 }
 
@@ -287,7 +278,6 @@ onUnmounted(() => {
 }
 
 .education-section .timeline-item-odd:hover {
-  /* Box shadow foi ajustada para combinar com a dos outros items */
   transform: translateY(calc(-100% + 5px)) scale(1.02);
   box-shadow: 0 6px 12px rgba(0, 0, 0, 0.25);
 }

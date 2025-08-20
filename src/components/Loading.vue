@@ -1,8 +1,7 @@
 <template>
     <div class="loading-container" :class="{ 'fade-out-up': isAnimatingOut }">
         <div class="loading-box">
-            <img src="https://placehold.co/100x100/9e14fa/ffffff?text=GIF" alt="GIF de carregamento"
-                class="loading-gif" />
+            <img src="../assets/YumiTest.gif" alt="GIF de carregamento" class="loading-gif" />
 
             <div class="loading-bar">
                 <div class="progress-indicator"></div>
@@ -27,8 +26,7 @@
             </transition>
         </div>
 
-        <img src="https://placehold.co/100x100/9e14fa/ffffff?text=LOGO" alt="Logo de carregamento"
-            class="loading-image" />
+        <img src="/bakisune_logo_white.svg" alt="Logo de carregamento" class="loading-image" />
     </div>
 </template>
 
@@ -64,13 +62,6 @@ export default {
 </script>
 
 <style scoped>
-:root {
-    --roxo-claro: #9e14fa;
-    --cor-branca: #ffffff;
-    --roxo-desligado: #574a68;
-    --cor-fundo-loading: #f0f0f0;
-}
-
 .loading-container {
     display: flex;
     justify-content: center;
@@ -111,7 +102,7 @@ export default {
     height: 100px;
     border-radius: 50%;
     box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
-    background-color: var(--cor-branca);
+    background-color: var(--roxo-claro);
     padding: 10px;
 }
 
@@ -129,7 +120,7 @@ export default {
     }
 }
 
-.loading-gif {
+/* .loading-gif {
     position: absolute;
     top: -50px;
     left: 50%;
@@ -140,6 +131,18 @@ export default {
     box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
     background-color: var(--cor-branca);
     padding: 10px;
+} */
+
+.loading-gif {
+    position: absolute;
+    top: -150px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 300px;
+    height: 300px;
+    background-color: transparent;
+    padding: 10px;
+    z-index: 10;
 }
 
 .title {

@@ -11,42 +11,34 @@ export default {
 
         <div class="grid-container2">
             <div class="box box-img" style="grid-area: box-1">
-                <img src="https://live.staticflickr.com/65535/54715276194_e933568aa5_b.jpg" alt="raiden_shogun"
-                    class="gallery__img img-top pointer">
+                <img src="#" alt="raiden_shogun" class="gallery__img img-top pointer">
             </div>
             <div class="box box-img" style="grid-area: box-2">
-                <img src="https://live.staticflickr.com/65535/54715051271_d92e53602a_b.jpg" alt="eileen"
-                    class="gallery__img pointer">
+                <img src="#" alt="eileen" class="gallery__img pointer">
             </div>
             <div class="box box-img" style="grid-area: box-3">
-                <img src="https://live.staticflickr.com/65535/54715391285_65fd77fb0c_b.jpg" alt="one_piece"
-                    class="gallery__img pointer">
+                <img src="#" alt="one_piece" class="gallery__img pointer">
             </div>
             <div class="box box-img" style="grid-area: box-4">
-                <img src="https://live.staticflickr.com/65535/54715391140_7e66641b4c_b.jpg" alt="naruto"
-                    class="gallery__img pointer">
+                <img src="#" alt="naruto" class="gallery__img pointer">
             </div>
             <div class="box box-img" style="grid-area: box-5">
-                <img src="https://live.staticflickr.com/65535/54715051206_d7e851e9e5_b.jpg" alt="scott_pilgrim"
-                    class="gallery__img pointer">
+                <img src="#" alt="scott_pilgrim" class="gallery__img pointer">
             </div>
             <div class="box box-img" style="grid-area: box-6">
-                <img src="https://live.staticflickr.com/65535/54715260943_0be3bcacce_b.jpg" alt="akira"
-                    class="gallery__img pointer">
+                <img src="#" alt="akira" class="gallery__img pointer">
             </div>
             <div class="box box-img" style="grid-area: box-7">
-                <img src="https://live.staticflickr.com/65535/54714215537_3474e73150_b.jpg" alt="goku"
-                    class="gallery__img img-bot pointer">
+                <img src="#" alt="goku" class="gallery__img img-bot pointer">
             </div>
             <div class="box box-img" style="grid-area: box-8">
                 <a target="_blank" class="bt-see-more" href="https://www.instagram.com/kyukiewk">
                     <span class="bt-content">
                         <span class="bt-text">SEE MORE</span>
-                        <img src="./assets/images/icons/Redirection.svg">
+                        <img src="#">
                     </span>
                 </a>
-                <img src="https://live.staticflickr.com/65535/54714215192_f8b99a1c6b_b.jpg" alt="overthegarden"
-                    class="gallery__img">
+                <img src="#" alt="overthegarden" class="gallery__img">
             </div>
 
             <div id="lightbox" class="lightbox">

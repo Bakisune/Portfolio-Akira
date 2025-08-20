@@ -95,8 +95,8 @@ export default {
 </script>
 <template>
     <div class="projects-dev">
-        <img src="./assets/images/icons/seta-esquerda.png" class="bt-seta">
-        <div class="projects-dev-demo"><img src="./assets/images/projects/dev/itamind.png"></div>
+        <img src="#" class="bt-seta">
+        <div class="projects-dev-demo"><img src="#"></div>
         <div class="projects-dev-text">
             <h1 class="projects-dev-title borda-texto-preto2">01</h1>
             <h2 class="projects-dev-subtitle">Sales Forecasting<br>Algorithm “ITAMIND”</h2>
@@ -108,10 +108,9 @@ export default {
                 supermarkets. It uses an algorithm that predicts sales demand. The goal is to help determine the
                 quantity and timing of thawing, ensuring they are sold within two days and thus avoiding losses due to
                 excess stock or expiration dates.</p>
-            <a target="_blank" href="https://github.com/eliascmendes/ItaMind"> <img
-                    src="./assets/images/icons/Redirection.svg" class="bt-link"> </a>
+            <a target="_blank" href="https://github.com/eliascmendes/ItaMind"> <img src="#" class="bt-link"> </a>
         </div>
-        <img src="./assets/images/icons/seta-direita.png" class="bt-seta">
+        <img src="#" class="bt-seta">
     </div>
 </template>
 

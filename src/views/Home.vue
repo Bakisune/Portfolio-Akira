@@ -2,7 +2,7 @@
     <SideBarResumo id="SideBarResumo" />
     <HeaderResumo id="HeaderResumo" />
     <SobreResumo id="SobreResumo" />
-    <Especialidades id="Especialidades" />
+    <Projetos id="Projetos" />
     <SkillsResumo id="Skills" />
     <Formacoes id="Formacoes" />
 </template>
@@ -14,7 +14,7 @@ import HeaderResumo from '../components/Resumo/HeaderResumo.vue';
 import SobreResumo from '../components/Resumo/SobreResumo.vue';
 import SkillsResumo from '../components/Resumo/SkillsResumo.vue';
 import Formacoes from '../components/Resumo/Formacoes.vue';
-import Especialidades from '../components/Resumo/Especialidades.vue';
+import Projetos from '../components/Resumo/Projetos.vue';
 
 export default defineComponent({
     name: 'Home',
@@ -24,7 +24,7 @@ export default defineComponent({
         SobreResumo,
         SkillsResumo,
         Formacoes,
-        Especialidades,
+        Projetos
     }
 });
 </script>

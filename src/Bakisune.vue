@@ -27,7 +27,6 @@ import { useRoute } from 'vue-router';
 import Contatos from './components/Contatos.vue';
 import Rodape from './components/Rodape.vue';
 import Loading from './components/Loading.vue';
-import UnderConstrution from './views/UnderConstrution.vue';
 import NotFoundPage from './views/NotFoundPage.vue';
 
 export default defineComponent({
@@ -36,7 +35,6 @@ export default defineComponent({
     Contatos,
     Rodape,
     Loading,
-    UnderConstrution,
     NotFoundPage,
   },
   setup() {

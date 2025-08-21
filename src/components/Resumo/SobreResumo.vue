@@ -273,14 +273,12 @@ onUnmounted(() => {
   background-color: var(--amarelo);
 }
 
-.action-button .bi,
-.action-button span {
+.action-button .bi {
   font-size: 1.2em;
   transition: transform 0.3s ease;
 }
 
-.action-button:hover .bi,
-.action-button:hover span {
+.action-button:hover .bi {
   animation: bounce 1.2s ease-in-out;
 }
 

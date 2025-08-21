@@ -152,7 +152,6 @@
 import { ref, onMounted, onUnmounted, computed } from 'vue';
 import { translations } from '../../translations';
 import { activeLanguage } from '../../languageStore';
-
 import linhaSkillUrl from '../../assets/LinhaSkills.svg';
 import estrelasSkillUrl from '../../assets/estrelasSkills.svg';
 import htmlIconUrl from '../../assets/HTML.svg';

@@ -49,7 +49,7 @@
                 <div class="box box-img" style="grid-area: box-3" @click="openLightbox(2)">
                     <img :src="translated.gallery[2].url" class="gallery__img pointer">
                 </div>
-                <div class="box box-img" style="grid-area: box-4">
+                <div class="box box-img" style="grid-area: box-4" @click="openLightbox(3)">
                     <img :src="translated.gallery[3].url" class="gallery__img pointer">
                 </div>
                 <div class="box box-img" style="grid-area: box-5" @click="openLightbox(4)">
@@ -328,11 +328,6 @@ watch(() => activeLanguage.value, () => {
     color: var(--roxo-claro);
     cursor: pointer;
     transition: transform 0.1s ease-in-out;
-}
-
-.cu img {
-    height: 1.5rem;
-    width: 1.5rem;
 }
 
 .bt-seta:hover {

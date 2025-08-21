@@ -208,7 +208,7 @@ onUnmounted(() => {
 <style scoped lang="scss">
 .skills-section-wrapper {
     background-color: var(--cor-fundo);
-    padding: 20px 0;
+    padding: 1.25rem 0;
     display: flex;
     justify-content: center;
 }
@@ -216,8 +216,8 @@ onUnmounted(() => {
 .skills-section {
     background-color: var(--cor-branca);
     width: 100%;
-    padding: 80px 0 110px 0;
-    border-radius: 20px;
+    padding: 5rem 0 6.875rem 0;
+    border-radius: 1.25rem;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -225,7 +225,7 @@ onUnmounted(() => {
 }
 
 .content-container {
-    max-width: 1400px;
+    max-width: 87.5rem;
     width: 95%;
     margin: 0 auto;
 }
@@ -235,7 +235,7 @@ onUnmounted(() => {
     display: flex;
     flex-direction: column;
     align-items: center;
-    margin-bottom: 40px;
+    margin-bottom: 2.5rem;
 }
 
 .skills-title {
@@ -249,8 +249,8 @@ onUnmounted(() => {
 .skills-line {
     position: relative;
     width: 40%;
-    max-width: 900px;
-    height: 8px;
+    max-width: 56.25rem;
+    height: 0.5rem;
     margin-top: 1%;
 }
 
@@ -268,7 +268,7 @@ onUnmounted(() => {
 
 .estrelas-skill {
     position: absolute;
-    width: 250px;
+    width: 15.625rem;
     height: auto;
     object-fit: contain;
     top: 50%;
@@ -312,9 +312,9 @@ onUnmounted(() => {
 .skills-grid-container {
     display: flex;
     flex-wrap: nowrap;
-    gap: 25px;
+    gap: 1.5625rem;
     width: 100%;
-    margin-top: 40px;
+    margin-top: 2.5rem;
     justify-content: center;
 }
 
@@ -322,30 +322,30 @@ onUnmounted(() => {
     display: flex;
     justify-content: center;
     width: 100%;
-    gap: 25px;
-    margin-top: 30px;
+    gap: 1.5625rem;
+    margin-top: 1.875rem;
 }
 
 .skill-card {
     background-color: var(--cor-branca);
-    border-radius: 12px;
-    padding: 25px;
+    border-radius: 0.75rem;
+    padding: 1.5625rem;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    width: 140px;
-    height: 140px;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    width: 8.75rem;
+    height: 8.75rem;
+    box-shadow: 0 0.25rem 0.375rem rgba(0, 0, 0, 0.1);
     cursor: default;
     transition: background-color 0.3s ease, transform 0.3s ease, border 0.3s ease;
-    border: 2px solid var(--roxo-desligado);
+    border: 0.125rem solid var(--roxo-desligado);
 }
 
 .skill-card:hover {
     background-color: var(--cor-fundo);
     transform: scale(1.1);
-    border: 2px solid transparent;
+    border: 0.125rem solid transparent;
 }
 
 .skill-card a {
@@ -362,11 +362,11 @@ onUnmounted(() => {
 .skill-logo-2,
 .skill-logo-3 {
     position: absolute;
-    top: 15px;
+    top: 0.9375rem;
     left: 50%;
     transform: translateX(-50%);
-    width: 80px;
-    height: 80px;
+    width: 5rem;
+    height: 5rem;
     object-fit: contain;
     transition: opacity 0.3s ease, transform 0.3s ease;
 }
@@ -397,7 +397,7 @@ img.skill-logo-2 {
 .skill-name {
     position: relative;
     z-index: 10;
-    margin-top: 105px;
+    margin-top: 6.5625rem;
     font-weight: 900;
     font-size: 0.9em;
     color: var(--roxo-escuro);
@@ -412,28 +412,30 @@ img.skill-logo-2 {
     color: var(--cor-branca);
 }
 
+
+
 @media (max-width: 1024px) {
     .skills-grid-container {
         flex-wrap: wrap;
     }
 
     .skill-card {
-        width: calc((100% - 6 * 25px) / 7);
-        height: 120px;
-        padding: 15px;
+        width: calc((100% - 6 * 1.5625rem) / 7);
+        height: 7.5rem;
+        padding: 0.9375rem;
     }
 
     .skills-last-row .skill-card {
-        width: calc((100% - 25px) / 2);
+        width: calc((100% - 1.5625rem) / 2);
     }
 
     .skill-logo-1,
     .skill-logo,
     .skill-logo-2,
     .skill-logo-3 {
-        width: 65px;
-        height: 65px;
-        top: 10px;
+        width: 4.0625rem;
+        height: 4.0625rem;
+        top: 0.625rem;
     }
 }
 
@@ -443,51 +445,91 @@ img.skill-logo-2 {
     }
 
     .skill-card {
-        width: 100px;
-        height: 100px;
-        padding: 12px;
+        width: 6.25rem;
+        height: 6.25rem;
+        padding: 0.75rem;
     }
 
     .skill-logo-1,
     .skill-logo,
     .skill-logo-2,
     .skill-logo-3 {
-        width: 55px;
-        height: 55px;
-        top: 10px;
+        width: 3.4375rem;
+        height: 3.4375rem;
+        top: 2.5rem;
+    }
+
+    .skills-last-row .skill-card {
+        width: calc((40% - 1.5625rem) / 2);
     }
 
     .skills-title {
-        font-size: 2.5em;
+        font-size: 2.8em;
+    }
+
+    .skill-name {
+        position: relative;
+        z-index: 10;
+        padding-top: -1rem;
+        margin-bottom: 2rem;
+        font-weight: 900;
+        font-size: 0.78em;
+        text-align: center;
+    }
+
+    .skills-line {
+        position: relative;
+        width: 40%;
+        width: 28rem;
+        height: 0.8rem;
+        margin-top: 1%;
     }
 }
 
 @media (max-width: 480px) {
     .skills-grid-container {
-        gap: 15px;
+        flex-basis: 100%;
     }
 
     .skill-card {
-        width: 80px;
-        height: 80px;
-        padding: 8px;
+        width: 5rem;
+        height: 5rem;
+        padding: 0.6rem;
     }
 
     .skill-logo-1,
     .skill-logo,
     .skill-logo-2,
     .skill-logo-3 {
-        width: 45px;
-        height: 45px;
-        top: 5px;
+        width: 2.75rem;
+        height: 2.75rem;
+        top: 2rem;
     }
 
-    .skill-name {
-        font-size: 0.7em;
+    .skills-last-row .skill-card {
+        width: calc((40% - 1.25rem) / 2);
     }
 
     .skills-title {
-        font-size: 2em;
+        font-size: 2.2em;
+    }
+
+    .skill-name {
+        position: relative;
+        z-index: 10;
+        padding-top: -0.8rem;
+        margin-bottom: 1.6rem;
+        font-weight: 900;
+        font-size: 0.65em;
+        text-align: center;
+    }
+
+    .skills-line {
+        position: relative;
+        width: 30%;
+        width: 20rem;
+        height: 0.6rem;
+        margin-top: 1%;
     }
 }
 </style>

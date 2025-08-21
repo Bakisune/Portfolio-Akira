@@ -447,49 +447,34 @@ export const translations = {
       seeMoreText: "VER MAIS",
       gallery: [
         {
-          url: "https://www.flickr.com/photos/203350949@N05/54734614064/",
+          url: "/1.png",
         },
         {
-          url: "https://www.flickr.com/photos/203350949@N05/54733546137/",
+          url: "/2.png",
         },
         {
-          url: "https://www.flickr.com/photos/203350949@N05/54734614044/",
+          url: "/0.gif",
         },
         {
-          url: "https://www.flickr.com/photos/203350949@N05/54734376151/",
+          url: "/4.png",
         },
         {
-          url: "https://www.flickr.com/photos/203350949@N05/54733546387/",
+          url: "/5.png",
         },
         {
-          url: "https://www.flickr.com/photos/203350949@N05/54734376351/",
+          url: "/6.gif",
         },
         {
-          url: "https://www.flickr.com/photos/203350949@N05/54734614444/",
+          url: "/8.png",
         },
         {
-          url: "https://www.flickr.com/photos/203350949@N05/54733546132/",
+          url: "/7.gif",
         },
         {
-          url: "https://www.flickr.com/photos/203350949@N05/54734613794/",
+          url: "/3.png",
         },
         {
-          url: "https://www.flickr.com/photos/203350949@N05/54734596108/",
-        },
-        {
-          url: "https://www.flickr.com/photos/203350949@N05/54734742870/",
-        },
-        {
-          url: "https://www.flickr.com/photos/203350949@N05/54734613789/",
-        },
-        {
-          url: "https://www.flickr.com/photos/203350949@N05/54733545877/",
-        },
-        {
-          url: "https://www.flickr.com/photos/203350949@N05/54733545872/",
-        },
-        {
-          url: "https://www.flickr.com/photos/203350949@N05/54733545937/",
+          url: "/10.png",
         },
       ],
       projects: [
@@ -539,49 +524,34 @@ export const translations = {
       seeMoreText: "VER MÁS",
       gallery: [
         {
-          url: "https://www.flickr.com/photos/203350949@N05/54734614064/",
+          url: "/1.png",
         },
         {
-          url: "https://www.flickr.com/photos/203350949@N05/54733546137/",
+          url: "/2.png",
         },
         {
-          url: "https://www.flickr.com/photos/203350949@N05/54734614044/",
+          url: "/0.gif",
         },
         {
-          url: "https://www.flickr.com/photos/203350949@N05/54734376151/",
+          url: "/4.png",
         },
         {
-          url: "https://www.flickr.com/photos/203350949@N05/54733546387/",
+          url: "/5.png",
         },
         {
-          url: "https://www.flickr.com/photos/203350949@N05/54734376351/",
+          url: "/6.gif",
         },
         {
-          url: "https://www.flickr.com/photos/203350949@N05/54734614444/",
+          url: "/8.png",
         },
         {
-          url: "https://www.flickr.com/photos/203350949@N05/54733546132/",
+          url: "/7.gif",
         },
         {
-          url: "https://www.flickr.com/photos/203350949@N05/54734613794/",
+          url: "/3.png",
         },
         {
-          url: "https://www.flickr.com/photos/203350949@N05/54734596108/",
-        },
-        {
-          url: "https://www.flickr.com/photos/203350949@N05/54734742870/",
-        },
-        {
-          url: "https://www.flickr.com/photos/203350949@N05/54734613789/",
-        },
-        {
-          url: "https://www.flickr.com/photos/203350949@N05/54733545877/",
-        },
-        {
-          url: "https://www.flickr.com/photos/203350949@N05/54733545872/",
-        },
-        {
-          url: "https://www.flickr.com/photos/203350949@N05/54733545937/",
+          url: "/10.png",
         },
       ],
       projects: [

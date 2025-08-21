@@ -22,9 +22,9 @@ export default defineComponent({
         SideBarResumo,
         HeaderResumo,
         SobreResumo,
+        Projetos,
         SkillsResumo,
         Formacoes,
-        Projetos
     }
 });
 </script>

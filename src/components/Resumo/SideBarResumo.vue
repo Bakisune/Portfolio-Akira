@@ -22,24 +22,24 @@
               </a>
             </li>
             <li>
-              <a href="#" @click.prevent="scrollToSection('Especialidades')"
-                :class="{ 'active-link': activeSectionId === 'Especialidades' }"
-                :aria-label="translatedLinks.specialties" :title="translatedLinks.specialties">
-                <i class="bi bi-award-fill"></i>
+              <a href="#" @click.prevent="scrollToSection('Projetos')"
+                :class="{ 'active-link': activeSectionId === 'Projetos' }" :aria-label="translatedLinks.projects"
+                :title="translatedLinks.projects">
+                <i class="bi bi-stars"></i>
               </a>
             </li>
             <li>
               <a href="#" @click.prevent="scrollToSection('Skills')"
                 :class="{ 'active-link': activeSectionId === 'Skills' }" :aria-label="translatedLinks.skills"
                 :title="translatedLinks.skills">
-                <i class="bi bi-stars"></i>
+                <i class="bi bi-lightning-charge-fill"></i>
               </a>
             </li>
             <li>
               <a href="#" @click.prevent="scrollToSection('Formacoes')"
                 :class="{ 'active-link': activeSectionId === 'Formacoes' }" :aria-label="translatedLinks.education"
                 :title="translatedLinks.education">
-                <i class="bi bi-book"></i>
+                <i class="bi bi-mortarboard-fill"></i>
               </a>
             </li>
             <li>
@@ -99,11 +99,12 @@ import { activeLanguage, setGlobalLanguage } from '../../languageStore';
 
 const isSidebarOpen = ref(true);
 const activeSectionId = ref('HeaderResumo');
-const sectionIds = ['HeaderResumo', 'SobreResumo', 'Especialidades', 'Skills', 'Formacoes', 'Contatos'];
+const sectionIds = ['HeaderResumo', 'SobreResumo', 'Projetos', 'Skills', 'Formacoes', 'Contatos'];
 const sound = ref(null);
 const isLanguageMenuOpen = ref(false);
 
 const translatedLinks = computed(() => {
+  // Busca todas as traduções do cabeçalho, incluindo 'projects'
   return translations.HeaderResumo[activeLanguage.value] || translations.HeaderResumo.en;
 });
 
@@ -162,7 +163,7 @@ const scrollToSection = (sectionId) => {
   if (element) {
     const elementPosition = element.getBoundingClientRect().top + window.pageYOffset;
     let offset = 0;
-    if (sectionId === 'Especialidades') {
+    if (sectionId === 'Projetos') {
       offset = 150;
     } else if (sectionId === 'Skills') {
       offset = -50;

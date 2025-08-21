@@ -7,7 +7,21 @@
           :class="{ 'animate-shining-image': isSectionVisible }" />
       </div>
       <div class="about-content-wrapper">
-        <p class="about-text">{{ translatedContent.aboutText }}</p>
+        <div class="about-text-and-buttons">
+          <p class="about-text">{{ translatedContent.aboutText }}</p>
+          <div class="button-container">
+            <!-- CV Download Button -->
+            <a href="/CURRICULO_GABRIELA_A.pdf" download="CV-Akira.pdf" class="action-button cv-button">
+              <i class="bi bi-file-earmark-post"></i>
+              <span>CV</span>
+            </a>
+            <!-- Trello Link Button -->
+            <a href="https://trello.com/b/CHEXxbf2/⭐-commissions-⭐" target="_blank" class="action-button trello-button">
+              <i class="bi bi-trello"></i>
+              <span>Trello</span>
+            </a>
+          </div>
+        </div>
         <div class="about-image-container" :alt="translatedContent.altPaperBackground">
           <div class="image-box" :alt="translatedContent.altMyDrawing">
           </div>
@@ -67,6 +81,25 @@ onUnmounted(() => {
   src: url('../../assets/font/mikiyu-mokomori-kuro.ttf') format('truetype');
 }
 
+@keyframes bounce {
+
+  0%,
+  20%,
+  50%,
+  80%,
+  100% {
+    transform: translateY(0);
+  }
+
+  40% {
+    transform: translateY(-8px);
+  }
+
+  60% {
+    transform: translateY(-4px);
+  }
+}
+
 .new-section {
   position: relative;
   margin-top: -10vh;
@@ -78,6 +111,8 @@ onUnmounted(() => {
   padding-top: 100px;
   padding-bottom: 160px;
   background-color: transparent;
+  // Adicionando a fonte geral para a seção
+  font-family: 'Poppins', sans-serif;
 }
 
 .new-section::before {
@@ -98,6 +133,7 @@ onUnmounted(() => {
   left: 0;
   width: 100%;
   height: 100%;
+  padding-bottom: 1%;
   background-image: url("../../assets/Papel.png");
   background-size: cover;
   background-position: calc(30% + 0px) center;
@@ -118,7 +154,7 @@ onUnmounted(() => {
 }
 
 .about-title {
-  font-family: 'Poppins', sans-serif;
+  // Removido o font-family duplicado
   color: var(--roxo-claro);
   font-size: 3em;
   font-weight: 700;
@@ -190,15 +226,62 @@ onUnmounted(() => {
   z-index: 2;
 }
 
-.about-text {
-  font-family: 'Poppins', sans-serif;
+.about-text-and-buttons {
   flex: 2;
+  display: flex;
+  flex-direction: column;
+}
+
+.about-text {
+  // Removido o font-family duplicado
   color: var(--cor-fundo);
   line-height: 1.8;
   font-size: 1.2em;
   text-align: justify;
   margin-right: 8%;
-  margin-top: 60px;
+  margin-top: 15px;
+  min-height: 120px;
+}
+
+.button-container {
+  display: flex;
+  gap: 15px;
+  margin-top: 20px;
+  margin-left: 0;
+}
+
+.action-button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 8px 20px;
+  background-color: var(--roxo-claro);
+  color: #fff;
+  // A fonte nos botões agora é herdada da seção principal
+  font-weight: 600;
+  text-decoration: none;
+  border-radius: 8px;
+  transition: transform 0.2s ease, box-shadow 0.2s ease, background-color 0.3s ease;
+  border: 2px solid transparent;
+  cursor: pointer;
+}
+
+.action-button:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+  background-color: var(--amarelo);
+}
+
+.action-button .bi,
+.action-button span {
+  font-size: 1.2em;
+  transition: transform 0.3s ease;
+}
+
+.action-button:hover .bi,
+.action-button:hover span {
+  animation: bounce 1.2s ease-in-out;
 }
 
 .about-image-container {
@@ -233,7 +316,6 @@ onUnmounted(() => {
   color: var(--roxo-claro);
   font-weight: 600;
   font-size: 1.1em;
-
 }
 
 .bakisune-info::before {
@@ -269,9 +351,17 @@ onUnmounted(() => {
     transform: translateX(-50%);
   }
 
+  .about-text-and-buttons {
+    align-items: center;
+  }
+
   .about-text {
     margin-right: 0;
     text-align: center;
+  }
+
+  .button-container {
+    justify-content: center;
   }
 
   .image-box {

@@ -4,9 +4,9 @@ export const translations = {
     en: {
       home: "Home",
       about: "About",
-      specialties: "Specialties",
+      projects: "Projects",
       skills: "Skills",
-      education: "Education",
+      education: "Academic Background",
       contact: "Contact",
       titlePart1: "PORT",
       titlePart2: "FOLIO",
@@ -20,9 +20,9 @@ export const translations = {
     pt: {
       home: "Início",
       about: "Sobre",
-      specialties: "Especialidades",
+      projects: "Projetos",
       skills: "Habilidades",
-      education: "Formação",
+      education: "Formações Acadêmicas",
       contact: "Contato",
       titlePart1: "PORT",
       titlePart2: "FOLIO",
@@ -35,8 +35,8 @@ export const translations = {
     },
     es: {
       home: "Inicio",
-      about: "Acerca de",
-      specialties: "Especialidades",
+      about: "Sobre Mí",
+      projects: "Proyectos",
       skills: "Habilidades",
       education: "Educación",
       contact: "Contacto",
@@ -76,7 +76,7 @@ export const translations = {
     es: {
       title: "ACERCA DE MÍ",
       aboutText:
-        "¡Hola! Mi nombre es Akira Alcantara, también conocido como Bakisune. Soy un entusiasta de la tecnología y la creatividad, y me encanta sumergirme en proyectos que unen estos dos mundos. Mi viaje me ha llevado a explorar áreas como el desarrollo de software, diseño, desarrollo de juegos, ilustración y animación. Mi objetivo es convertir ideas en realidad, creando experiencias que no solo funcionen bien, sino que también sean visualmente impresionantes. Siempre estoy aprendiendo y listo para crear algo nuevo que cause un impacto positivo.",
+        "¡Hola! Mi nombre es Akira Alcantara, también conocido como Bakisune. Soy un entusiasta de la tecnología y la creatividad, y me encanta sumergirme en proyectos que unen estos dos mundos. Mi objetivo es convertir ideas en realidad, creando experiencias que no solo funcionen bien, sino que también sean visualmente impresionantes. Siempre estoy aprendiendo y listo para crear algo nuevo que cause un impacto positivo.",
       altStar: "Icono de Estrella",
       altPaperBackground:
         "El fondo de la sección sobre mí es un papel rasgado con un dibujo mío dentro de un cuadrado morado claro",
@@ -228,7 +228,7 @@ export const translations = {
     en: {
       title: "Specialties",
       description:
-        'Here you can learn more about my core competencies.<br> Click each card for more details!',
+        "Here you can learn more about my core competencies.<br> Click each card for more details!",
       altStar: "Star Icon",
       cards: {
         card1: {
@@ -248,7 +248,7 @@ export const translations = {
     pt: {
       title: "Especialidades",
       description:
-        'Aqui você pode aprender mais sobre minhas competências principais.<br> Clique em cada cartão para mais detalhes!',
+        "Aqui você pode aprender mais sobre minhas competências principais.<br> Clique em cada cartão para mais detalhes!",
       altStar: "Ícone de Estrela",
       cards: {
         card1: {
@@ -270,7 +270,7 @@ export const translations = {
     es: {
       title: "Especialidades",
       description:
-        'Aquí puedes aprender más sobre mis competencias principales.<br> ¡Haz clic en cada tarjeta para más detalles!',
+        "Aquí puedes aprender más sobre mis competencias principales.<br> ¡Haz clic en cada tarjeta para más detalles!",
       altStar: "Icono de Estrella",
       cards: {
         card1: {
@@ -293,67 +293,335 @@ export const translations = {
   },
   ContactosResumo: {
     en: {
-      title: 'Contact',
-      altIcon: 'Contact Icon',
-      description: 'If you have a project you\'d like to discuss,<br> please feel free to send me a message.',
+      title: "Contact",
+      altIcon: "Contact Icon",
+      description:
+        "If you have a project you'd like to discuss,<br> please feel free to send me a message.",
       form: {
-        namePlaceholder: 'Your name',
-        emailPlaceholder: 'Your email',
-        messagePlaceholder: 'Your message',
-        sendingText: 'Sending...',
-        success: 'Message sent successfully!',
-        error: 'Error sending. Please check your information.',
-        genericError: 'Something went wrong. Please try again later.',
-        connectionError: 'Connection error. Check your network and try again.'
+        namePlaceholder: "Your name",
+        emailPlaceholder: "Your email",
+        messagePlaceholder: "Your message",
+        sendingText: "Sending...",
+        success: "Message sent successfully!",
+        error: "Error sending. Please check your information.",
+        genericError: "Something went wrong. Please try again later.",
+        connectionError: "Connection error. Check your network and try again.",
       },
       buttons: {
-        telegramAlt: 'Telegram link',
-        sendText: 'Send',
-        sendIconAlt: 'Send Icon',
-        vgenAlt: 'VGen link'
-      }
+        telegramAlt: "Telegram link",
+        sendText: "Send",
+        sendIconAlt: "Send Icon",
+        vgenAlt: "VGen link",
+      },
     },
     pt: {
-      title: 'Contato',
-      altIcon: 'Ícone de Contato',
-      description: 'Se tem um projeto que gostaria de discutir,<br> sinta-se à vontade para me enviar uma mensagem.',
+      title: "Contato",
+      altIcon: "Ícone de Contato",
+      description:
+        "Se tem um projeto que gostaria de discutir,<br> sinta-se à vontade para me enviar uma mensagem.",
       form: {
-        namePlaceholder: 'Seu nome',
-        emailPlaceholder: 'Seu email',
-        messagePlaceholder: 'Sua mensagem',
-        sendingText: 'Enviando...',
-        success: 'Mensagem enviada com sucesso!',
-        error: 'Erro ao enviar. Por favor, verifique as informações.',
-        genericError: 'Algo deu errado. Tente novamente mais tarde.',
-        connectionError: 'Erro de conexão. Verifique sua rede e tente novamente.'
+        namePlaceholder: "Seu nome",
+        emailPlaceholder: "Seu email",
+        messagePlaceholder: "Sua mensagem",
+        sendingText: "Enviando...",
+        success: "Mensagem enviada com sucesso!",
+        error: "Erro ao enviar. Por favor, verifique as informações.",
+        genericError: "Algo deu errado. Tente novamente mais tarde.",
+        connectionError:
+          "Erro de conexão. Verifique sua rede e tente novamente.",
       },
       buttons: {
-        telegramAlt: 'Link para Telegram',
-        sendText: 'Enviar',
-        sendIconAlt: 'Ícone de Enviar',
-        vgenAlt: 'Link para VGen'
-      }
+        telegramAlt: "Link para Telegram",
+        sendText: "Enviar",
+        sendIconAlt: "Ícone de Enviar",
+        vgenAlt: "Link para VGen",
+      },
     },
     es: {
-      title: 'Contacto',
-      altIcon: 'Icono de Contacto',
-      description: 'Si tienes un proyecto que te gustaría discutir,<br> no dudes en enviarme un mensaje.',
+      title: "Contacto",
+      altIcon: "Icono de Contacto",
+      description:
+        "Si tienes un proyecto que te gustaría discutir,<br> no dudes en enviarme un mensaje.",
       form: {
-        namePlaceholder: 'Tu nombre',
-        emailPlaceholder: 'Tu correo electrónico',
-        messagePlaceholder: 'Tu mensaje',
-        sendingText: 'Enviando...',
-        success: '¡Mensaje enviado con éxito!',
-        error: 'Error al enviar. Por favor, revisa tu información.',
-        genericError: 'Algo salió mal. Inténtalo de nuevo más tarde.',
-        connectionError: 'Error de conexión. Revisa tu red e inténtalo de nuevo.'
+        namePlaceholder: "Tu nombre",
+        emailPlaceholder: "Tu correo electrónico",
+        messagePlaceholder: "Tu mensaje",
+        sendingText: "Enviando...",
+        success: "¡Mensaje enviado con éxito!",
+        error: "Error al enviar. Por favor, revisa tu información.",
+        genericError: "Algo salió mal. Inténtalo de nuevo más tarde.",
+        connectionError:
+          "Error de conexión. Revisa tu red e inténtalo de nuevo.",
       },
       buttons: {
-        telegramAlt: 'Enlace a Telegram',
-        sendText: 'Enviar',
-        sendIconAlt: 'Icono de Enviar',
-        vgenAlt: 'Enlace a VGen'
-      }
-    }
-  }
+        telegramAlt: "Enlace a Telegram",
+        sendText: "Enviar",
+        sendIconAlt: "Icono de Enviar",
+        vgenAlt: "Enlace a VGen",
+      },
+    },
+  },
+  Projetos: {
+    en: {
+      devTitle: "DEV",
+      illustrationTitle: "ILLUSTRATION",
+      arrowAlt: "Arrow icon",
+      linkIconAlt: "GitHub link icon",
+      seeMoreText: "SEE MORE",
+      gallery: [
+        {
+          url: "/1.png",
+        },
+        {
+          url: "/2.png",
+        },
+        {
+          url: "/0.gif",
+        },
+        {
+          url: "/4.png",
+        },
+        {
+          url: "/5.png",
+        },
+        {
+          url: "/6.gif",
+        },
+        {
+          url: "/8.png",
+        },
+        {
+          url: "/7.gif",
+        },
+        {
+          url: "/3.png",
+        },
+        {
+          url: "/10.png",
+        },
+      ],
+      projects: [
+        {
+          id: "01",
+          title: "Sales Forecasting<br>Algorithm “ITAMIND”",
+          description:
+            "This project solves the problem of wasted frozen products, such as chicken wings, in supermarkets. It uses an algorithm that predicts sales demand. The goal is to help determine the quantity and timing of thawing, ensuring they are sold within two days and thus avoiding losses due to excess stock or expiration dates.",
+          link: "https://github.com/eliascmendes/ItaMind",
+          image: "/itamind.png",
+          softwares: ["HTML", "CSS", "Bootstrap"],
+        },
+        {
+          id: "02",
+          title: "Fokus",
+          description:
+            "This project is a timer based on the Pomodoro Technique, designed to optimize focus and productivity. It allows the user to set work and break intervals, with different timer modes (focus, short break, and long break). The project demonstrates skills in DOM manipulation, time control, and programming logic.",
+          link: "https://github.com/Bakisune/Fokus",
+          image: "/fokus.png",
+          softwares: ["HTML", "CSS", "JavaScript"],
+        },
+        {
+          id: "03",
+          title: "Cookin-up",
+          description:
+            "This is a web application project focused on front-end development that allows users to select ingredients they have at home. Based on this selection, the app suggests possible recipes, optimizing the use of food and simplifying the search for culinary inspiration. The project demonstrates skills in state management, creating reusable components, and using APIs.",
+          link: "https://github.com/Bakisune/Cookin-up",
+          image: "/cookinup.png",
+          softwares: ["Vue", "Vite", "JavaScript", "TypeScript"],
+        },
+        {
+          id: "04",
+          title: "Secret Santa",
+          description:
+            "This project is an online raffle for the Secret Santa game, designed to automate the process for groups. It demonstrates strong skills in programming logic, array manipulation, and control flow, ensuring the draw happens without anyone picking themselves.",
+          link: "https://github.com/Bakisune/Amigo-Secreto",
+          image: "/amigo-secreto.png",
+          softwares: ["HTML", "CSS", "JavaScript"],
+        },
+      ],
+    },
+    pt: {
+      devTitle: "DEV",
+      illustrationTitle: "ILUSTRAÇÃO",
+      arrowAlt: "Ícone de seta",
+      linkIconAlt: "Ícone de link para GitHub",
+      seeMoreText: "VER MAIS",
+      gallery: [
+        {
+          url: "https://www.flickr.com/photos/203350949@N05/54734614064/",
+        },
+        {
+          url: "https://www.flickr.com/photos/203350949@N05/54733546137/",
+        },
+        {
+          url: "https://www.flickr.com/photos/203350949@N05/54734614044/",
+        },
+        {
+          url: "https://www.flickr.com/photos/203350949@N05/54734376151/",
+        },
+        {
+          url: "https://www.flickr.com/photos/203350949@N05/54733546387/",
+        },
+        {
+          url: "https://www.flickr.com/photos/203350949@N05/54734376351/",
+        },
+        {
+          url: "https://www.flickr.com/photos/203350949@N05/54734614444/",
+        },
+        {
+          url: "https://www.flickr.com/photos/203350949@N05/54733546132/",
+        },
+        {
+          url: "https://www.flickr.com/photos/203350949@N05/54734613794/",
+        },
+        {
+          url: "https://www.flickr.com/photos/203350949@N05/54734596108/",
+        },
+        {
+          url: "https://www.flickr.com/photos/203350949@N05/54734742870/",
+        },
+        {
+          url: "https://www.flickr.com/photos/203350949@N05/54734613789/",
+        },
+        {
+          url: "https://www.flickr.com/photos/203350949@N05/54733545877/",
+        },
+        {
+          url: "https://www.flickr.com/photos/203350949@N05/54733545872/",
+        },
+        {
+          url: "https://www.flickr.com/photos/203350949@N05/54733545937/",
+        },
+      ],
+      projects: [
+        {
+          id: "01",
+          title: "Algoritmo de Previsão de Vendas “ITAMIND”",
+          description:
+            "Este projeto resolve o problema do desperdício de produtos congelados, como asinhas de frango, em supermercados. Ele utiliza um algoritmo que prevê a demanda de vendas. O objetivo é ajudar a determinar a quantidade e o momento do descongelamento, garantindo que sejam vendidos em até dois dias e evitando perdas por excesso de estoque ou vencimento.",
+          link: "https://github.com/eliascmendes/ItaMind",
+          image: "/itamind.png",
+          softwares: ["HTML", "CSS", "Bootstrap"],
+        },
+        {
+          id: "02",
+          title: "Fokus",
+          description:
+            "Este projeto é um timer baseado na técnica Pomodoro, desenvolvido para otimizar o foco e a produtividade. Ele permite que o usuário defina intervalos de trabalho e pausas, com diferentes modos de cronômetro (foco, descanso curto e descanso longo). O projeto demonstra habilidades em manipulação do DOM, controle de tempo e lógica de programação.",
+          link: "https://github.com/Bakisune/Fokus",
+          image: "/fokus.png",
+          softwares: ["HTML", "CSS", "JavaScript"],
+        },
+        {
+          id: "03",
+          title: "Cookin-up",
+          description:
+            "Este é um projeto de aplicação web focado em desenvolvimento front-end que permite aos usuários selecionar os ingredientes disponíveis em suas casas. Com base nessa seleção, o aplicativo sugere receitas possíveis, otimizando o uso dos alimentos e simplificando a busca por inspiração culinária. O projeto demonstra habilidades em manipulação de estados, criação de componentes reutilizáveis e consumo de APIs.",
+          link: "https://github.com/Bakisune/Cookin-up",
+          image: "/cookinup.png",
+          softwares: ["Vue", "Vite", "JavaScript", "TypeScript"],
+        },
+        {
+          id: "04",
+          title: "Amigo Secreto",
+          description:
+            "Este projeto é um sorteador online para a brincadeira de amigo secreto, criado para automatizar o processo de organização em grupos. O projeto demonstra habilidades sólidas em lógica de programação, manipulação de arrays e controle de fluxo, garantindo que o sorteio ocorra sem que ninguém tire a si mesmo.",
+          link: "https://github.com/Bakisune/Amigo-Secreto",
+          image: "/amigo-secreto.png",
+          softwares: ["HTML", "CSS", "JavaScript"],
+        },
+      ],
+    },
+    es: {
+      devTitle: "DEV",
+      illustrationTitle: "ILUSTRACIÓN",
+      arrowAlt: "Icono de flecha",
+      linkIconAlt: "Icono de enlace a GitHub",
+      seeMoreText: "VER MÁS",
+      gallery: [
+        {
+          url: "https://www.flickr.com/photos/203350949@N05/54734614064/",
+        },
+        {
+          url: "https://www.flickr.com/photos/203350949@N05/54733546137/",
+        },
+        {
+          url: "https://www.flickr.com/photos/203350949@N05/54734614044/",
+        },
+        {
+          url: "https://www.flickr.com/photos/203350949@N05/54734376151/",
+        },
+        {
+          url: "https://www.flickr.com/photos/203350949@N05/54733546387/",
+        },
+        {
+          url: "https://www.flickr.com/photos/203350949@N05/54734376351/",
+        },
+        {
+          url: "https://www.flickr.com/photos/203350949@N05/54734614444/",
+        },
+        {
+          url: "https://www.flickr.com/photos/203350949@N05/54733546132/",
+        },
+        {
+          url: "https://www.flickr.com/photos/203350949@N05/54734613794/",
+        },
+        {
+          url: "https://www.flickr.com/photos/203350949@N05/54734596108/",
+        },
+        {
+          url: "https://www.flickr.com/photos/203350949@N05/54734742870/",
+        },
+        {
+          url: "https://www.flickr.com/photos/203350949@N05/54734613789/",
+        },
+        {
+          url: "https://www.flickr.com/photos/203350949@N05/54733545877/",
+        },
+        {
+          url: "https://www.flickr.com/photos/203350949@N05/54733545872/",
+        },
+        {
+          url: "https://www.flickr.com/photos/203350949@N05/54733545937/",
+        },
+      ],
+      projects: [
+        {
+          id: "01",
+          title: "Algoritmo de Pronóstico de Ventas<br>“ITAMIND”",
+          description:
+            "Este proyecto resuelve el problema del desperdicio de productos congelados, como las alitas de pollo, en los supermercados. Utiliza un algoritmo que predice la demanda de ventas. El objetivo es ayudar a determinar la cantidad y el momento de la descongelación, asegurando que se vendan en dos días y evitando pérdidas por exceso de inventario o fechas de vencimiento.",
+          link: "https://github.com/eliascmendes/ItaMind",
+          image: "/itamind.png",
+          softwares: ["HTML", "CSS", "Bootstrap"],
+        },
+        {
+          id: "02",
+          title: "Fokus",
+          description:
+            "Este proyecto es un temporizador basado en la Técnica Pomodoro, diseñado para optimizar el enfoque y la productividad. Permite al usuario establecer intervalos de trabajo y de descanso, con diferentes modos de temporizador (enfoque, descanso corto y descanso largo). El proyecto demuestra habilidades en manipulación del DOM, control de tiempo y lógica de programación.",
+          link: "https://github.com/Bakisune/Fokus",
+          image: "/fokus.png",
+          softwares: ["HTML", "CSS", "JavaScript"],
+        },
+        {
+          id: "03",
+          title: "Cookin-up",
+          description:
+            "Este es un proyecto de aplicación web centrado en el desarrollo front-end que permite a los usuarios seleccionar ingredientes disponibles en sus hogares. Con base en esta selección, la aplicación sugiere posibles recetas, optimizando el uso de los alimentos y simplificando la búsqueda de inspiración culinaria. El proyecto demonstra habilidades en la manipulación de estados, la creación de componentes reutilizables y el uso de API.",
+          link: "https://github.com/Bakisune/Cookin-up",
+          image: "/cookinup.png",
+          softwares: ["Vue", "Vite", "JavaScript", "TypeScript"],
+        },
+        {
+          id: "04",
+          title: "Amigo Secreto",
+          description:
+            "Este proyecto es un sorteador en línea para el juego de amigo secreto, creado para automatizar el proceso de organización en grupos.",
+          link: "https://github.com/Bakisune/Amigo-Secreto",
+          image: "/amigo-secreto.png",
+          softwares: ["HTML", "CSS", "JavaScript"],
+        },
+      ],
+    },
+  },
 };

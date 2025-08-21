@@ -179,7 +179,6 @@ watch(() => activeLanguage.value, () => {
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    /* oi - Ajustado padding-bottom de 10% para 5% */
     padding-bottom: 5%;
     background-color: var(--cor-fundo);
 }

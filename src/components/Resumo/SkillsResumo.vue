@@ -1,3 +1,4 @@
+<!-- REM -->
 <template>
     <div class="skills-section-wrapper">
         <section class="skills-section" ref="skillsSection">
@@ -412,7 +413,7 @@ img.skill-logo-2 {
     color: var(--cor-branca);
 }
 
-
+@media (max-width: 1920px) {}
 
 @media (max-width: 1024px) {
     .skills-grid-container {

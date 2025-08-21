@@ -24,24 +24,13 @@ export default {
 </script>
 
 <style scoped>
-:root {
-    --roxo-escuro: #332b45;
-    --roxo-claro: #9e14fa;
-    --roxo-mais-claro: #d3b9ee;
-    --amarelo: #ffba60;
-    --cor-fundo: #342c3c;
-    --cor-branca: #ffffff;
-    --roxo-desligado: #574a68;
-    --container: #69209b;
-}
-
 .not-found-container {
     display: flex;
     justify-content: center;
     align-items: center;
     min-height: 100vh;
     text-align: center;
-    padding: 20px;
+    padding: 1.25rem;
     box-sizing: border-box;
     background-color: var(--cor-fundo);
     color: var(--cor-branca);
@@ -50,10 +39,10 @@ export default {
 
 .content-box {
     background-color: var(--roxo-escuro);
-    padding: 40px;
-    border-radius: 20px;
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
-    max-width: 600px;
+    padding: 2.5rem;
+    border-radius: 1.25rem;
+    box-shadow: 0 0.625rem 1.875rem rgba(0, 0, 0, 0.3);
+    max-width: 37.5rem;
     width: 100%;
 }
 
@@ -62,19 +51,19 @@ export default {
     font-weight: 600;
     color: var(--roxo-claro);
     margin: 0;
-    text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5);
+    text-shadow: 0.125rem 0.125rem 0.3125rem rgba(0, 0, 0, 0.5);
 }
 
 .subtitle {
     font-size: clamp(1.5rem, 3vw, 2rem);
     color: var(--roxo-mais-claro);
-    margin: 0 0 10px;
+    margin: 0 0 0.625rem;
 }
 
 .description {
     font-size: clamp(0.9rem, 1.5vw, 1.1rem);
     color: var(--cor-branca);
-    margin-bottom: 30px;
+    margin-bottom: 1.875rem;
 }
 
 .home-button {
@@ -82,17 +71,17 @@ export default {
     background-color: var(--amarelo);
     color: var(--roxo-escuro);
     font-weight: 600;
-    padding: 12px 24px;
-    border-radius: 10px;
+    padding: 0.75rem 1.5rem;
+    border-radius: 0.625rem;
     text-decoration: none;
     transition: background-color 0.3s ease, transform 0.2s ease;
-    box-shadow: 0 4px 15px rgba(255, 186, 96, 0.4);
+    box-shadow: 0 0.25rem 0.9375rem rgba(255, 186, 96, 0.4);
 }
 
 .home-button:hover {
     background-color: var(--roxo-claro);
     color: var(--cor-branca);
-    transform: translateY(-3px);
-    box-shadow: 0 6px 20px rgba(158, 20, 250, 0.4);
+    transform: translateY(-0.1875rem);
+    box-shadow: 0 0.375rem 1.25rem rgba(158, 20, 250, 0.4);
 }
 </style>

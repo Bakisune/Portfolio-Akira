@@ -113,7 +113,8 @@ onUnmounted(() => {
   position: relative;
   width: 100%;
   align-self: flex-start;
-  margin-bottom: 14.0625rem;
+  margin-bottom: 12rem;
+  /* Aumentado para criar mais espaço */
 }
 
 .education-section .education-title {
@@ -149,8 +150,8 @@ onUnmounted(() => {
   object-fit: cover;
   position: absolute;
   right: 0;
-  top: 100%;
-  transform: translateY(-50%);
+  bottom: -0.8rem;
+  transform: translateY(0);
   margin-right: 21.875rem;
   background: transparent;
   transition: transform 0.3s ease;
@@ -158,17 +159,17 @@ onUnmounted(() => {
 
 @keyframes shiningEffect {
   0% {
-    transform: translateY(-50%) rotate(0deg) scale(1);
+    transform: translateY(0) rotate(0deg) scale(1);
     filter: brightness(1);
   }
 
   50% {
-    transform: translateY(-50%) rotate(180deg) scale(0.5);
+    transform: translateY(0) rotate(180deg) scale(0.5);
     filter: brightness(1.5);
   }
 
   100% {
-    transform: translateY(-50%) rotate(360deg) scale(1);
+    transform: translateY(0) rotate(360deg) scale(1);
     filter: brightness(1);
   }
 }
@@ -219,7 +220,8 @@ onUnmounted(() => {
 .education-section .timeline-wrapper::before {
   content: '';
   position: absolute;
-  top: 13%;
+  top: 4rem;
+  /* Ajustado para dar mais espaço */
   left: 0;
   width: 100%;
   height: 0.0938rem;
@@ -230,7 +232,8 @@ onUnmounted(() => {
 .education-section .timeline-wrapper::after {
   content: '';
   position: absolute;
-  top: 13.5%;
+  top: 4rem;
+  /* Ajustado para dar mais espaço */
   left: 0.625rem;
   width: 0.625rem;
   height: 0.625rem;
@@ -242,7 +245,10 @@ onUnmounted(() => {
 
 .education-section .timeline-item {
   position: relative;
-  width: 15.625rem;
+  width: 25%;
+  /* Agora o card se expande */
+  min-width: 15.625rem;
+  /* Mantém um tamanho mínimo para legibilidade */
   height: 11.5625rem;
   padding: 1.25rem;
   margin: 0 0.9375rem;
@@ -287,11 +293,11 @@ onUnmounted(() => {
 }
 
 .education-section .timeline-item-even {
-  margin-top: 1.875rem;
+  margin-top: 1rem;
 }
 
 .education-section .timeline-item-odd {
-  margin-bottom: 1.875rem;
+  margin-bottom: 1rem;
   transform: translateY(-100%);
 }
 
@@ -319,8 +325,9 @@ onUnmounted(() => {
 .education-section .course-title {
   font-weight: 700;
   font-style: italic;
-  font-size: 1.5625rem;
+  font-size: clamp(1rem, 1.25rem + 1vw, 1.5625rem);
   margin-bottom: 2.1875rem;
+  word-wrap: break-word;
 }
 
 .education-section .timeline-item-odd .course-title {
@@ -330,26 +337,34 @@ onUnmounted(() => {
 .education-section .institution-info {
   font-weight: 600;
   font-style: italic;
-  font-size: 1.0rem;
+  font-size: clamp(0.8rem, 0.9rem + 0.5vw, 1rem);
   margin-bottom: 0.9375rem;
+  word-wrap: break-word;
 }
 
 .education-section .institution-local {
   font-weight: 900;
   font-style: italic;
-  font-size: 0.75rem;
+  font-size: clamp(0.6rem, 0.7rem + 0.25vw, 0.75rem);
   text-align: right;
+  word-wrap: break-word;
 }
 
+/* Estilos para dispositivos menores que 48rem (768px) */
 @media (max-width: 48.0rem) {
+
+  /* Altera a direção do layout e alinha os itens no centro */
   .education-section .timeline-wrapper {
     flex-direction: column;
     align-items: center;
   }
 
+  /* Garante que os cards não tenham mais a transformação vertical */
   .education-section .timeline-item {
     margin: 0.9375rem 0;
     transform: none;
+    width: 90%;
+    /* O card ocupa 90% da largura do container */
   }
 
   .education-section .timeline-item-even,
@@ -358,6 +373,7 @@ onUnmounted(() => {
     margin-top: 0.9375rem;
   }
 
+  /* Altera a orientação da linha central para vertical */
   .education-section .timeline-wrapper::before {
     top: 0;
     left: 50%;
@@ -366,27 +382,85 @@ onUnmounted(() => {
     height: 100%;
   }
 
-  .education-section .timeline-wrapper::after {
-    left: calc(50% - 0.9375rem);
-  }
-
+  /* Oculta os pontos da linha do tempo em dispositivos pequenos */
   .education-section .timeline-dot {
-    top: 50%;
-    left: -1.25rem;
-    transform: translateY(-50%);
+    display: none;
   }
 
-  .section-image {
-    position: static;
-    transform: none;
-    margin-top: 1.25rem;
-    margin-right: 0;
+  /* Mantém os cards acima da linha central e garante a animação de escala */
+  .education-section .timeline-item-even:hover,
+  .education-section .timeline-item-odd:hover {
+    transform: scale(1.05);
+    /* Aumenta a escala em vez de mover */
   }
 
+  /* Garante que a imagem e o título fiquem na mesma linha */
   .title-with-image {
-    flex-direction: column;
-    align-items: center;
-    margin-bottom: 12.5rem;
+    flex-direction: row;
+    align-items: flex-end;
+    /* Alinha a imagem com o final do título */
+    justify-content: flex-start;
+    margin-bottom: 2rem;
+  }
+
+  /* Ajusta o tamanho da fonte do título para se adequar a telas menores */
+  .education-section .education-title {
+    font-size: 2em;
+    margin-right: 0.5rem;
+  }
+
+  /* Garante que a linha do título se ajuste à largura do título */
+  .education-section .education-title.animate-title-line::after {
+    width: 100%;
+  }
+
+  /* Ajusta o posicionamento da imagem da estrela para o novo layout */
+  .section-image {
+    position: relative;
+    top: auto;
+    left: auto;
+    right: auto;
+    transform: none;
+    margin-right: 0;
+    margin-left: 0.5rem;
+    margin-top: 0.8rem;
+  }
+
+  /* Reduz o tamanho da fonte do texto dentro dos cards para telas menores */
+  .education-section .course-title {
+    font-size: 1.2rem;
+  }
+
+  .education-section .institution-info {
+    font-size: 0.9rem;
+  }
+
+  .education-section .institution-local {
+    font-size: 0.7rem;
+  }
+
+  /* Oculta a bola amarela da linha do tempo */
+  .education-section .timeline-wrapper::after {
+    display: none;
+  }
+
+  /* Garante que as animações de entrada se ajustem ao novo layout sem movimento vertical */
+  @keyframes cardSpinEntrance {
+    0% {
+      opacity: 0;
+      transform: scale(0.8) rotate(0deg);
+    }
+
+    100% {
+      opacity: 1;
+      transform: scale(1) rotate(360deg);
+    }
+  }
+
+  /* Remove o movimento dos cards no hover, mantendo apenas o aumento de escala */
+  .education-section .timeline-item-even:hover,
+  .education-section .timeline-item-odd:hover {
+    transform: scale(1.05);
   }
 }
 </style>

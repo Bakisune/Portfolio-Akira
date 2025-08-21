@@ -84,4 +84,29 @@ export default {
     transform: translateY(-0.1875rem);
     box-shadow: 0 0.375rem 1.25rem rgba(158, 20, 250, 0.4);
 }
+
+/* --- REGRAS PARA TELAS MAIORES (garante proporção em telas de alta resolução) --- */
+@media (min-width: 1920px) {
+    .content-box {
+        padding: 5rem;
+        max-width: 50rem;
+    }
+
+    .title {
+        font-size: 10rem;
+    }
+
+    .subtitle {
+        font-size: 2.5rem;
+    }
+
+    .description {
+        font-size: 1.5rem;
+    }
+
+    .home-button {
+        font-size: 1.25rem;
+        padding: 1rem 2rem;
+    }
+}
 </style>

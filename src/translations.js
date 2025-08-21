@@ -164,7 +164,7 @@ export const translations = {
       timeline: {
         item1: {
           title: "2018-2020",
-          course: "• Design and Web Design",
+          course: "• Graphic and Web Design Technician",
           institution: "ZION-RJ",
         },
         item2: {
@@ -186,7 +186,7 @@ export const translations = {
       timeline: {
         item1: {
           title: "2018-2020",
-          course: "• Design e Web Design",
+          course: "• Técnico em design gráfico e web",
           institution: "ZION-RJ",
         },
         item2: {
@@ -208,7 +208,7 @@ export const translations = {
       timeline: {
         item1: {
           title: "2018-2020",
-          course: "• Diseño y Diseño Web",
+          course: "•Técnico en Design Gráfico y Web",
           institution: "ZION-RJ",
         },
         item2: {
@@ -293,7 +293,7 @@ export const translations = {
   },
   ContactosResumo: {
     en: {
-      title: "Contact",
+      title: "Contact Me",
       altIcon: "Contact Icon",
       description:
         "If you have a project you'd like to discuss,<br> please feel free to send me a message.",
@@ -315,7 +315,7 @@ export const translations = {
       },
     },
     pt: {
-      title: "Contato",
+      title: "Me Contate",
       altIcon: "Ícone de Contato",
       description:
         "Se tem um projeto que gostaria de discutir,<br> sinta-se à vontade para me enviar uma mensagem.",
@@ -338,7 +338,7 @@ export const translations = {
       },
     },
     es: {
-      title: "Contacto",
+      title: "Contáctame",
       altIcon: "Icono de Contacto",
       description:
         "Si tienes un proyecto que te gustaría discutir,<br> no dudes en enviarme un mensaje.",

@@ -1,4 +1,3 @@
-<!-- REM -->
 <template>
     <div class="skills-section-wrapper">
         <section class="skills-section" ref="skillsSection">
@@ -13,6 +12,7 @@
                     </div>
                 </div>
 
+                <!-- The skills-last-row container has been removed and the cards have been moved to the main grid. -->
                 <div class="skills-grid-container">
                     <div class="skill-card">
                         <a>
@@ -68,9 +68,6 @@
                             <p class="skill-name">{{ translatedContent.bootstrap.name }}</p>
                         </a>
                     </div>
-                </div>
-
-                <div class="skills-grid-container">
                     <div class="skill-card python-card">
                         <a>
                             <img :src="pythonIconUrl" :alt="translatedContent.python.alt" class="skill-logo-1" />
@@ -125,9 +122,6 @@
                             <p class="skill-name">{{ translatedContent.illustrator.name }}</p>
                         </a>
                     </div>
-                </div>
-
-                <div class="skills-last-row">
                     <div class="skill-card">
                         <a>
                             <img :src="clipStudioIconUrl" :alt="translatedContent.clipStudio.alt"
@@ -180,7 +174,7 @@ import gameMakerIconUrl from '../../assets/GAMEMAKER.svg';
 import gameMakerLogoUrl from '../../assets/game-maker_ICON.png';
 
 const skillsSection = ref(null);
-const isSectionVisible = ref(false);
+const isSectionVisible = ref(false); // Variável re-introduzida para o IntersectionObserver
 let observer;
 
 const translatedContent = computed(() => {
@@ -193,7 +187,7 @@ onMounted(() => {
             ([entry]) => {
                 isSectionVisible.value = entry.isIntersecting;
             },
-            { threshold: 0.5 }
+            { threshold: 0.1 } // Valor ajustado para ser mais flexível em telas menores
         );
         observer.observe(skillsSection.value);
     }
@@ -262,7 +256,7 @@ onUnmounted(() => {
     object-fit: contain;
     top: 0;
     left: 0;
-    transform: scaleX(0);
+    transform: scaleX(0); // Garante que a linha comece invisível antes da animação
     transform-origin: center center;
     z-index: 1;
 }
@@ -275,7 +269,7 @@ onUnmounted(() => {
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    opacity: 0;
+    opacity: 0; // Garante que as estrelas comecem invisíveis antes da animação
     z-index: 2;
 }
 
@@ -312,35 +306,33 @@ onUnmounted(() => {
 
 .skills-grid-container {
     display: flex;
-    flex-wrap: nowrap;
-    gap: 1.5625rem;
+    flex-wrap: wrap;
+    gap: 0.8rem;
     width: 100%;
     margin-top: 2.5rem;
     justify-content: center;
 }
 
+/* The skills-last-row container has been removed, so this style rule is no longer needed */
 .skills-last-row {
-    display: flex;
-    justify-content: center;
-    width: 100%;
-    gap: 1.5625rem;
-    margin-top: 1.875rem;
+    display: none;
 }
 
 .skill-card {
     background-color: var(--cor-branca);
     border-radius: 0.75rem;
-    padding: 1.5625rem;
+    padding: 0.6rem;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    width: 8.75rem;
-    height: 8.75rem;
     box-shadow: 0 0.25rem 0.375rem rgba(0, 0, 0, 0.1);
     cursor: default;
     transition: background-color 0.3s ease, transform 0.3s ease, border 0.3s ease;
     border: 0.125rem solid var(--roxo-desligado);
+    flex-basis: 7rem;
+    max-width: 7rem;
+    aspect-ratio: 1 / 1;
 }
 
 .skill-card:hover {
@@ -362,12 +354,13 @@ onUnmounted(() => {
 .skill-logo,
 .skill-logo-2,
 .skill-logo-3 {
+    margin-top: -1rem;
     position: absolute;
-    top: 0.9375rem;
+    top: 0.5rem;
     left: 50%;
     transform: translateX(-50%);
-    width: 5rem;
-    height: 5rem;
+    width: 3.5rem;
+    height: 3.5rem;
     object-fit: contain;
     transition: opacity 0.3s ease, transform 0.3s ease;
 }
@@ -398,9 +391,9 @@ img.skill-logo-2 {
 .skill-name {
     position: relative;
     z-index: 10;
-    margin-top: 6.5625rem;
+    margin-top: 4.5rem;
     font-weight: 900;
-    font-size: 0.9em;
+    font-size: 0.75em;
     color: var(--roxo-escuro);
     text-align: center;
     transition: color 0.3s ease;
@@ -413,124 +406,128 @@ img.skill-logo-2 {
     color: var(--cor-branca);
 }
 
-@media (max-width: 120.0rem) {}
-
-@media (max-width: 64.0rem) {
+/* Estilos para telas médias e grandes */
+@media (min-width: 48.1rem) and (max-width: 64.0rem) {
     .skills-grid-container {
-        flex-wrap: wrap;
+        gap: 1.2rem;
     }
 
     .skill-card {
-        width: calc((100% - 6 * 1.5625rem) / 7);
-        height: 7.5rem;
+        flex-basis: calc(25% - 1.2rem);
+        max-width: none;
         padding: 0.9375rem;
     }
 
-    .skills-last-row .skill-card {
-        width: calc((100% - 1.5625rem) / 2);
-    }
-
     .skill-logo-1,
     .skill-logo,
     .skill-logo-2,
     .skill-logo-3 {
-        width: 4.0625rem;
-        height: 4.0625rem;
+        width: 3.5rem;
+        height: 3.5rem;
         top: 0.625rem;
-    }
-}
-
-@media (max-width: 48.0rem) {
-    .skills-grid-container {
-        flex-basis: 100%;
-    }
-
-    .skill-card {
-        width: 6.25rem;
-        height: 6.25rem;
-        padding: 0.75rem;
-    }
-
-    .skill-logo-1,
-    .skill-logo,
-    .skill-logo-2,
-    .skill-logo-3 {
-        width: 3.4375rem;
-        height: 3.4375rem;
-        top: 2.5rem;
-    }
-
-    .skills-last-row .skill-card {
-        width: calc((40% - 1.5625rem) / 2);
-    }
-
-    .skills-title {
-        font-size: 2.8em;
     }
 
     .skill-name {
-        position: relative;
-        z-index: 10;
-        padding-top: -1rem;
-        margin-bottom: 2rem;
-        font-weight: 900;
-        font-size: 0.78em;
-        text-align: center;
-    }
-
-    .skills-line {
-        position: relative;
-        width: 40%;
-        width: 28rem;
-        height: 0.8rem;
-        margin-top: 1%;
+        margin-top: 4.5rem;
+        font-size: 0.75em;
     }
 }
 
-@media (max-width: 30.0rem) {
+/* Estilos para tablets (layout 4x4) */
+@media (max-width: 48.0rem) {
     .skills-grid-container {
-        flex-basis: 100%;
+        justify-content: center;
+        gap: 1.2rem;
     }
 
     .skill-card {
-        width: 5rem;
-        height: 5rem;
-        padding: 0.6rem;
+        flex-basis: calc(25% - 1.2rem);
+        /* 4 colunas */
+        max-width: none;
+        padding: 0.5rem;
+        margin: 0;
     }
 
     .skill-logo-1,
     .skill-logo,
     .skill-logo-2,
     .skill-logo-3 {
-        width: 2.75rem;
-        height: 2.75rem;
-        top: 2rem;
+        width: 4rem;
+        height: 4rem;
+        top: 0.4rem;
     }
 
-    .skills-last-row .skill-card {
-        width: calc((40% - 1.25rem) / 2);
+    .skill-name {
+        margin-top: 4rem;
+        font-size: 0.8em;
+    }
+}
+
+/* Estilos para celulares (incluindo o tamanho de 425px) */
+@media (max-width: 30.0rem) {
+    .skills-grid-container {
+        justify-content: center;
+        gap: 0.5rem;
+    }
+
+    .skill-card {
+        flex-basis: calc(50% - 0.5rem);
+        max-width: none;
+        padding: 0.5rem;
+        margin: 0.25rem;
+    }
+
+    .skill-logo-1,
+    .skill-logo,
+    .skill-logo-2,
+    .skill-logo-3 {
+        width: 4rem;
+        height: 4rem;
+        top: 0.5rem;
+    }
+
+    .skill-name {
+        margin-top: rem;
+        font-size: 0.8em;
     }
 
     .skills-title {
         font-size: 2.2em;
     }
 
-    .skill-name {
-        position: relative;
-        z-index: 10;
-        padding-top: -0.8rem;
-        margin-bottom: 1.6rem;
-        font-weight: 900;
-        font-size: 0.65em;
-        text-align: center;
-    }
-
     .skills-line {
-        position: relative;
-        width: 30%;
         width: 20rem;
         height: 0.6rem;
-        margin-top: 1%;
+    }
+}
+
+/* Estilos para computadores (layout 2 colunas) */
+@media (min-width: 64.1rem) {
+    .skills-grid-container {
+        justify-content: center;
+        gap: 1.5rem;
+    }
+
+    .skill-card {
+        flex-basis: calc(25% - 1.5rem);
+        /* Mantém 4 colunas em desktops */
+        max-width: 10rem;
+        padding: 1rem;
+        max-height: 10rem;
+    }
+
+    .skill-logo-1,
+    .skill-logo,
+    .skill-logo-2,
+    .skill-logo-3 {
+        width: 4rem;
+        height: 4rem;
+        top: 0.75rem;
+    }
+
+    .skill-name {
+        margin-top: 5rem;
+        font-size: 0.8em;
     }
 }
 </style>

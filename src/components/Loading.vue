@@ -120,19 +120,6 @@ export default {
     }
 }
 
-/* .loading-gif {
-    position: absolute;
-    top: -3.125rem;
-    left: 50%;
-    transform: translateX(-50%);
-    width: 6.25rem;
-    height: 6.25rem;
-    border-radius: 50%;
-    box-shadow: 0 0.3125rem 0.9375rem rgba(0, 0, 0, 0.1);
-    background-color: var(--cor-branca);
-    padding: 0.625rem;
-} */
-
 .loading-gif {
     position: absolute;
     top: -9.375rem;
@@ -265,5 +252,64 @@ export default {
 .fade-enter,
 .fade-leave-to {
     opacity: 0;
+}
+
+/* --- REGRAS PARA TELAS MENORES (ajuste para telas pequenas) --- */
+@media (max-width: 600px) {
+    .loading-box {
+        padding: 1rem 2rem;
+        /* Reduz o padding para que o box seja mais compacto */
+    }
+
+    .loading-gif {
+        width: 10rem;
+        /* Reduz o tamanho do GIF */
+        height: 10rem;
+        top: -5rem;
+        /* Ajusta a posição para que o GIF fique no centro superior do box */
+    }
+
+    .loading-image {
+        width: 4rem;
+        /* Reduz o tamanho do logo */
+        height: 4rem;
+        bottom: -2rem;
+        /* Ajusta a posição para que o logo continue cortado */
+    }
+
+    .title {
+        font-size: 1rem;
+        /* Reduz o tamanho da fonte do título */
+    }
+}
+
+/* --- REGRAS PARA TELAS MAIORES (garante proporção em telas de alta resolução) --- */
+@media (min-width: 1920px) {
+
+    /* OLÁ */
+    .loading-box {
+        padding: 5rem 6rem;
+        max-width: 50rem;
+    }
+
+    .loading-gif {
+        width: 25rem;
+        height: 25rem;
+        top: -12.5rem;
+    }
+
+    .loading-image {
+        width: 8rem;
+        height: 8rem;
+        bottom: -4rem;
+    }
+
+    .title {
+        font-size: 2rem;
+    }
+
+    .loading-bar {
+        height: 0.8rem;
+    }
 }
 </style>

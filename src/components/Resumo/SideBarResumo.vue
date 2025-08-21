@@ -242,12 +242,12 @@ const animateActiveLanguage = () => {
   position: fixed;
   z-index: 1000;
   top: 50%;
-  left: 50px;
+  left: 3.125rem;
   transform: translateY(-50%);
-  width: 40px;
-  height: 340px;
-  padding: 40px 2px;
-  border-radius: 25px;
+  width: 2.5rem;
+  height: 21.25rem;
+  padding: 2.5rem 0.125rem;
+  border-radius: 1.5625rem;
   background-color: var(--roxo-mais-claro);
   transition: height 0.4s ease, border-radius 0.4s ease, padding 0.4s ease;
   display: flex;
@@ -257,7 +257,7 @@ const animateActiveLanguage = () => {
 }
 
 .header.closed {
-  height: 40px;
+  height: 2.5rem;
   padding: 0;
   border-radius: 50%;
   transform: translateY(-50%);
@@ -273,7 +273,7 @@ const animateActiveLanguage = () => {
 
 .toggle-button {
   cursor: pointer;
-  padding: 8px;
+  padding: 0.5rem;
   font-size: 1.5em;
   color: var(--roxo-desligado);
   transition: color 0.3s ease;
@@ -283,7 +283,7 @@ const animateActiveLanguage = () => {
 }
 
 .header.closed .toggle-button {
-  margin-top: 2px;
+  margin-top: 0.125rem;
 }
 
 .toggle-button:hover {
@@ -301,7 +301,7 @@ const animateActiveLanguage = () => {
 .nav-list {
   display: flex;
   flex-direction: column;
-  gap: 24px;
+  gap: 1.5rem;
   list-style: none;
   margin: 0;
   padding: 0;
@@ -313,7 +313,7 @@ const animateActiveLanguage = () => {
 .nav-list-grouped {
   display: flex;
   flex-direction: column;
-  gap: 12px;
+  gap: 0.75rem;
   list-style: none;
   margin: 0;
   padding: 0;
@@ -342,10 +342,10 @@ const animateActiveLanguage = () => {
   position: fixed;
   z-index: 999;
   top: 69.1%;
-  left: 85px;
+  left: 5.3125rem;
   transform: translateY(-50%);
-  padding: 8px;
-  border-radius: 0 25px 25px 0;
+  padding: 0.5rem;
+  border-radius: 0 1.5625rem 1.5625rem 0;
   background-color: var(--roxo-mais-claro);
   opacity: 0.8;
 }
@@ -358,20 +358,20 @@ const animateActiveLanguage = () => {
   flex-direction: row;
   align-items: center;
   justify-content: center;
-  gap: 2px;
+  gap: 0.125rem;
 }
 
 .language-icon-container {
   display: flex;
   justify-content: center;
   align-items: center;
-  width: 28px;
-  height: 28px;
+  width: 1.75rem;
+  height: 1.75rem;
   border-radius: 50%;
   font-size: 0.7em;
   font-weight: bold;
   color: var(--roxo-claro);
-  border: 1px solid var(--roxo-mais-claro);
+  border: 0.0625rem solid var(--roxo-mais-claro);
   transition: all 0.3s ease;
   text-transform: uppercase;
 }
@@ -388,8 +388,8 @@ const animateActiveLanguage = () => {
 }
 
 .language-icon-container.active-language-icon {
-  border: 2px solid var(--roxo-claro);
-  box-shadow: 0 0 10px rgba(138, 43, 226, 0.5);
+  border: 0.125rem solid var(--roxo-claro);
+  box-shadow: 0 0 0.625rem rgba(138, 43, 226, 0.5);
   transform: scale(1.1);
 }
 
@@ -401,7 +401,7 @@ const animateActiveLanguage = () => {
 .language-fade-enter,
 .language-fade-leave-to {
   opacity: 0;
-  transform: translateX(-20px) translateY(-50%);
+  transform: translateX(-1.25rem) translateY(-50%);
 }
 
 html,
@@ -422,7 +422,7 @@ html {
   }
 
   50% {
-    transform: translateY(-5px);
+    transform: translateY(-0.3125rem);
   }
 }
 

@@ -62,11 +62,11 @@ const translatedContent = computed(() => {
 
   .logo {
     position: absolute;
-    top: 40px;
-    left: 30px;
+    top: 2.5rem;
+    left: 1.875rem;
     z-index: 2;
-    height: 80px;
-    width: 80px;
+    height: 5.0rem;
+    width: 5.0rem;
     background-image: url('/bakisunestickerlogo.svg');
     background-size: contain;
     background-repeat: no-repeat;
@@ -77,7 +77,7 @@ const translatedContent = computed(() => {
     position: absolute;
     top: 24.5%;
     z-index: 2;
-    margin-left: calc(10% + 30px);
+    margin-left: calc(10% + 1.875rem);
     color: var(--cor-branca);
     background: transparent;
 
@@ -86,7 +86,7 @@ const translatedContent = computed(() => {
       color: var(--roxo-claro, #ccc);
       font-weight: 600;
       font-size: 1.5em;
-      margin: 0 0 8px 0;
+      margin: 0 0 0.5rem 0;
       background-color: transparent;
     }
 
@@ -116,7 +116,7 @@ const translatedContent = computed(() => {
     .skills {
       font-family: Poppins, sans-serif;
       color: var(--cor-branca);
-      margin-top: 12px;
+      margin-top: 0.75rem;
       font-style: italic;
       font-size: 1.35em;
       background-color: transparent;

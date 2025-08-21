@@ -253,7 +253,7 @@ export default {
 };
 </script>
 
-<style>
+<style scoped>
 :root {
   --branco: #ffffff;
 }
@@ -268,8 +268,8 @@ export default {
 
 .cursor {
   font-weight: 500;
-  border-right: 2px solid var(--roxo-claro);
-  margin-left: 2px;
+  border-right: 0.125rem solid var(--roxo-claro);
+  margin-left: 0.125rem;
 }
 
 .blinking {
@@ -462,6 +462,7 @@ export default {
 }
 
 .btn-send {
+  font-family: 'Poppins', sans-serif;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -471,10 +472,10 @@ export default {
   border-radius: 0.375rem;
   transition: 0.3s ease;
   padding: 0.75rem 1.5rem;
-  font-size: medium;
-  font-weight: 500;
+  font-size: 0.83rem;
+  font-weight: 900;
   gap: 0.5rem;
-  color: var(--branco);
+  color: var(--cor-branca);
   transition: background-color 0.3s ease;
 }
 
@@ -516,11 +517,11 @@ export default {
   }
 
   40% {
-    transform: translateY(-5px);
+    transform: translateY(-0.3125rem);
   }
 
   60% {
-    transform: translateY(-2px);
+    transform: translateY(-0.125rem);
   }
 }
 

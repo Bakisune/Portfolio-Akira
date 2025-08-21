@@ -103,13 +103,13 @@ onUnmounted(() => {
 .new-section {
   position: relative;
   margin-top: -10vh;
-  padding: 40px;
+  padding: 2.5rem;
   z-index: 2;
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding-top: 100px;
-  padding-bottom: 160px;
+  padding-top: 6.25rem;
+  padding-bottom: 10.0rem;
   background-color: transparent;
   // Adicionando a fonte geral para a seção
   font-family: 'Poppins', sans-serif;
@@ -136,7 +136,7 @@ onUnmounted(() => {
   padding-bottom: 1%;
   background-image: url("../../assets/Papel.png");
   background-size: cover;
-  background-position: calc(30% + 0px) center;
+  background-position: calc(30% + 0.0rem) center;
   background-repeat: no-repeat;
   z-index: 1;
 }
@@ -146,10 +146,10 @@ onUnmounted(() => {
   align-items: center;
   position: relative;
   width: 80%;
-  max-width: 1200px;
+  max-width: 75.0rem;
   align-self: flex-start;
   margin-left: 10%;
-  margin-bottom: 20px;
+  margin-bottom: 1.25rem;
   z-index: 2;
 }
 
@@ -160,7 +160,7 @@ onUnmounted(() => {
   font-weight: 700;
   margin-bottom: 0;
   position: relative;
-  padding-bottom: 10px;
+  padding-bottom: 0.625rem;
   z-index: 2;
 }
 
@@ -170,23 +170,23 @@ onUnmounted(() => {
   left: 0;
   bottom: 0;
   width: 0;
-  height: 4px;
+  height: 0.25rem;
   background-color: var(--roxo-claro);
-  border-radius: 2px;
+  border-radius: 0.125rem;
   transition: width 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
 }
 
 .about-title.animate-title-line::after {
-  width: 150px;
+  width: 9.375rem;
 }
 
 .section-image {
-  width: 50px;
-  height: 50px;
+  width: 3.125rem;
+  height: 3.125rem;
   object-fit: cover;
   background: transparent;
-  margin-left: -90px;
-  margin-bottom: -80px;
+  margin-left: -5.625rem;
+  margin-bottom: -5.0rem;
 }
 
 @keyframes shiningEffect {
@@ -217,11 +217,11 @@ onUnmounted(() => {
 .about-content-wrapper {
   display: flex;
   flex-direction: row;
-  gap: 60px;
-  max-width: 1200px;
+  gap: 3.75rem;
+  max-width: 75.0rem;
   width: 80%;
   align-items: flex-start;
-  margin-bottom: 40px;
+  margin-bottom: 2.5rem;
   position: relative;
   z-index: 2;
 }
@@ -239,14 +239,14 @@ onUnmounted(() => {
   font-size: 1.2em;
   text-align: justify;
   margin-right: 8%;
-  margin-top: 15px;
-  min-height: 120px;
+  margin-top: 0.9375rem;
+  min-height: 7.5rem;
 }
 
 .button-container {
   display: flex;
-  gap: 15px;
-  margin-top: 20px;
+  gap: 0.9375rem;
+  margin-top: 1.25rem;
   margin-left: 0;
 }
 
@@ -254,22 +254,22 @@ onUnmounted(() => {
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 8px;
-  padding: 8px 20px;
+  gap: 0.5rem;
+  padding: 0.5rem 1.25rem;
   background-color: var(--roxo-claro);
   color: #fff;
   // A fonte nos botões agora é herdada da seção principal
   font-weight: 600;
   text-decoration: none;
-  border-radius: 8px;
+  border-radius: 0.5rem;
   transition: transform 0.2s ease, box-shadow 0.2s ease, background-color 0.3s ease;
-  border: 2px solid transparent;
+  border: 0.125rem solid transparent;
   cursor: pointer;
 }
 
 .action-button:hover {
-  transform: translateY(-3px);
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+  transform: translateY(-0.1875rem);
+  box-shadow: 0 0.25rem 0.75rem rgba(0, 0, 0, 0.2);
   background-color: var(--amarelo);
 }
 
@@ -292,13 +292,13 @@ onUnmounted(() => {
 }
 
 .image-box {
-  width: 400px;
-  height: 450px;
+  width: 25.0rem;
+  height: 28.125rem;
   background-image: url("../../assets/Teste.png");
   background-size: cover;
   background-position: center;
-  border: 4px solid var(--roxo-claro);
-  border-radius: 10px;
+  border: 0.25rem solid var(--roxo-claro);
+  border-radius: 0.625rem;
   margin-bottom: 1%;
   position: relative;
 }
@@ -306,11 +306,11 @@ onUnmounted(() => {
 .bakisune-info {
   font-family: 'Mokomori Kuro', sans-serif;
   position: absolute;
-  bottom: -20px;
-  left: 20px;
+  bottom: -1.25rem;
+  left: 1.25rem;
   display: flex;
   align-items: center;
-  gap: 8px;
+  gap: 0.5rem;
   color: var(--roxo-claro);
   font-weight: 600;
   font-size: 1.1em;
@@ -320,7 +320,7 @@ onUnmounted(() => {
   content: none;
 }
 
-@media (max-width: 768px) {
+@media (max-width: 48.0rem) {
   .title-with-image {
     flex-direction: column;
     align-items: center;
@@ -329,7 +329,7 @@ onUnmounted(() => {
 
   .section-image {
     margin-left: 0;
-    margin-top: 20px;
+    margin-top: 1.25rem;
   }
 
   .about-content-wrapper {

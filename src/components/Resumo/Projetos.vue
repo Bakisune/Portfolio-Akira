@@ -188,7 +188,7 @@ watch(() => activeLanguage.value, () => {
     color: var(--roxo-claro);
     font-size: 3em;
     font-weight: 700;
-    margin-bottom: 20px;
+    margin-bottom: 1.25rem;
 }
 
 .projects-dev {
@@ -390,7 +390,7 @@ watch(() => activeLanguage.value, () => {
     transform: scale(1.1);
 }
 
-@media (max-width: 768px) {
+@media (max-width: 48.0rem) {
     .projects-dev {
         flex-direction: column;
         gap: 2rem;

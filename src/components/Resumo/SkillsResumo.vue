@@ -413,9 +413,9 @@ img.skill-logo-2 {
     color: var(--cor-branca);
 }
 
-@media (max-width: 1920px) {}
+@media (max-width: 120.0rem) {}
 
-@media (max-width: 1024px) {
+@media (max-width: 64.0rem) {
     .skills-grid-container {
         flex-wrap: wrap;
     }
@@ -440,7 +440,7 @@ img.skill-logo-2 {
     }
 }
 
-@media (max-width: 768px) {
+@media (max-width: 48.0rem) {
     .skills-grid-container {
         flex-basis: 100%;
     }
@@ -487,7 +487,7 @@ img.skill-logo-2 {
     }
 }
 
-@media (max-width: 480px) {
+@media (max-width: 30.0rem) {
     .skills-grid-container {
         flex-basis: 100%;
     }

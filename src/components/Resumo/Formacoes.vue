@@ -85,10 +85,6 @@ onUnmounted(() => {
 </script>
 
 <style scoped>
-:root {
-  --amarelo: #ffc107;
-}
-
 .education-section {
   font-family: Poppins, sans-serif;
   position: relative;
@@ -99,12 +95,12 @@ onUnmounted(() => {
   background-color: var(--cor-fundo);
   color: var(--cor-branca);
   width: 100%;
-  padding: 60px 0 125px;
+  padding: 3.75rem 0 7.8125rem;
 }
 
 .container-content {
   width: 90%;
-  max-width: 1000px;
+  max-width: 62.5rem;
   margin: 0 auto;
   display: flex;
   flex-direction: column;
@@ -117,7 +113,7 @@ onUnmounted(() => {
   position: relative;
   width: 100%;
   align-self: flex-start;
-  margin-bottom: 225px;
+  margin-bottom: 14.0625rem;
 }
 
 .education-section .education-title {
@@ -128,34 +124,34 @@ onUnmounted(() => {
   position: relative;
   text-align: left;
   display: inline-block;
-  margin-right: 20px;
+  margin-right: 1.25rem;
 }
 
 .education-section .education-title::after {
   content: "";
   position: absolute;
   left: 0;
-  bottom: -8px;
+  bottom: -0.5rem;
   width: 0;
-  height: 4px;
+  height: 0.25rem;
   background-color: var(--cor-branca);
-  border-radius: 2px;
+  border-radius: 0.125rem;
   transition: width 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
 }
 
 .education-section .education-title.animate-title-line::after {
-  width: 580px;
+  width: 36.25rem;
 }
 
 .section-image {
-  width: 50px;
-  height: 50px;
+  width: 3.125rem;
+  height: 3.125rem;
   object-fit: cover;
   position: absolute;
   right: 0;
   top: 100%;
   transform: translateY(-50%);
-  margin-right: 350px;
+  margin-right: 21.875rem;
   background: transparent;
   transition: transform 0.3s ease;
 }
@@ -184,7 +180,7 @@ onUnmounted(() => {
 @keyframes cardSpinEntrance {
   0% {
     opacity: 0;
-    transform: translateY(20px) scale(0.8) rotate(0deg);
+    transform: translateY(1.25rem) scale(0.8) rotate(0deg);
   }
 
   100% {
@@ -216,8 +212,8 @@ onUnmounted(() => {
   display: flex;
   justify-content: center;
   flex-wrap: wrap;
-  padding-top: 20px;
-  padding-bottom: 20px;
+  padding-top: 1.25rem;
+  padding-bottom: 1.25rem;
 }
 
 .education-section .timeline-wrapper::before {
@@ -226,7 +222,7 @@ onUnmounted(() => {
   top: 13%;
   left: 0;
   width: 100%;
-  height: 1.5px;
+  height: 0.0938rem;
   background-color: var(--roxo-claro);
   z-index: 0;
 }
@@ -235,9 +231,9 @@ onUnmounted(() => {
   content: '';
   position: absolute;
   top: 13.5%;
-  left: 10px;
-  width: 10px;
-  height: 10px;
+  left: 0.625rem;
+  width: 0.625rem;
+  height: 0.625rem;
   background-color: var(--amarelo);
   border-radius: 50%;
   transform: translateY(-50%);
@@ -246,24 +242,24 @@ onUnmounted(() => {
 
 .education-section .timeline-item {
   position: relative;
-  width: 250px;
-  height: 185px;
-  padding: 20px;
-  margin: 0 15px;
+  width: 15.625rem;
+  height: 11.5625rem;
+  padding: 1.25rem;
+  margin: 0 0.9375rem;
   background-color: var(--container);
-  border: 2px solid var(--cor-branca);
-  border-radius: 15px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  border: 0.125rem solid var(--cor-branca);
+  border-radius: 0.9375rem;
+  box-shadow: 0 0.25rem 0.5rem rgba(0, 0, 0, 0.2);
   transition: transform 0.3s ease, box-shadow 0.3s ease;
   text-align: center;
 }
 
 .card-icon {
   position: absolute;
-  top: -15px;
-  left: -25px;
-  width: 60px;
-  height: 60px;
+  top: -0.9375rem;
+  left: -1.5625rem;
+  width: 3.75rem;
+  height: 3.75rem;
   border-radius: 50%;
   background-color: transparent;
   object-fit: cover;
@@ -273,13 +269,13 @@ onUnmounted(() => {
 }
 
 .education-section .timeline-item-even:hover {
-  transform: translateY(-5px) scale(1.02);
-  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.25);
+  transform: translateY(-0.3125rem) scale(1.02);
+  box-shadow: 0 0.375rem 0.75rem rgba(0, 0, 0, 0.25);
 }
 
 .education-section .timeline-item-odd:hover {
-  transform: translateY(calc(-100% + 5px)) scale(1.02);
-  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.25);
+  transform: translateY(calc(-100% + 0.3125rem)) scale(1.02);
+  box-shadow: 0 0.375rem 0.75rem rgba(0, 0, 0, 0.25);
 }
 
 .education-section .timeline-item:hover .timeline-dot {
@@ -291,11 +287,11 @@ onUnmounted(() => {
 }
 
 .education-section .timeline-item-even {
-  margin-top: 30px;
+  margin-top: 1.875rem;
 }
 
 .education-section .timeline-item-odd {
-  margin-bottom: 30px;
+  margin-bottom: 1.875rem;
   transform: translateY(-100%);
 }
 
@@ -303,94 +299,94 @@ onUnmounted(() => {
   position: absolute;
   left: 50%;
   transform: translateX(-50%);
-  width: 12px;
-  height: 12px;
+  width: 0.75rem;
+  height: 0.75rem;
   background-color: var(--roxo-claro);
-  border: 2px solid var(--cor-branca);
+  border: 0.125rem solid var(--cor-branca);
   border-radius: 50%;
   z-index: 1;
   transition: transform 0.3s ease;
 }
 
 .education-section .timeline-item-even .timeline-dot {
-  top: -20px;
+  top: -1.25rem;
 }
 
 .education-section .timeline-item-odd .timeline-dot {
-  bottom: -20px;
+  bottom: -1.25rem;
 }
 
 .education-section .course-title {
   font-weight: 700;
   font-style: italic;
-  font-size: 25px;
-  margin-bottom: 35px;
+  font-size: 1.5625rem;
+  margin-bottom: 2.1875rem;
 }
 
 .education-section .timeline-item-odd .course-title {
-  margin-bottom: 15px;
+  margin-bottom: 0.9375rem;
 }
 
 .education-section .institution-info {
   font-weight: 600;
   font-style: italic;
-  font-size: 16px;
-  margin-bottom: 15px;
+  font-size: 1.0rem;
+  margin-bottom: 0.9375rem;
 }
 
 .education-section .institution-local {
   font-weight: 900;
   font-style: italic;
-  font-size: 12px;
+  font-size: 0.75rem;
   text-align: right;
 }
 
-@media (max-width: 768px) {
+@media (max-width: 48.0rem) {
   .education-section .timeline-wrapper {
     flex-direction: column;
     align-items: center;
   }
 
   .education-section .timeline-item {
-    margin: 15px 0;
+    margin: 0.9375rem 0;
     transform: none;
   }
 
   .education-section .timeline-item-even,
   .education-section .timeline-item-odd {
-    margin-bottom: 15px;
-    margin-top: 15px;
+    margin-bottom: 0.9375rem;
+    margin-top: 0.9375rem;
   }
 
   .education-section .timeline-wrapper::before {
     top: 0;
     left: 50%;
     transform: translateX(-50%);
-    width: 2px;
+    width: 0.125rem;
     height: 100%;
   }
 
   .education-section .timeline-wrapper::after {
-    left: calc(50% - 15px);
+    left: calc(50% - 0.9375rem);
   }
 
   .education-section .timeline-dot {
     top: 50%;
-    left: -20px;
+    left: -1.25rem;
     transform: translateY(-50%);
   }
 
   .section-image {
     position: static;
     transform: none;
-    margin-top: 20px;
+    margin-top: 1.25rem;
     margin-right: 0;
   }
 
   .title-with-image {
     flex-direction: column;
     align-items: center;
-    margin-bottom: 200px;
+    margin-bottom: 12.5rem;
   }
 }
 </style>

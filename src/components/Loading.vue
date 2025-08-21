@@ -86,24 +86,24 @@ export default {
     text-align: center;
     padding: 3rem 4rem;
     background-color: var(--cor-branca);
-    border-radius: 30px;
-    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.15);
+    border-radius: 1.875rem;
+    box-shadow: 0 0.3125rem 1.25rem rgba(0, 0, 0, 0.15);
     width: 90%;
-    max-width: 600px;
+    max-width: 37.5rem;
     position: relative;
 }
 
 .loading-image {
     position: absolute;
-    bottom: -50px;
+    bottom: -3.125rem;
     left: 50%;
     transform: translateX(-50%);
-    width: 100px;
-    height: 100px;
+    width: 6.25rem;
+    height: 6.25rem;
     border-radius: 50%;
-    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 0.3125rem 0.9375rem rgba(0, 0, 0, 0.1);
     background-color: var(--roxo-claro);
-    padding: 10px;
+    padding: 0.625rem;
 }
 
 .loading-container.fade-out-up .loading-image {
@@ -122,26 +122,26 @@ export default {
 
 /* .loading-gif {
     position: absolute;
-    top: -50px;
+    top: -3.125rem;
     left: 50%;
     transform: translateX(-50%);
-    width: 100px;
-    height: 100px;
+    width: 6.25rem;
+    height: 6.25rem;
     border-radius: 50%;
-    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 0.3125rem 0.9375rem rgba(0, 0, 0, 0.1);
     background-color: var(--cor-branca);
-    padding: 10px;
+    padding: 0.625rem;
 } */
 
 .loading-gif {
     position: absolute;
-    top: -150px;
+    top: -9.375rem;
     left: 50%;
     transform: translateX(-50%);
-    width: 300px;
-    height: 300px;
+    width: 18.75rem;
+    height: 18.75rem;
     background-color: transparent;
-    padding: 10px;
+    padding: 0.625rem;
     z-index: 10;
 }
 
@@ -161,7 +161,7 @@ export default {
     display: inline-block;
     animation: jump-in 2.5s infinite forwards;
     opacity: 0;
-    transform: translateY(20px);
+    transform: translateY(1.25rem);
 }
 
 .letter:nth-child(1) {
@@ -207,12 +207,12 @@ export default {
 @keyframes jump-in {
     0% {
         opacity: 0;
-        transform: translateY(20px);
+        transform: translateY(1.25rem);
     }
 
     50% {
         opacity: 1;
-        transform: translateY(-5px);
+        transform: translateY(-0.3125rem);
     }
 
     100% {
@@ -233,9 +233,9 @@ export default {
 
 .loading-bar {
     width: 100%;
-    height: 10px;
+    height: 0.625rem;
     background-color: #e0e0e0;
-    border-radius: 5px;
+    border-radius: 0.3125rem;
     overflow: hidden;
     margin-bottom: 0;
 }

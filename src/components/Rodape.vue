@@ -57,24 +57,24 @@ export default {
 footer {
   font-family: 'Poppins', sans-serif;
   margin-top: auto;
-  height: 50px;
+  height: 3.125rem;
   background: var(--cor-branca);
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 0 40px;
-  border-top: 3px solid var(--roxo-desligado);
+  padding: 0 2.5rem;
+  border-top: 0.1875rem solid var(--roxo-desligado);
 }
 
 .footer-direita {
   display: flex;
-  gap: 12px;
+  gap: 0.75rem;
 }
 
 .social-icon {
   color: var(--roxo-escuro);
   text-decoration: none;
-  font-size: 20px;
+  font-size: 1.25rem;
 }
 
 .social-icon:hover {

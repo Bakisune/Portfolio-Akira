@@ -426,7 +426,7 @@ export const translations = {
             "This is a web application project focused on front-end development that allows users to select ingredients they have at home. Based on this selection, the app suggests possible recipes, optimizing the use of food and simplifying the search for culinary inspiration. The project demonstrates skills in state management, creating reusable components, and using APIs.",
           link: "https://github.com/Bakisune/Cookin-up",
           image: "/cookinup.png",
-          softwares: ["Vue", "Vite", "JavaScript", "TypeScript"],
+          softwares: ["Vue", "JavaScript", "TypeScript"],
         },
         {
           id: "04",
@@ -503,7 +503,7 @@ export const translations = {
             "Este é um projeto de aplicação web focado em desenvolvimento front-end que permite aos usuários selecionar os ingredientes disponíveis em suas casas. Com base nessa seleção, o aplicativo sugere receitas possíveis, otimizando o uso dos alimentos e simplificando a busca por inspiração culinária. O projeto demonstra habilidades em manipulação de estados, criação de componentes reutilizáveis e consumo de APIs.",
           link: "https://github.com/Bakisune/Cookin-up",
           image: "/cookinup.png",
-          softwares: ["Vue", "Vite", "JavaScript", "TypeScript"],
+          softwares: ["Vue","JavaScript", "TypeScript"],
         },
         {
           id: "04",
@@ -580,7 +580,7 @@ export const translations = {
             "Este es un proyecto de aplicación web centrado en el desarrollo front-end que permite a los usuarios seleccionar ingredientes disponibles en sus hogares. Con base en esta selección, la aplicación sugiere posibles recetas, optimizando el uso de los alimentos y simplificando la búsqueda de inspiración culinaria. El proyecto demonstra habilidades en la manipulación de estados, la creación de componentes reutilizables y el uso de API.",
           link: "https://github.com/Bakisune/Cookin-up",
           image: "/cookinup.png",
-          softwares: ["Vue", "Vite", "JavaScript", "TypeScript"],
+          softwares: ["Vue","JavaScript", "TypeScript"],
         },
         {
           id: "04",

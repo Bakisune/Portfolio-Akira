@@ -11,12 +11,13 @@ const translatedContent = computed(() => {
 
 <template>
   <header class="header">
-    <div class="left-strip"></div>
+    <div class="left-strip">
+      <!-- O logo permanece dentro da faixa lateral, conforme solicitado. -->
+      <div class="logo" :alt="translatedContent.altLogo"></div>
+    </div>
+
     <div class="background-image" :style="{ backgroundImage: 'url(' + BackgroundImage + ')' }"
       :alt="translatedContent.altBackground"></div>
-
-    <div class="logo" :alt="translatedContent.altLogo">
-    </div>
 
     <div class="content">
       <p class="name">Akira Alcantara</p>
@@ -45,7 +46,9 @@ const translatedContent = computed(() => {
     width: 10%;
     height: 100%;
     background-color: var(--roxo-escuro);
-    z-index: 1;
+    z-index: 2;
+    display: flex;
+    justify-content: center;
   }
 
   .background-image {
@@ -57,29 +60,152 @@ const translatedContent = computed(() => {
     background-repeat: no-repeat;
     background-position: right center;
     background-size: contain;
+    opacity: 0.2;
     z-index: 0;
   }
 
   .logo {
+    // Posição padrão para telas maiores, dentro da faixa lateral.
     position: absolute;
     top: 2.5rem;
-    left: 1.875rem;
-    z-index: 2;
     height: 5.0rem;
     width: 5.0rem;
     background-image: url('/bakisunestickerlogo.svg');
     background-size: contain;
     background-repeat: no-repeat;
     background-position: center;
+    z-index: 3;
   }
 
   .content {
     position: absolute;
     top: 24.5%;
-    z-index: 2;
+    z-index: 1;
     margin-left: calc(10% + 1.875rem);
     color: var(--cor-branca);
     background: transparent;
+
+    @media (max-width: 1024px) {
+      margin-left: calc(10% + 1rem);
+
+      .name {
+        font-size: 1em !important;
+      }
+
+      .title-part1 {
+        font-size: 3em !important;
+      }
+
+      .title-part2 {
+        font-size: 8em !important;
+      }
+
+      .skills {
+        font-size: 0.8em !important;
+      }
+    }
+
+    @media (max-width: 768px) {
+
+      // Ajustes para telas menores, como tablets
+      .background-image {
+        opacity: 0.5;
+        width: 100%;
+        background-position: center;
+      }
+
+      // A faixa lateral agora tem 100% de largura, mas é transparente.
+      .left-strip {
+        width: 100%;
+        background-color: transparent;
+      }
+
+      .content {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        width: 100%;
+        text-align: center;
+        margin-left: 0;
+      }
+
+      // O logo, que ainda está dentro da faixa, é posicionado e redimensionado.
+      .logo {
+        height: 4.0rem;
+        width: 4.0rem;
+        top: 1rem;
+        left: 50%;
+        transform: translateX(-50%);
+      }
+
+      .name {
+        font-size: 0.7em !important;
+      }
+
+      .title-part1 {
+        font-size: 2em !important;
+      }
+
+      .title-part2 {
+        font-size: 5em !important;
+      }
+
+      .skills {
+        font-size: 0.6em !important;
+      }
+    }
+
+    @media (max-width: 480px) {
+
+      // Ajustes para telas de celular
+      .background-image {
+        opacity: 0.5;
+        width: 100%;
+        background-position: center;
+      }
+
+      // A faixa lateral tem 100% de largura, mas é transparente.
+      .left-strip {
+        width: 100%;
+        background-color: transparent;
+      }
+
+      .content {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        width: 100%;
+        text-align: center;
+        margin-left: 0;
+      }
+
+      // O logo é posicionado e redimensionado.
+      .logo {
+        height: 3.0rem;
+        width: 3.0rem;
+        top: 1rem;
+        left: 50%;
+        transform: translateX(-50%);
+      }
+
+      .name {
+        font-size: 0.6em !important;
+      }
+
+      .title-part1 {
+        font-size: 1.2em !important;
+      }
+
+      .title-part2 {
+        font-size: 3em !important;
+      }
+
+      .skills {
+        font-size: 0.5em !important;
+      }
+    }
 
     .name {
       font-family: Poppins, sans-serif;
@@ -121,6 +247,36 @@ const translatedContent = computed(() => {
       font-size: 1.35em;
       background-color: transparent;
     }
+  }
+}
+
+@media (max-width: 768px) {
+  .left-strip .logo {
+    height: 3rem;
+    width: 3rem;
+    top: 1rem;
+    left: 1rem; // sempre no canto esquerdo
+    transform: none; // remove a centralização
+  }
+}
+
+@media (max-width: 480px) {
+  .left-strip .logo {
+    height: 2rem;
+    width: 2rem;
+    top: 1rem;
+    left: 0.2rem; // sempre no canto esquerdo
+    transform: none; // remove a centralização
+  }
+}
+
+@media (max-width: 320px) {
+  .left-strip .logo {
+    height: 1.5rem;
+    width: 1.5rem;
+    top: 1rem;
+    left: 0.1rem; // sempre no canto esquerdo
+    transform: none; // remove a centralização
   }
 }
 </style>

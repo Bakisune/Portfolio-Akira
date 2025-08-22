@@ -548,4 +548,101 @@ export default {
   color: red;
   font-weight: bold;
 }
+
+/* Layout responsivo para telas menores */
+/* Layout responsivo para telas menores */
+@media (max-width: 768px) {
+  .page-container {
+    padding: 1.5rem;
+    align-items: center;
+    justify-content: center;
+    /* Centraliza verticalmente */
+    min-height: 100vh;
+    /* Ocupa altura total da tela */
+    margin-bottom: 0;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+  }
+
+  .contact-title-container {
+    flex-direction: column;
+    gap: 0.75rem;
+    margin-bottom: 1rem;
+    align-items: center;
+    text-align: center;
+  }
+
+  .contact-title {
+    font-size: 2.2rem;
+    /* Título menor */
+  }
+
+  .contact-title-icon {
+    width: 3.5rem;
+    /* Imagem do título menor */
+    height: auto;
+  }
+
+  .contact-wrapper {
+    padding: 2rem;
+    max-width: 100%;
+    width: 90%;
+    margin: 1rem 0;
+    border-radius: 0.5rem;
+    border: none;
+    box-shadow: none;
+    position: relative;
+  }
+
+  /* Remove as linhas decorativas */
+  .contact-wrapper::before,
+  .contact-wrapper::after {
+    display: none;
+  }
+
+  .contact-subtitle,
+  .contact-form {
+    margin-left: 0;
+    width: 100%;
+    text-align: center;
+  }
+
+  .button-row {
+    justify-content: center;
+  }
+
+  .contact-side-image {
+    position: relative;
+    top: 0;
+    right: 0;
+    width: 50%;
+    /* Imagem menor */
+    max-width: 200px;
+    /* Limite máximo */
+    margin: -1rem auto 0;
+    display: block;
+  }
+}
+
+/* Para telas ainda menores, tipo celular bem pequeno */
+@media (max-width: 480px) {
+  .contact-title {
+    font-size: 1.8rem;
+  }
+
+  .contact-title-icon {
+    width: 2.5rem;
+  }
+
+  .contact-side-image {
+    width: 40%;
+    /* Imagem ainda menor */
+    max-width: 150px;
+  }
+
+  .contact-wrapper {
+    padding: 1.5rem;
+  }
+}
 </style>

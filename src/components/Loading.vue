@@ -64,18 +64,21 @@ export default {
 <style scoped>
 .loading-container {
     display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
     min-height: 100vh;
+    width: 100vw;
     background-color: var(--cor-branca);
     font-family: 'Poppins', sans-serif;
     position: fixed;
     top: 0;
     left: 0;
-    width: 100%;
     z-index: 9999;
     transition: transform 1s ease-in-out;
     transform: translateY(0);
+    overflow: hidden;
+    /* Evita a barra de rolagem */
 }
 
 .loading-container.fade-out-up {
@@ -256,60 +259,35 @@ export default {
 
 /* --- REGRAS PARA TELAS MENORES (ajuste para telas pequenas) --- */
 @media (max-width: 600px) {
+    .loading-container {
+        height: 100vh;
+        width: 100vw;
+    }
+
     .loading-box {
         padding: 1rem 2rem;
-        /* Reduz o padding para que o box seja mais compacto */
+        max-width: 90vw;
     }
 
     .loading-gif {
         width: 10rem;
-        /* Reduz o tamanho do GIF */
         height: 10rem;
         top: -5rem;
-        /* Ajusta a posição para que o GIF fique no centro superior do box */
     }
 
     .loading-image {
         width: 4rem;
-        /* Reduz o tamanho do logo */
         height: 4rem;
         bottom: -2rem;
-        /* Ajusta a posição para que o logo continue cortado */
+        /* Adicionei 'position: absolute;' para manter a posição relativa ao container. */
+        /* E 'left: 50%; transform: translateX(-50%);' para centralizar */
+        position: absolute;
+        left: 50%;
+        transform: translateX(-50%);
     }
 
     .title {
         font-size: 1rem;
-        /* Reduz o tamanho da fonte do título */
-    }
-}
-
-/* --- REGRAS PARA TELAS MAIORES (garante proporção em telas de alta resolução) --- */
-@media (min-width: 1920px) {
-
-    /* OLÁ */
-    .loading-box {
-        padding: 5rem 6rem;
-        max-width: 50rem;
-    }
-
-    .loading-gif {
-        width: 25rem;
-        height: 25rem;
-        top: -12.5rem;
-    }
-
-    .loading-image {
-        width: 8rem;
-        height: 8rem;
-        bottom: -4rem;
-    }
-
-    .title {
-        font-size: 2rem;
-    }
-
-    .loading-bar {
-        height: 0.8rem;
     }
 }
 </style>

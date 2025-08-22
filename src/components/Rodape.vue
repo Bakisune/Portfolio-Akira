@@ -80,4 +80,10 @@ footer {
 .social-icon:hover {
   color: var(--amarelo);
 }
+
+@media (max-width: 768px) {
+  footer {
+    padding: 0 1rem;
+  }
+}
 </style>

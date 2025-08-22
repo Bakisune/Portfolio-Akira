@@ -235,6 +235,17 @@ const animateActiveLanguage = () => {
     }
   }, 100);
 };
+
+const updateHeaderOffset = () => {
+  const header = document.querySelector('.header');
+  if (header) {
+    const h = header.getBoundingClientRect().height;
+    document.documentElement.style.setProperty('--header-height', `${h}px`);
+  }
+};
+
+window.addEventListener('load', updateHeaderOffset);
+window.addEventListener('resize', updateHeaderOffset);
 </script>
 
 <style scoped>
@@ -428,5 +439,85 @@ html {
 
 .language-icon-container.bounce-anim {
   animation: bounce 0.4s ease-in-out;
+}
+
+/* Estilos normais (desktop/tablet) já estão definidos em .header */
+
+/* MOBILE */
+/* MOBILE */
+@media (max-width: 768px) {
+  main {
+    padding-top: var(--header-height, 80px);
+  }
+
+  .header {
+    position: fixed;
+    top: 90%;
+    left: 50%;
+    bottom: auto;
+    transform: translate(-50%, -50%);
+    /* centraliza */
+    width: auto;
+    height: auto;
+    padding: 0.75rem 1.25rem;
+    border-radius: 99rem;
+    box-shadow: 0 0.625rem 1.25rem rgba(0, 0, 0, 0.2);
+    /* flutuante */
+  }
+
+  .nav {
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+  }
+
+  .nav-list {
+    flex-direction: row;
+    gap: 1rem;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .nav-list-grouped {
+    flex-direction: row;
+    gap: 1rem;
+  }
+
+  .nav-list a {
+    display: flex;
+    flex-direction: column;
+    /* ícone em cima, texto embaixo */
+    align-items: center;
+    justify-content: center;
+    font-size: 1.5em;
+  }
+
+  /* SELETOR DE IDIOMA */
+  .language-box {
+    position: fixed;
+    bottom: auto;
+    /* deixa livre para flutuar */
+    top: calc(50% - 100px);
+    /* ajuste inicial acima da nav */
+    right: auto;
+    left: 50%;
+    transform: translateX(50%);
+    /* centraliza horizontalmente */
+    padding: 0.5rem;
+    border-radius: 1.5rem;
+    background-color: var(--roxo-mais-claro);
+    display: flex;
+    flex-direction: column;
+    /* vertical */
+    gap: 0.5rem;
+    opacity: 1;
+    box-shadow: 0 0.625rem 1.25rem rgba(0, 0, 0, 0.2);
+  }
+
+  .language-options {
+    flex-direction: column;
+    gap: 0.5rem;
+  }
 }
 </style>

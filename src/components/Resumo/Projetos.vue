@@ -8,24 +8,29 @@
             <!-- Botão de seta para a esquerda -->
             <i @click="prevProject" class="bt-seta bi bi-chevron-left left-arrow"></i>
 
-            <!-- Container do projeto, com animação de transição -->
-            <div class="projects-dev-demo" :class="slideClass" v-if="currentProject">
-                <img :src="currentProject.image" :alt="currentProject.title" />
-            </div>
-
-            <div class="projects-dev-text" :class="slideClass" v-if="currentProject">
-                <h1 class="projects-dev-title borda-texto-preto2">{{ currentProject.id }}</h1>
-                <h2 class="projects-dev-subtitle" v-html="currentProject.title"></h2>
-                <div class="dev-softwares">
-                    <h4 v-for="software in currentProject.softwares" :key="software">{{ software }}</h4>
+            <div class="dev-container">
+                <!-- Container do projeto, com animação de transição -->
+                <div class="projects-dev-demo" :class="slideClass" v-if="currentProject">
+                    <img :src="currentProject.image" :alt="currentProject.title" />
                 </div>
-                <p class="textblock" v-html="currentProject.description"></p>
-                <!-- Novo container para alinhar o ícone à direita -->
-                <div class="link-container">
-                    <a target="_blank" :href="currentProject.link">
-                        <!-- Ícone do GitHub adicionado aqui -->
-                        <i class="bt-link bi bi-github"></i>
-                    </a>
+
+                <div class="projects-dev-text" :class="slideClass" v-if="currentProject">
+                    <div class="dev-number">
+                        <h1 class="projects-dev-title">{{ currentProject.id }}</h1>
+                        <h2 class="projects-dev-subtitle" v-html="currentProject.title"></h2>
+                    </div>
+
+                    <div class="dev-softwares">
+                        <h4 v-for="software in currentProject.softwares" :key="software">{{ software }}</h4>
+                    </div>
+                    <p class="textblock" v-html="currentProject.description"></p>
+                    <!-- Novo container para alinhar o ícone à direita -->
+                    <div class="link-container">
+                        <a target="_blank" :href="currentProject.link">
+                            <!-- Ícone do GitHub adicionado aqui -->
+                            <i class="bt-link bi bi-github"></i>
+                        </a>
+                    </div>
                 </div>
             </div>
 
@@ -200,6 +205,11 @@ watch(() => activeLanguage.value, () => {
     padding-bottom: 10%;
     width: 100%;
     background-color: var(--cor-fundo);
+}
+
+.dev-container {
+    display: flex;
+    gap: 2rem;
 }
 
 .projects-dev-demo {
@@ -391,13 +401,43 @@ watch(() => activeLanguage.value, () => {
 }
 
 @media (max-width: 48.0rem) {
+
     .projects-dev {
-        flex-direction: column;
         gap: 2rem;
     }
 
-    .bt-seta {
-        display: none;
+    .dev-container {
+        flex-direction: column;
+        width: 70%;
+    }
+
+    .dev-number {
+        padding-top: 1.5rem;
+        display: flex;
+        gap: 1rem;
+        align-items: center;
+    }
+
+    .projects-dev-title {
+        font-size: 3rem;
+        padding-bottom: 0;
+    }
+
+    .projects-dev-subtitle {
+        font-size: 1.25rem;
+    }
+
+    .dev-softwares {
+        padding: 0 2rem 0.5rem 2rem;
+    }
+
+    .dev-softwares h4 {
+        font-size: 0.7rem;
+    }
+
+    .textblock {
+        font-size: 0.9rem;
+        text-align: center;
     }
 
     .projects-dev-demo img {
@@ -478,6 +518,102 @@ watch(() => activeLanguage.value, () => {
         'box-1 box-4 box-4 box-5 box-8 box-9'
         'box-2 box-4 box-4 box-6 box-10 box-10'
         'box-3 box-4 box-4 box-7 box-10 box-10';
+}
+
+@media (max-width: 770px) {
+    .grid-container2 {
+        display: grid;
+        grid-template-columns: repeat(3, 9rem);
+        grid-template-rows: repeat(6, 9rem);
+        gap: 0.6rem;
+        grid-template-areas:
+            'box-4 box-4 box-1'
+            'box-4 box-4 box-2'
+            'box-4 box-4 box-3'
+            'box-5 box-8 box-9'
+            'box-6 box-10 box-10'
+            'box-7 box-10 box-10';
+    }
+
+    .bt-see-more {
+        margin: 0rem 0.5rem 0.5rem 0rem;
+        border-radius: 0.23rem;
+        width: 1.8rem;
+        height: 5rem;
+    }
+
+    .bt-content {
+        gap: 0.3125rem;
+        font-size: calc(1.7rem * 0.40);
+    }
+
+    .bt-content img {
+        height: 1.2em;
+    }
+}
+
+@media (max-width: 480px) {
+    .grid-container2 {
+        display: grid;
+        grid-template-columns: repeat(3, 7rem);
+        grid-template-rows: repeat(6, 7rem);
+        gap: 0.6rem;
+        grid-template-areas:
+            'box-4 box-4 box-1'
+            'box-4 box-4 box-2'
+            'box-4 box-4 box-3'
+            'box-5 box-8 box-9'
+            'box-6 box-10 box-10'
+            'box-7 box-10 box-10';
+    }
+
+    .bt-see-more {
+        margin: 0rem 0.5rem 0.5rem 0rem;
+        border-radius: 0.23rem;
+        width: 1.8rem;
+        height: 5rem;
+    }
+
+    .bt-content {
+        gap: 0.3125rem;
+        font-size: calc(1.7rem * 0.40);
+    }
+
+    .bt-content img {
+        height: 1.2em;
+    }
+}
+
+@media (max-width: 380px) {
+    .grid-container2 {
+        display: grid;
+        grid-template-columns: repeat(3, 5rem);
+        grid-template-rows: repeat(6, 5rem);
+        gap: 0.6rem;
+        grid-template-areas:
+            'box-4 box-4 box-1'
+            'box-4 box-4 box-2'
+            'box-4 box-4 box-3'
+            'box-5 box-8 box-9'
+            'box-6 box-10 box-10'
+            'box-7 box-10 box-10';
+    }
+
+    .bt-see-more {
+        margin: 0rem 0.5rem 0.5rem 0rem;
+        border-radius: 0.23rem;
+        width: 1.8rem;
+        height: 5rem;
+    }
+
+    .bt-content {
+        gap: 0.3125rem;
+        font-size: calc(1.7rem * 0.40);
+    }
+
+    .bt-content img {
+        height: 1.2em;
+    }
 }
 
 .gallery__img {

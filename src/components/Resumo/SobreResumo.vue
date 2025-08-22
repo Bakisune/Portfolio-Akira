@@ -1,27 +1,33 @@
 <template>
   <section class="new-section" ref="aboutSection">
     <div class="about-content-wrapper-full">
-      <div class="title-with-image">
-        <h2 class="about-title" :class="{ 'animate-title-line': isSectionVisible }">{{ translatedContent.title }}</h2>
-        <img :src="starIconUrl" :alt="translatedContent.altStar" class="section-image"
-          :class="{ 'animate-shining-image': isSectionVisible }" />
-      </div>
+
       <div class="about-content-wrapper">
-        <div class="about-text-and-buttons">
-          <p class="about-text">{{ translatedContent.aboutText }}</p>
-          <div class="button-container">
-            <!-- CV Download Button -->
-            <a href="/CURRICULO_GABRIELA_A.pdf" download="CV-Akira.pdf" class="action-button cv-button">
-              <i class="bi bi-file-earmark-post"></i>
-              <span>CV</span>
-            </a>
-            <!-- Trello Link Button -->
-            <a href="https://trello.com/b/CHEXxbf2/⭐-commissions-⭐" target="_blank" class="action-button trello-button">
-              <i class="bi bi-trello"></i>
-              <span>Trello</span>
-            </a>
+        <div class="about-content-wrapper-2">
+          <div class="title-with-image">
+            <h2 class="about-title" :class="{ 'animate-title-line': isSectionVisible }">{{ translatedContent.title }}
+            </h2>
+            <img :src="starIconUrl" :alt="translatedContent.altStar" class="section-image"
+              :class="{ 'animate-shining-image': isSectionVisible }" />
+          </div>
+          <div class="about-text-and-buttons">
+            <p class="about-text">{{ translatedContent.aboutText }}</p>
+            <div class="button-container">
+              <!-- CV Download Button -->
+              <a href="/CURRICULO_GABRIELA_A.pdf" download="CV-Akira.pdf" class="action-button cv-button">
+                <i class="bi bi-file-earmark-post"></i>
+                <span>CV</span>
+              </a>
+              <!-- Trello Link Button -->
+              <a href="https://trello.com/b/CHEXxbf2/⭐-commissions-⭐" target="_blank"
+                class="action-button trello-button">
+                <i class="bi bi-trello"></i>
+                <span>Trello</span>
+              </a>
+            </div>
           </div>
         </div>
+
         <div class="about-image-container" :alt="translatedContent.altPaperBackground">
           <div class="image-box" :alt="translatedContent.altMyDrawing">
           </div>
@@ -100,6 +106,10 @@ onUnmounted(() => {
   }
 }
 
+.about-content-wrapper-2 {
+  align-items: flex-start;
+}
+
 .new-section {
   position: relative;
   margin-top: -10vh;
@@ -115,6 +125,21 @@ onUnmounted(() => {
   font-family: 'Poppins', sans-serif;
 }
 
+.new-section::after {
+  content: "";
+  position: absolute;
+  top: -15vh;
+  left: 0;
+  width: 100%;
+  height: 120%;
+  padding-bottom: 1%;
+  background-image: url("../../assets/Papel.png");
+  background-size: cover;
+  background-position: calc(30% + 0.0rem) center;
+  background-repeat: no-repeat;
+  z-index: 1;
+}
+
 .new-section::before {
   content: "";
   position: absolute;
@@ -126,35 +151,19 @@ onUnmounted(() => {
   z-index: 0;
 }
 
-.new-section::after {
-  content: "";
-  position: absolute;
-  top: -2vh;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  padding-bottom: 1%;
-  background-image: url("../../assets/Papel.png");
-  background-size: cover;
-  background-position: calc(30% + 0.0rem) center;
-  background-repeat: no-repeat;
-  z-index: 1;
-}
-
 .title-with-image {
+  margin-top: 2rem;
   display: flex;
   align-items: center;
   position: relative;
   width: 80%;
   max-width: 75.0rem;
   align-self: flex-start;
-  margin-left: 10%;
   margin-bottom: 1.25rem;
   z-index: 2;
 }
 
 .about-title {
-  // Removido o font-family duplicado
   color: var(--roxo-claro);
   font-size: 3em;
   font-weight: 700;
@@ -208,6 +217,7 @@ onUnmounted(() => {
 }
 
 .about-content-wrapper-full {
+  top: -10vh;
   display: flex;
   flex-direction: column;
   width: 100%;
@@ -320,52 +330,170 @@ onUnmounted(() => {
   content: none;
 }
 
-@media (max-width: 48.0rem) {
-  .title-with-image {
-    flex-direction: column;
-    align-items: center;
-    margin-left: 0;
-  }
+@media (max-width: 64rem) {
 
-  .section-image {
-    margin-left: 0;
-    margin-top: 1.25rem;
-  }
-
+  /* tablet+mobile */
+  /* garante que o container empilhe os blocos */
   .about-content-wrapper {
+    display: flex !important;
     flex-direction: column;
     align-items: center;
+    justify-content: flex-start;
+    gap: 1.5rem;
+    width: 100%;
+    margin: 0 auto;
+  }
+
+  /* faz o wrapper extra "sumir" do fluxo para que seus filhos virem filhos do pai.
+     (Se houver problemas em algum navegador muito antigo, remover e ajustar o HTML será a alternativa.) */
+  .about-content-wrapper-2 {
+    display: contents;
+  }
+
+  /* agora podemos ordenar os 3 elementos como desejamos */
+  .title-with-image {
+    order: 1;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.5rem;
+    margin: 0 auto 0.5rem auto;
+    text-align: center;
+  }
+
+  /* estrela alinhada e limpa no mobile */
+  .section-image {
+    margin: 0.4rem 0 0 0;
+    width: 3rem;
+    height: 3rem;
+    object-fit: contain;
+    transform: none;
+    background: transparent;
+  }
+
+  /* quadro da imagem aparece logo após o título */
+  .about-image-container {
+    order: 2;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 0 1rem;
+  }
+
+  .image-box {
     width: 90%;
+    max-width: 20rem;
+    height: auto;
+    aspect-ratio: 1 / 1.2;
+    background-size: cover;
+    background-position: center;
+    border-radius: 0.625rem;
+    border: 0.25rem solid var(--roxo-claro);
+    margin-bottom: 0.75rem;
+  }
+
+  .bakisune-info {
+    position: relative;
+    bottom: auto;
+    left: auto;
+    margin-top: 0.4rem;
+    font-size: 1rem;
+  }
+
+  /* texto e botões ficam por último */
+  .about-text-and-buttons {
+    order: 3;
+    width: 95%;
+    max-width: 52rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    margin: 0 auto;
+    gap: 0.75rem;
+  }
+
+  .about-text {
+    margin: 0;
+    font-size: 1rem;
+    line-height: 1.5;
+    text-align: center;
+    min-height: auto;
+  }
+
+  .button-container {
+    display: flex;
+    gap: 0.6rem;
+    justify-content: center;
+    flex-wrap: wrap;
+    margin-top: 0.5rem;
   }
 
   .about-title {
-    align-self: center;
-    margin-left: 0;
-    text-align: center;
+    font-size: 2rem;
+    line-height: 1;
+    margin-bottom: 0;
   }
 
   .about-title::after {
     left: 50%;
     transform: translateX(-50%);
+    width: 7rem;
   }
 
-  .about-text-and-buttons {
-    align-items: center;
+  /* papel (background) - override mobile: bleed maior e sem cortes */
+  .new-section {
+    isolation: isolate;
+    overflow: visible;
   }
 
-  .about-text {
-    margin-right: 0;
-    text-align: center;
+  .new-section::after {
+    top: -4.5rem !important;
+    left: 0 !important;
+    right: 0 !important;
+    height: calc(100% + 9rem) !important;
+    /* bleed de 4.5rem em cima e embaixo */
+    background-size: 100% auto !important;
+    background-position: top center !important;
+    background-repeat: no-repeat !important;
+    z-index: 1;
   }
+}
 
-  .button-container {
-    justify-content: center;
+/* pequeno ajuste para telas realmente pequenas (phones estreitos) */
+@media (max-width: 36rem) {
+  .about-title {
+    font-size: 1.6rem;
   }
 
   .image-box {
-    width: 100%;
-    height: auto;
-    aspect-ratio: 4/4.5;
+    max-width: 18.5rem;
   }
+
+  .about-text {
+    font-size: 0.95rem;
+  }
+}
+
+@media (max-width: 64rem) {
+  .new-section::after {
+    top: -32rem !important;
+    /* ajusta o bleed superior */
+    left: 0 !important;
+    right: 0 !important;
+    height: auto !important;
+    /* altura automática para cobrir todo o conteúdo */
+    min-height: calc(180% + 4rem) !important;
+    /* garante um mínimo de cobertura */
+    background-size: cover !important;
+    /* cobre totalmente sem distorção */
+    background-position: center top !important;
+    /* centraliza no topo */
+    background-repeat: no-repeat !important;
+    z-index: 1;
+  }
+
 }
 </style>
